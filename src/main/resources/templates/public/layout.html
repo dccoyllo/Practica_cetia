@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head th:fragment="head" th:remove="tag">
+
+	<title>Public | Allqu</title>
+
+	<!-- Mobile Specific Meta -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<!-- Favicon-->
+	<link rel="shortcut icon" href="img/fav.png">
+	<!-- Author Meta -->
+	<meta name="author" content="colorlib">
+	<!-- Meta Description -->
+	<meta name="description" content="">
+	<!-- Meta Keyword -->
+	<meta name="keywords" content="">
+	<!-- meta character set -->
+	<meta charset="UTF-8">
+	<!-- Site Title -->
+	<title>Medical</title>
+
+	<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet">
+	<!--
+			CSS
+			============================================= -->
+	<link rel="stylesheet" href="css/linearicons.css">
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="css/magnific-popup.css">
+	<link rel="stylesheet" href="css/jquery-ui.css">
+	<link rel="stylesheet" href="css/nice-select.css">
+	<link rel="stylesheet" href="css/animate.min.css">
+	<link rel="stylesheet" href="css/owl.carousel.css">
+	<link rel="stylesheet" href="css/jquery-ui.css">
+	<link rel="stylesheet" href="css/main.css">
+
+</head>
+
+<body>
+	<div class="main">
+		<div class="blast-box"></div>
+		<div id="page">
+			<div id="home" class="banner" data-blast="bgColor">
+
+				<!--/banner-->
+
+				<div th:fragment="header">
+					<div th:replace="views/public/layout/header"></div>
+				</div>
+
+
+				<!-- Swiper Silder
+    ================================================== -->
+				<!-- Slider main container -->
+
+				<!--  REEMPLAZAR EN EL MAIN EL DIV DE AQUI -->
+
+			</div>
+		</div>
+	</div>
+
+
+
+
+	<!-- Footer
+    ================================================== -->
+
+	<footer th:fragment="footer" th:remove="tag">
+		<div th:replace="views/admin/layout/footer"></div>
+		<div class="clearfix"></div>
+		<script th:src="@{/public/js/jquery-2.2.3.min.js}"></script>
+		<script th:src="@{/public/js/boost.js}"></script>
+		<script th:src="@{/public/js/blast.min.js}"></script>
+		<!--  light box js -->
+		<script th:src="@{/public/js/lightbox-plus-jquery.min.js}"></script>
+		<script>
+			// optional
+			$('#blogCarousel').carousel({
+				interval: 5000
+			});
+		</script>
+		<!--/ start-smoth-scrolling -->
+		<script th:src="@{/public/js/move-top.js}"></script>
+		<script th:src="@{/public/js/easing.js}"></script>
+		<script>
+			jQuery(document).ready(function ($) {
+				$(".scroll").click(function (event) {
+					event.preventDefault();
+					$('html,body').animate({
+						scrollTop: $(this.hash).offset().top
+					}, 900);
+				});
+			});
+		</script>
+		<script>
+			$(document).ready(function () {
+				$().UItoTop({
+					easingType: 'easeOutQuart'
+				});
+
+			});
+		</script>
+		<!-- //js -->
+		<script th:src="@{/public/js/bootstrap.js}"></script>
+	</footer>
+
+</body>
+
+</html>
