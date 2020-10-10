@@ -5,15 +5,21 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class PublicController {
-	
+
 	@GetMapping("/")
 	public String index() {
-		
 		return "public/index";
 	}
+
+	@GetMapping("/contactenos")
+	public String contactenos() {
+
+		return "public/contact";
+	}
+
 	@GetMapping("/login")
 	public String login() {
-		
+
 		return "public/login";
 	}
 
