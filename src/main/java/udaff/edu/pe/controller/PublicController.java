@@ -11,6 +11,18 @@ public class PublicController {
 		return "public/home/index";
 	}
 
+	@GetMapping("/servicios")
+	public String servicios() {
+
+		return "public/servicios";
+	}
+
+	@GetMapping("/psicologos")
+	public String psicologos() {
+
+		return "public/psicologos";
+	}
+
 	@GetMapping("/contactenos")
 	public String contactenos() {
 
