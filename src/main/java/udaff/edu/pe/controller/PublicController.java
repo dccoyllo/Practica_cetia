@@ -8,7 +8,7 @@ public class PublicController {
 
 	@GetMapping("/")
 	public String index() {
-		return "public/index";
+		return "public/home/index";
 	}
 
 	@GetMapping("/contactenos")
