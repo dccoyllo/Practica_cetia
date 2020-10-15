@@ -34,6 +34,11 @@ public class PublicController {
 
 		return "public/login";
 	}
+	@GetMapping("/crear-cuenta")
+	public String newlogin() {
+
+		return "public/newlogin";
+	}
 
 	@GetMapping("/setpaciente")
 	public String createPaciente() {
