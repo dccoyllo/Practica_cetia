@@ -2474,7 +2474,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 /*-------- Start Banner Area ------------*/
 .banner-area {
-  background: url(../img/hero-bg.jpg) right;
+  background: url(../img/inicio.jpg) right;
   background-size: cover;
 }
 
@@ -2834,7 +2834,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 .feedback-left {
-  background: url(../img/video-bg.jpg) center;
+  background: url(../img/video-bg.png) center;
   background-size: cover;
   padding: 130px 0;
 }
