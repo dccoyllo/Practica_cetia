@@ -8,11 +8,11 @@ nombre varchar(50) not null
 insert into rol
 values
 (1,"usuario"),
-(2, "cliente");
+(2, "psicologo");
 
 create table usuario(
 idusuario int auto_increment primary key not null,
-cuenta varchar(50) not null,
+cuenta varchar(50) not null unique,
 clave varchar(50) not null,
 correo varchar(50) null unique,
 nombre varchar(50) null,
@@ -24,6 +24,9 @@ constraint fk_rol_usuario foreign key(idrol) references rol(idrol)
 on delete cascade
 on update cascade
 );
+insert into usuario
+value
+(1, "admin", "admin", "cetiaadmin@hotmail.com", null, null, null, null, 2);
 
 create table tipo_publicacion (
 idtipopublicacion int auto_increment primary key not null,
@@ -49,7 +52,7 @@ create table publicacion(
 idpublicacion int auto_increment primary key not null,
 titulo varchar(100) not null,
 fecha date not null,
-descripción varchar(1000) null,
+descripcion varchar(1000) null,
 idtipopublicacion int not null,
 constraint fk_publicacion_tipo_publicacion foreign key (idtipopublicacion) references tipo_publicacion(idtipopublicacion)
 on delete cascade
@@ -121,3 +124,7 @@ constraint fk_usu_reser_reservacion foreign key (idreservacion) references reser
 on delete cascade
 on update cascade
 );
+
+create view login(user_id, user_cuenta, user_clave, user_rol)
+as
+select idusuario, cuenta, clave, idrol from usuario;

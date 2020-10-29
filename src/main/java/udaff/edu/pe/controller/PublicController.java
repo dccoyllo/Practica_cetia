@@ -1,25 +1,46 @@
 package udaff.edu.pe.controller;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import udaff.edu.pe.entities.Rol;
+import udaff.edu.pe.entities.Usuario;
+import udaff.edu.pe.service.PublicService;
+import udaff.edu.pe.service.UsuarioService;
 
 @Controller
 public class PublicController {
+	@Autowired
+	private PublicService pService;
+	@Autowired
+	private UsuarioService uService;
 
 	@GetMapping("/")
-	public String index() {
+	public String index(Model model) {
+		model.addAttribute("publicaciones", pService.getAllPublicacion());
+		model.addAttribute("actividades", pService.getAllActividad());
+		System.out.println(pService.getAllPublicacion());
+		System.out.println(pService.getAllActividad());
 		return "public/home/index";
 	}
 
 	@GetMapping("/servicios")
-	public String servicios() {
-
+	public String servicios(Model model) {
+		model.addAttribute("servicios", pService.getAllServicio());
+		System.out.println(pService.getAllServicio());
 		return "public/servicios";
 	}
 
 	@GetMapping("/psicologos")
 	public String psicologos() {
-
+		System.out.println(pService.getAllPsicologo());
 		return "public/psicologos";
 	}
 
@@ -34,8 +55,64 @@ public class PublicController {
 
 		return "public/login";
 	}
+
+	@PostMapping("/login")
+	public String dataLogin(HttpServletRequest request, @RequestParam String cuenta, @RequestParam String password,
+			Model model) {
+//		HttpSession session = request.getSession();
+		System.out.println(pService.getLogin(cuenta, password));
+		if (pService.getLogin(cuenta, password) != null) {
+			System.out.println(uService.readUsuario(pService.getLogin(cuenta, password).getId().getUserId()));
+			return "redirect:/";
+		} else {
+			model.addAttribute("cuenta", cuenta);
+			model.addAttribute("password", password);
+			model.addAttribute("acceso", false);
+			return "public/login";
+		}
+	}
+
+	@GetMapping("/logout")
+	public String logout(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		session.invalidate();
+		return "redirect:/";
+	}
+
 	@GetMapping("/crear-cuenta")
 	public String newlogin() {
+		return "public/newlogin";
+	}
+
+	@PostMapping("/crear-cuenta")
+	public String dataNewLogin(@RequestParam String cuenta, @RequestParam String email, @RequestParam String password,
+			Model model) {
+		Usuario newU = new Usuario();
+		newU.setCuenta(cuenta);
+		newU.setCorreo(email);
+		newU.setClave(password);
+//		newU.setNombre("");
+//		newU.setApellido("");
+//		newU.setEdad(0);
+//		newU.setDni(0);
+		Rol rol = new Rol();
+		rol.setIdrol(1);
+		newU.setRol(rol);
+
+		model.addAttribute("cuenta", cuenta);
+		model.addAttribute("email", email);
+		model.addAttribute("password", password);
+		try {
+			uService.createUsuario(newU);
+			model.addAttribute("estado", true);
+		} catch (Exception e) {
+			// TODO: handle exception
+			model.addAttribute("estado", false);
+		}
+//		if (uService.createUsuario(newU))
+//			model.addAttribute("estado", true);
+//		else
+//			model.addAttribute("estado", false);
 
 		return "public/newlogin";
 	}
