@@ -1,17 +1,54 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
 <head>
 <th:block data-th-replace="layout/head :: contenendor-head"></th:block>
 <meta charset="utf-8">
 <title>Crear Cuenta - Cetia</title>
 </head>
 <body>
-	<!-- start header -->
-	<div data-th-replace="layout/header :: contenendor-header"></div>
-	<!-- end header -->
+	<a href="/" class="btn">Volver</a>
+	<h2>Crear Cuenta</h2>
+	<form action="/crear-cuenta" method="POST">
+		<input type="text" name="cuenta" placeholder="cuenta" required="required" th:value="${cuenta}">
+		<input type="text" name="email" placeholder="email" required="required" th:value="${email}">
+		<input type="password" name="password" placeholder="contraseña" required="required" th:value="${password}">
+		
+		<th:block th:if="${estado == true}">
+			<div class="alert alert-success alert-dismissible fade show" role="alert">
+				Se ha creado tu cuenta satisfactoriamente
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+		</th:block>
+		<th:block th:if="${estado == false}">
+			<div class="alert alert-danger alert-dismissible fade show" role="alert">
+				Ya existe la Cuenta y/o Email registrado
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+		</th:block>
+		<input type="submit" value="Crear cuenta"  class="btn btn-primary">
+		<a href="/login" class="btn btn-secondary">Iniciar Sesion</a>
+	</form>
 	
-	<!-- start footer -->
-	<div data-th-replace="layout/footer :: contenendor-footer"></div>
-	<!-- end footer -->
+	<script src="js/vendor/jquery-2.2.4.min.js"></script>
+	<script src="js/popper.min.js"></script>
+	<script src="js/vendor/bootstrap.min.js"></script>
+	<script
+		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>
+	<script src="js/jquery-ui.js"></script>
+	<script src="js/easing.min.js"></script>
+	<script src="js/hoverIntent.js"></script>
+	<script src="js/superfish.min.js"></script>
+	<script src="js/jquery.ajaxchimp.min.js"></script>
+	<script src="js/jquery.magnific-popup.min.js"></script>
+	<script src="js/jquery.tabs.min.js"></script>
+	<script src="js/jquery.nice-select.min.js"></script>
+	<script src="js/owl.carousel.min.js"></script>
+	<script src="js/mail-script.js"></script>
+	<script src="js/main.js"></script>
 </body>
 </html>
