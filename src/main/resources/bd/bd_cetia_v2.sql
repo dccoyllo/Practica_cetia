@@ -47,6 +47,9 @@ constraint fk_psicologo_usuario foreign key (idusuario) references usuario(idusu
 on delete cascade
 on update cascade
 );
+insert into psicologo
+value
+(1, "administrador", "/img/psicologo");
 
 create table publicacion(
 idpublicacion int auto_increment primary key not null,
