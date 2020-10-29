@@ -57,17 +57,9 @@ titulo varchar(100) not null,
 fecha date not null,
 descripcion varchar(1000) null,
 idtipopublicacion int not null,
-constraint fk_publicacion_tipo_publicacion foreign key (idtipopublicacion) references tipo_publicacion(idtipopublicacion)
-on delete cascade
-on update cascade
-);
-
-create table psic_publ(
-idpsic_publi int auto_increment primary key not null,
 idusuario int not null,
-idpublicacion int not null,
-constraint fk_psic_publ_psicologo foreign key (idusuario) references psicologo(idusuario),
-constraint fk_psic_publ_publicacion foreign key (idpublicacion) references publicacion(idpublicacion)
+constraint fk_publicacion_tipo_publicacion foreign key (idtipopublicacion) references tipo_publicacion(idtipopublicacion),
+constraint fk_publicacion_psicologo foreign key (idusuario) references psicologo(idusuario)
 on delete cascade
 on update cascade
 );
@@ -77,36 +69,26 @@ idactividad int auto_increment primary key not null,
 fecha date not null,
 titulo varchar(100) not null,
 descripcion varchar(1000) null,
-imagen varchar(100) null
-);
-
-create table psic_act(
-idpsic_act int auto_increment primary key not null,
-idactividad int not null,
+imagen varchar(100) null,
 idusuario int not null,
-constraint fk_psic_act_actividad foreign key(idactividad) references actividad(idactividad),
-constraint fk_psic_act_psicologo foreign key (idusuario) references psicologo(idusuario)
+constraint fk_actividad_psicologo foreign key (idusuario) references psicologo(idusuario)
 on delete cascade
 on update cascade
 );
+
 
 create table servicio(
 idservicio int auto_increment primary key not null,
 titulo varchar(100) not null,
 descripcion varchar(1000) null,
 imagen varchar(100) null,
-precio double not null
-);
-
-create table psic_serv(
-idpsic_serv int auto_increment primary key not null,
+precio double not null,
 idusuario int not null,
-idservicio int not null,
-constraint fk_psic_serv_psicologo foreign key (idusuario) references psicologo(idusuario),
-constraint fk_psic_serv_servicio foreign key (idservicio) references servicio(idservicio)
+constraint fk_servicio_psicologo foreign key (idusuario) references psicologo(idusuario)
 on delete cascade
 on update cascade
 );
+
 
 create table reservacion (
 idreservacion int auto_increment primary key not null,
@@ -114,16 +96,9 @@ fecha date not null,
 hora time not null,
 precio double not null,
 atencion boolean null, 
-idservicio int not null
-
-);
-
-create table usu_reser(
-idusu_reser int auto_increment primary key not null,
-idusuario int not null,
-idreservacion int not null,
-constraint fk_usu_reser_usuario foreign key (idusuario) references usuario(idusuario),
-constraint fk_usu_reser_reservacion foreign key (idreservacion) references reservacion(idreservacion)
+idservicio int not null,
+idusuario int not null, 
+constraint fk_reservacion_usuario foreign key (idusuario) references usuario(idusuario)
 on delete cascade
 on update cascade
 );
