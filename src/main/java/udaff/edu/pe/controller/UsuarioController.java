@@ -1,16 +1,48 @@
 package udaff.edu.pe.controller;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import udaff.edu.pe.entities.Usuario;
+import udaff.edu.pe.service.UsuarioService;
 
 @Controller
-@RequestMapping("/user")
+@RequestMapping("/u")
 public class UsuarioController {
+	@Autowired
+	private UsuarioService uService;
 
 	@GetMapping("/perfil")
 	public String pagePerfil() {
-		
+
+		return "private/user/perfil";
+	}
+
+	@PostMapping("/perfil")
+	public String updatePerfil(Model model, HttpServletRequest request, @RequestParam String user_nombre,
+			@RequestParam String user_apellido, @RequestParam String user_correo, @RequestParam int user_dni,
+			@RequestParam int user_edad, @RequestParam String user_clave) {
+		HttpSession session = request.getSession();
+		Usuario user = (Usuario) session.getAttribute("user");
+		user.setNombre(user_nombre);
+		user.setApellido(user_apellido);
+		user.setCorreo(user_correo);
+		user.setDni(user_dni);
+		user.setEdad(user_edad);
+		user.setClave(user_clave);
+		if (uService.updateUsuario(user))
+			model.addAttribute("msg", "correcto");
+		else
+			model.addAttribute("msg", "incorrecto");
+
 		return "private/user/perfil";
 	}
 }

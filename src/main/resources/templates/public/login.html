@@ -2,37 +2,41 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org">
 <head>
-	<th:block data-th-replace="layout/head :: contenendor-head"></th:block>
-	<meta charset="utf-8">
-	
-	<!-- CSS DEL LOGIN GO-->
-	
-		<!-- CSS de bootstrap -->
-		<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+<th:block data-th-replace="layout/head :: contenendor-head"></th:block>
+<meta charset="utf-8">
 
-		<!-- Fontawesome -->
+<!-- CSS DEL LOGIN GO-->
 
-		<link rel="stylesheet" th:href="@{/fonts/all.min.css}" />
+<!-- CSS de bootstrap -->
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
 
+<!-- Fontawesome -->
 
-	    <!-- estilo personal -->
-	    <link rel="stylesheet" th:href="@{/css/login.css}" />
+<link rel="stylesheet" th:href="@{/fonts/all.min.css}" />
 
 
-	    <!-- Imagen de pestaña -->
-		<link rel="icon"  th:href="@{/img/dog.ico}">
-	
-	
-	
-	<!-- CSS DEL LOGIN END-->
-	
-	
-	<title>Login - Cetia</title>
+<!-- estilo personal -->
+<link rel="stylesheet" th:href="@{/css/login.css}" />
+
+
+<!-- Imagen de pestaña -->
+<link rel="icon" th:href="@{/img/dog.ico}">
+
+
+
+<!-- CSS DEL LOGIN END-->
+
+
+<title>Login - Cetia</title>
 </head>
 <body>
 
-<!-- ANTIGUO LOGIN
+
+	
+
+	<!-- ANTIGUO LOGIN
 	<a href="/" class="btn">Volver</a>
+>>>>>>> 963699bf1b8df854749714e38fd33fb8a99fca95
 	<h2>Iniciar Sesion</h2>
 	<form action="/login" method="POST">
 		<input type="text" name="cuenta" placeholder="cuenta" required="required" th:value="${cuenta}"> 
@@ -53,40 +57,62 @@
 
 	<!-- NUEVA ESTRUCTURA DEL LOGIN GOO-->
 	<div class="container-fluid">
-
+<a onclick="window.history.back()" class="btn" style="text-decoration: underline;">Volver</a>
 		<div class="row alert justify-content-md-center">
 
 			<div id="c" class="col-12 col-md-3 bg-rounded">
 				<div class="row">
 					<div class="col-12 col-md-12" align="center">
-						<h6><i class="fas fa-brain fa-lg"></i> CETIA</h6>
+						<h6>
+							<i class="fas fa-brain fa-lg"></i> CETIA
+						</h6>
 					</div>
 					<div class="col-12 col-md-12" align="center">
-						<img th:src="@{/img/login.PNG}" class="img-fluid rounded-circle"  alt="user" width="110" height="120">
+						<img src="/img/login.png" class="img-fluid rounded-circle"
+							alt="user" width="110" height="120">
 					</div>
 					<div class="col-12 col-md-12">
+<<<<<<< HEAD
 						<form action="/login" method="POST" class="loguearse m-4" id="forminicio">
 
 							<div class="form-group">
 								<label for="nombre">Usuario</label>
 								<input type="text" name="cuenta" placeholder="Cuenta" required="required" class="form-control" th:value="${cuenta}"> 
 								</input>
+=======
+						<form action="/login" method="POST" class="loguearse m-4"
+							id="forminicio">
+							<div class="form-group">
+								<label for="nombre">Usuario</label> <input type="text"
+									name="cuenta" placeholder="Cuenta" required="required"
+									class="form-control" th:value="${cuenta}"> </input>
+
+
+>>>>>>> 158a73886fc89706e7e2f236e574c3d4e6ac8256
 							</div>
 							
 							<div class="form-group">
+<<<<<<< HEAD
 								<label for="apellido">Contraseña</label>
 								<input type="password" name="password" placeholder="Contraseña" required="required" class="form-control" th:value="${password}">
+=======
+								<label for="apellido">Contraseña</label> <input type="password"
+									name="password" placeholder="contraseña" required="required"
+									class="form-control" th:value="${password}">
+>>>>>>> 158a73886fc89706e7e2f236e574c3d4e6ac8256
 							</div>
 
 							<div th:if="${acceso == false}">
 								<div class="alert alert-danger alert-dismissible" role="alert">
-									<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
+									<button type="button" class="close" data-dismiss="alert"
+										aria-label="Close">
+										<span aria-hidden="true">×</span>
 									</button>
 									Datos incorrectos
 								</div>
-						   </div>
+							</div>
 
-<!-- 						   
+							<!-- 						   
 						   <div th:if="${param.logout}">
 								<div class="alert alert-info alert-dismissible">
 									<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
@@ -94,10 +120,12 @@
 									Usted se ha desconectado
 								</div>
 						   </div>
--->							
-						  
-							<button class="btn btn-primary btn-block" id="btniniciar" name="button" type="submit" value="Ingresar" >LOGIN
-<!-- 					            <a th:href="@{/main}" style="color: white;" >LOGIN</a>					             -->
+-->
+
+							<button class="btn btn-primary btn-block" id="btniniciar"
+								name="button" type="submit" value="Ingresar">
+								LOGIN
+								<!-- 					            <a th:href="@{/main}" style="color: white;" >LOGIN</a>					             -->
 							</button>
 						</form>
 					</div>
@@ -106,7 +134,7 @@
 		</div>
 	</div>
 
-   	<!-- NUEVA ESTRUCTURA DEL LOGIN FINN-->
+	<!-- NUEVA ESTRUCTURA DEL LOGIN FINN-->
 
 
 

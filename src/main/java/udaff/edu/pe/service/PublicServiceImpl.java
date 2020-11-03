@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import udaff.edu.pe.dao.PublicDao;
-import udaff.edu.pe.entities.Actividad;
 import udaff.edu.pe.entities.Login;
 import udaff.edu.pe.entities.Psicologo;
 import udaff.edu.pe.entities.Publicacion;
@@ -31,11 +30,6 @@ public class PublicServiceImpl implements PublicService {
 		return pDao.getAllPublicacion();
 	}
 
-	@Override
-	public List<Actividad> getAllActividad() {
-		// TODO Auto-generated method stub
-		return pDao.getAllActividad();
-	}
 
 	@Override
 	public List<Servicio> getAllServicio() {

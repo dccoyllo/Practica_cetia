@@ -27,7 +27,8 @@ on update cascade
 insert into usuario
 value
 (1, "admin", "admin", "cetiaadmin@hotmail.com", 'Julio Elías', 'Arce Huaman', 35, 75268945, 2);
-INSERT INTO `bd_cetia_v2`.`usuario` (`idusuario`, `cuenta`, `clave`, `correo`, `nombre`, `apellido`, `edad`, `dni`, `idrol`) VALUES ('2', 'janet', 'janet', 'janet@gmail.com', 'Janet', 'Aquino Galindo', '15', '97826178', '2');
+INSERT INTO `bd_cetia_v2`.`usuario` (`idusuario`, `cuenta`, `clave`, `correo`, `nombre`, `apellido`, `edad`, `dni`, `idrol`) 
+VALUES ('2', 'janet', 'janet', 'janet@gmail.com', 'Janet', 'Aquino Galindo', '15', '97826178', '2');
 
 
 create table tipo_publicacion (
@@ -39,7 +40,8 @@ insert into tipo_publicacion
 values 
 (1,"noticia"),	
 (2,"educativa"),
-(3,"frases y refranes");
+(3,"frases y refranes"),
+(4,"actividad");
 
 create table psicologo (
 idusuario int primary key not null,
@@ -54,29 +56,17 @@ value
 (1, "administrador", "/img/psicologo");
 INSERT INTO `bd_cetia_v2`.`psicologo` (`idusuario`, `especialidad`, `imagen`) VALUES ('2', 'Psicologa infantil', '');
 
-
-
 create table publicacion(
 idpublicacion int auto_increment primary key not null,
 titulo varchar(100) not null,
 fecha date not null,
+hora time not null,
 descripcion varchar(1000) null,
+imagen varchar(200) not null,
 idtipopublicacion int not null,
 idusuario int not null,
 constraint fk_publicacion_tipo_publicacion foreign key (idtipopublicacion) references tipo_publicacion(idtipopublicacion),
 constraint fk_publicacion_psicologo foreign key (idusuario) references psicologo(idusuario)
-on delete cascade
-on update cascade
-);
-
-create table actividad (
-idactividad int auto_increment primary key not null,
-fecha date not null,
-titulo varchar(100) not null,
-descripcion varchar(1000) null,
-imagen varchar(100) null,
-idusuario int not null,
-constraint fk_actividad_psicologo foreign key (idusuario) references psicologo(idusuario)
 on delete cascade
 on update cascade
 );
@@ -94,6 +84,10 @@ constraint fk_servicio_psicologo foreign key (idusuario) references psicologo(id
 on delete cascade
 on update cascade
 );
+-- insertar servicios --
+INSERT INTO `bd_cetia_v2`.`servicio` (`idservicio`, `titulo`, `descripcion`, `imagen`, `precio`, `tipo`, `idusuario`) VALUES ('1', 'Psique Kids ', 'El programa Psique-Kids está orientado al trabajo con niños y se da de forma grupal; lo que se busca a través de este programa es trabajar de manera integral diversos aspectosen los niños.', 'psiquekids.jpg', '0', 'Programa', '2');
+INSERT INTO `bd_cetia_v2`.`servicio` (`idservicio`, `titulo`, `descripcion`, `imagen`, `precio`, `tipo`, `idusuario`) VALUES ('2', 'Siente, integran con nosotros', 'Programa que está orientado al trabajo con niños excepcionales y sus familiares; través de este programa buscamos promover la estimulación de diversas áreas, las cuales permitirán desarrollar la autonomía y una adecuada inserción en nuestra sociedad.', 'Sin.jpg', '0', 'programa', '2');
+
 
 
 create table reservacion (
@@ -133,7 +127,14 @@ as
 select us.nombre, us.apellido, ps.especialidad, ps.imagen
 from usuario as us
 inner join psicologo as ps
-on ps.idusuario=us.idusuario
+on ps.idusuario=us.idusuario;
+
+
+-- vista servicio  -- 
+
+create view nuestroservicio(codigo, titulo, descripcion, imagen, precio, tipo)
+as
+select idservicio, titulo, descripcion, imagen, precio, tipo from servicio;
 
 -- vista servicio psicologo -- 
 -- create view 
@@ -142,5 +143,7 @@ on ps.idusuario=us.idusuario
 -- vista activid psicologo --
 
 
+
+-- Super usuario --
 
 

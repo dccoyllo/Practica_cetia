@@ -31,15 +31,19 @@
 
 </head>
 <body>
+<<<<<<< HEAD
 
 
 <!-- ANTIGUO LOGIN
 
 	<a href="/" class="btn">Volver</a>
+=======
+	<a onclick="window.history.back()" class="btn">Volver</a>
+>>>>>>> 158a73886fc89706e7e2f236e574c3d4e6ac8256
 	<h2>Crear Cuenta</h2>
 	<form action="/crear-cuenta" method="POST">
 		<input type="text" name="cuenta" placeholder="cuenta" required="required" th:value="${cuenta}">
-		<input type="text" name="email" placeholder="email" required="required" th:value="${email}">
+		<input type="email" name="email" placeholder="email" required="required" th:value="${email}">
 		<input type="password" name="password" placeholder="contraseña" required="required" th:value="${password}">
 		
 		<th:block th:if="${estado == true}">

@@ -1,13 +1,14 @@
 package udaff.edu.pe.entities;
-// Generated 29-oct-2020 13:26:46 by Hibernate Tools 5.2.12.Final
+// Generated 02-nov-2020 20:08:02 by Hibernate Tools 5.2.12.Final
 
-import java.util.HashSet;
-import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -17,41 +18,53 @@ import javax.persistence.Table;
 @Table(name = "servicio", catalog = "bd_cetia_v2")
 public class Servicio implements java.io.Serializable {
 
-	private int idservicio;
+	private Integer idservicio;
+	private Psicologo psicologo;
 	private String titulo;
 	private String descripcion;
 	private String imagen;
 	private double precio;
-	private Set<PsicServ> psicServs = new HashSet<PsicServ>(0);
+	private String tipo;
 
 	public Servicio() {
 	}
 
-	public Servicio(int idservicio, String titulo, double precio) {
-		this.idservicio = idservicio;
+	public Servicio(Psicologo psicologo, String titulo, double precio, String tipo) {
+		this.psicologo = psicologo;
 		this.titulo = titulo;
 		this.precio = precio;
+		this.tipo = tipo;
 	}
 
-	public Servicio(int idservicio, String titulo, String descripcion, String imagen, double precio,
-			Set<PsicServ> psicServs) {
-		this.idservicio = idservicio;
+	public Servicio(Psicologo psicologo, String titulo, String descripcion, String imagen, double precio, String tipo) {
+		this.psicologo = psicologo;
 		this.titulo = titulo;
 		this.descripcion = descripcion;
 		this.imagen = imagen;
 		this.precio = precio;
-		this.psicServs = psicServs;
+		this.tipo = tipo;
 	}
 
 	@Id
+	@GeneratedValue(strategy = IDENTITY)
 
 	@Column(name = "idservicio", unique = true, nullable = false)
-	public int getIdservicio() {
+	public Integer getIdservicio() {
 		return this.idservicio;
 	}
 
-	public void setIdservicio(int idservicio) {
+	public void setIdservicio(Integer idservicio) {
 		this.idservicio = idservicio;
+	}
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "idusuario", nullable = false)
+	public Psicologo getPsicologo() {
+		return this.psicologo;
+	}
+
+	public void setPsicologo(Psicologo psicologo) {
+		this.psicologo = psicologo;
 	}
 
 	@Column(name = "titulo", nullable = false, length = 100)
@@ -90,13 +103,13 @@ public class Servicio implements java.io.Serializable {
 		this.precio = precio;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "servicio")
-	public Set<PsicServ> getPsicServs() {
-		return this.psicServs;
+	@Column(name = "tipo", nullable = false, length = 50)
+	public String getTipo() {
+		return this.tipo;
 	}
 
-	public void setPsicServs(Set<PsicServ> psicServs) {
-		this.psicServs = psicServs;
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
 	}
 
 }

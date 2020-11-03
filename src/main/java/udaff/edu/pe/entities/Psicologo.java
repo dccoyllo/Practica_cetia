@@ -1,5 +1,5 @@
 package udaff.edu.pe.entities;
-// Generated 29-oct-2020 13:26:46 by Hibernate Tools 5.2.12.Final
+// Generated 02-nov-2020 20:08:02 by Hibernate Tools 5.2.12.Final
 
 import java.util.HashSet;
 import java.util.Set;
@@ -26,9 +26,8 @@ public class Psicologo implements java.io.Serializable {
 	private Usuario usuario;
 	private String especialidad;
 	private String imagen;
-	private Set<PsicPubl> psicPubls = new HashSet<PsicPubl>(0);
-	private Set<PsicAct> psicActs = new HashSet<PsicAct>(0);
-	private Set<PsicServ> psicServs = new HashSet<PsicServ>(0);
+	private Set<Servicio> servicios = new HashSet<Servicio>(0);
+	private Set<Publicacion> publicacions = new HashSet<Publicacion>(0);
 
 	public Psicologo() {
 	}
@@ -38,14 +37,13 @@ public class Psicologo implements java.io.Serializable {
 		this.especialidad = especialidad;
 	}
 
-	public Psicologo(Usuario usuario, String especialidad, String imagen, Set<PsicPubl> psicPubls,
-			Set<PsicAct> psicActs, Set<PsicServ> psicServs) {
+	public Psicologo(Usuario usuario, String especialidad, String imagen, Set<Servicio> servicios,
+			Set<Publicacion> publicacions) {
 		this.usuario = usuario;
 		this.especialidad = especialidad;
 		this.imagen = imagen;
-		this.psicPubls = psicPubls;
-		this.psicActs = psicActs;
-		this.psicServs = psicServs;
+		this.servicios = servicios;
+		this.publicacions = publicacions;
 	}
 
 	@GenericGenerator(name = "udaff.edu.pe.entities.PsicologoIdGenerator", strategy = "foreign", parameters = @Parameter(name = "property", value = "usuario"))
@@ -90,30 +88,21 @@ public class Psicologo implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "psicologo")
-	public Set<PsicPubl> getPsicPubls() {
-		return this.psicPubls;
+	public Set<Servicio> getServicios() {
+		return this.servicios;
 	}
 
-	public void setPsicPubls(Set<PsicPubl> psicPubls) {
-		this.psicPubls = psicPubls;
-	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "psicologo")
-	public Set<PsicAct> getPsicActs() {
-		return this.psicActs;
-	}
-
-	public void setPsicActs(Set<PsicAct> psicActs) {
-		this.psicActs = psicActs;
+	public void setServicios(Set<Servicio> servicios) {
+		this.servicios = servicios;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "psicologo")
-	public Set<PsicServ> getPsicServs() {
-		return this.psicServs;
+	public Set<Publicacion> getPublicacions() {
+		return this.publicacions;
 	}
 
-	public void setPsicServs(Set<PsicServ> psicServs) {
-		this.psicServs = psicServs;
+	public void setPublicacions(Set<Publicacion> publicacions) {
+		this.publicacions = publicacions;
 	}
 
 }

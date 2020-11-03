@@ -23,11 +23,19 @@ public class PublicController {
 	private UsuarioService uService;
 
 	@GetMapping("/")
-	public String index(Model model) {
+	public String index(HttpServletRequest request, Model model) {
+		
+		HttpSession session = request.getSession();
+		 Usuario user = (Usuario) session.getAttribute("user");
+		if(user != null) {
+			model.addAttribute("user_nombre", user.getCuenta());
+			System.out.println(user.getCuenta());
+		}
+		
 		model.addAttribute("publicaciones", pService.getAllPublicacion());
-		model.addAttribute("actividades", pService.getAllActividad());
-		System.out.println(pService.getAllPublicacion());
-		System.out.println(pService.getAllActividad());
+
+//		System.out.println(pService.getAllPublicacion());
+//		System.out.println(pService.getAllActividad());
 		return "public/home/index";
 	}
 
@@ -59,10 +67,11 @@ public class PublicController {
 	@PostMapping("/login")
 	public String dataLogin(HttpServletRequest request, @RequestParam String cuenta, @RequestParam String password,
 			Model model) {
-//		HttpSession session = request.getSession();
+		
 		System.out.println(pService.getLogin(cuenta, password));
 		if (pService.getLogin(cuenta, password) != null) {
-			System.out.println(uService.readUsuario(pService.getLogin(cuenta, password).getId().getUserId()));
+			HttpSession session = request.getSession();
+			session.setAttribute("user", uService.readUsuario(pService.getLogin(cuenta, password).getId().getUserId()));
 			return "redirect:/";
 		} else {
 			model.addAttribute("cuenta", cuenta);

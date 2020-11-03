@@ -4,15 +4,43 @@
 		<div class="container">
 			<div class="row align-items-center">
 				<div class="col-lg-6 col-sm-6 col-4 header-top-left">
-					<a href="tel:+51900434234"><span class="lnr lnr-phone-handset"></span> <span class="text"><span
-								class="text">953 3654 896</span></span></a>
-					<a href="mailto:support@colorlib.com"><span class="lnr lnr-envelope"></span> <span
-							class="text"><span class="text">support@cetia.com</span></span></a>
+					<a href="tel:+51900434234"><span class="lnr lnr-phone-handset"></span>
+						<span class="text"><span class="text">953 3654 896</span></span></a> <a
+						href="mailto:support@colorlib.com"><span
+						class="lnr lnr-envelope"></span> <span class="text"><span
+							class="text">support@cetia.com</span></span></a>
 				</div>
 				<div class="col-lg-6 col-sm-6 col-8 header-top-right">
-					<a href="/login" class="text-uppercase mr-2">Iniciar Sesion</a>
-					<a href="/crear-cuenta" class="text-uppercase">Crear Cuenta</a>
+					<th:block th:if="${session.user == null}">
+						<a href="/login" class="text-uppercase mr-2">Iniciar Sesion</a>
+						<a href="/crear-cuenta" class="text-uppercase">Crear Cuenta</a>
+					</th:block>
+					<th:block th:if="${session.user}">
+						<ul class="text-success">
+							<th:block th:text="${session.user.cuenta}"></th:block>
+
+							<li><a href="/u/perfil">Perfil</a></li>
+							<th:block th:switch="${session.user.rol.idrol}">
+
+								<th:block th:case="1">
+									<li><a href="/u/mis-citas">Mis citas</a></li>
+									<li><a href="/u/"></a></li>
+								</th:block>
+
+								<th:block th:case="2">
+									<!-- print object is new and active -->
+									<li><a href="/p/reservacion">Reservaciones</a></li>
+									<li><a href="/p/tus-post">Tus Publicaciones</a></li>
+									
+									<li><a href="/p/nservicios">Tus Servicio</a></li>
+								</th:block>
+							</th:block>
+							<li><a href="/logout">Cerrar Sesion</a></li>
+						</ul>
+					</th:block>
 				</div>
+
+
 
 			</div>
 		</div>
@@ -31,7 +59,8 @@
 					<li><a href="/contactenos">Blog</a></li>
 					<li><a href="/contactenos">Test gratuito</a></li>
 				</ul>
-			</nav><!-- #nav-menu-container -->
+			</nav>
+			<!-- #nav-menu-container -->
 		</div>
 	</div>
 </header>

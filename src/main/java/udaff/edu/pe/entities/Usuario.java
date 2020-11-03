@@ -1,5 +1,5 @@
 package udaff.edu.pe.entities;
-// Generated 29-oct-2020 13:26:46 by Hibernate Tools 5.2.12.Final
+// Generated 02-nov-2020 20:08:02 by Hibernate Tools 5.2.12.Final
 
 import java.util.HashSet;
 import java.util.Set;
@@ -34,7 +34,7 @@ public class Usuario implements java.io.Serializable {
 	private Integer edad;
 	private Integer dni;
 	private Psicologo psicologo;
-	private Set<UsuReser> usuResers = new HashSet<UsuReser>(0);
+	private Set<Reservacion> reservacions = new HashSet<Reservacion>(0);
 
 	public Usuario() {
 	}
@@ -46,7 +46,7 @@ public class Usuario implements java.io.Serializable {
 	}
 
 	public Usuario(Rol rol, String cuenta, String clave, String correo, String nombre, String apellido, Integer edad,
-			Integer dni, Psicologo psicologo, Set<UsuReser> usuResers) {
+			Integer dni, Psicologo psicologo, Set<Reservacion> reservacions) {
 		this.rol = rol;
 		this.cuenta = cuenta;
 		this.clave = clave;
@@ -56,7 +56,7 @@ public class Usuario implements java.io.Serializable {
 		this.edad = edad;
 		this.dni = dni;
 		this.psicologo = psicologo;
-		this.usuResers = usuResers;
+		this.reservacions = reservacions;
 	}
 
 	@Id
@@ -154,12 +154,12 @@ public class Usuario implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "usuario")
-	public Set<UsuReser> getUsuResers() {
-		return this.usuResers;
+	public Set<Reservacion> getReservacions() {
+		return this.reservacions;
 	}
 
-	public void setUsuResers(Set<UsuReser> usuResers) {
-		this.usuResers = usuResers;
+	public void setReservacions(Set<Reservacion> reservacions) {
+		this.reservacions = reservacions;
 	}
 
 }

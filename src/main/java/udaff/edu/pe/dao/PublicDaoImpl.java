@@ -9,7 +9,6 @@ import javax.persistence.PersistenceContext;
 
 import org.springframework.stereotype.Repository;
 
-import udaff.edu.pe.entities.Actividad;
 import udaff.edu.pe.entities.Login;
 import udaff.edu.pe.entities.Psicologo;
 import udaff.edu.pe.entities.Publicacion;
@@ -32,11 +31,6 @@ public class PublicDaoImpl implements PublicDao {
 		return em.createQuery("From Publicacion", Publicacion.class).getResultList();
 	}
 
-	@Override
-	public List<Actividad> getAllActividad() {
-		// TODO Auto-generated method stub
-		return em.createQuery("From Actividad", Actividad.class).getResultList();
-	}
 
 	@Override
 	public List<Servicio> getAllServicio() {
