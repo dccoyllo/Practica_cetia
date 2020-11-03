@@ -5,10 +5,12 @@ create table rol (
 idrol int auto_increment primary key not null,
 nombre varchar(50) not null
 );
+-- insercion de rol --
 insert into rol
 values
 (1,"usuario"),
-(2, "psicologo");
+(2, "psicologo"),
+(3, "admin");
 
 create table usuario(
 idusuario int auto_increment primary key not null,
@@ -24,11 +26,14 @@ constraint fk_rol_usuario foreign key(idrol) references rol(idrol)
 on delete cascade
 on update cascade
 );
+-- insersion de usuarios --
 insert into usuario
 value
 (1, "admin", "admin", "cetiaadmin@hotmail.com", 'Julio Elías', 'Arce Huaman', 35, 75268945, 2);
 INSERT INTO `bd_cetia_v2`.`usuario` (`idusuario`, `cuenta`, `clave`, `correo`, `nombre`, `apellido`, `edad`, `dni`, `idrol`) 
 VALUES ('2', 'janet', 'janet', 'janet@gmail.com', 'Janet', 'Aquino Galindo', '15', '97826178', '2');
+INSERT INTO `bd_cetia_v2`.`usuario` (`idusuario`, `cuenta`, `clave`, `correo`, `nombre`, `apellido`, `edad`, `dni`, `idrol`) 
+VALUES ('3', 'usuario', 'usuario', 'administrador@gmail.com', 'Jhon David', 'Ccoyllo Rojas', '22', '94566552', '3');
 
 
 create table tipo_publicacion (
@@ -36,6 +41,7 @@ idtipopublicacion int auto_increment primary key not null,
 nombre varchar(50) not null
 );
 
+-- insersion de tipo de publicacion--
 insert into tipo_publicacion
 values 
 (1,"noticia"),	
@@ -51,6 +57,8 @@ constraint fk_psicologo_usuario foreign key (idusuario) references usuario(idusu
 on delete cascade
 on update cascade
 );
+
+-- insersion de psicologo--
 insert into psicologo
 value
 (1, "administrador", "/img/psicologo");
@@ -70,6 +78,7 @@ constraint fk_publicacion_psicologo foreign key (idusuario) references psicologo
 on delete cascade
 on update cascade
 );
+-- insercion de publicacion --
 
 
 create table servicio(
@@ -118,8 +127,6 @@ INSERT INTO `bd_cetia_v2`.`servicio` (`idservicio`, `titulo`, `descripcion`, `im
 INSERT INTO `bd_cetia_v2`.`servicio` (`idservicio`, `titulo`, `descripcion`, `imagen`, `precio`, `tipo`, `idusuario`) VALUES ('31', 'Ludoterapia', 'Usamos ludoterapia como un medio de comunicación y expresión entre el paciente y el terapeuta; especialmente para combatir problemas de tipo emocional. La ludoterapia ayuda al niño a entender de una mejor forma su comportamiento y solucionar todos los problemas que tenga para adaptarse. El juego que se brinda es fundamental en los niños y adolescentes, este es un medio de exploración del entorno en el cual habita e interactúa con ellos y los ayuda a comprender las cuestiones que tienen en mente.', 'ludoterapia.jpg', '95', 'servicio', '1');
 INSERT INTO `bd_cetia_v2`.`servicio` (`idservicio`, `titulo`, `descripcion`, `imagen`, `precio`, `tipo`, `idusuario`) VALUES ('32', 'Modificación Conductual ', 'Nuestra tarea en modificación de conducta tiene como objetivo promover el cambio a través de técnicas de intervención psicológicas para mejorar el comportamiento de las personas, de forma que desarrollen sus potencialidades y las oportunidades disponibles en su medio, optimicen su ambiente, y adopten actitudes valoraciones y conductas útiles para adaptarse a lo que no puede cambiarse. El área de la modificación de conducta es el diseño y aplicación de métodos de intervención psicológicas que permitan el control de la conducta para producir el bienestar, la satisfacción y la competencia personal.', 'modificacionconductual.jpg', '85', 'servicio', '1');
 
-
-
 create table reservacion (
 idreservacion int auto_increment primary key not null,
 fecha date not null,
@@ -132,6 +139,8 @@ constraint fk_reservacion_usuario foreign key (idusuario) references usuario(idu
 on delete cascade
 on update cascade
 );
+
+-- insertar reservacion--
 
 -- vistas de login --
 create view login(user_id, user_cuenta, user_clave, user_rol)
