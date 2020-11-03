@@ -33,7 +33,7 @@ public class PublicController {
 		}
 		
 		model.addAttribute("publicaciones", pService.getAllPublicacion());
-		model.addAttribute("actividades", pService.getAllActividad());
+
 //		System.out.println(pService.getAllPublicacion());
 //		System.out.println(pService.getAllActividad());
 		return "public/home/index";

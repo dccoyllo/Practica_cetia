@@ -129,19 +129,19 @@ from usuario as us
 inner join psicologo as ps
 on ps.idusuario=us.idusuario;
 
-<<<<<<< HEAD
+
 -- vista servicio  -- 
 
 create view nuestroservicio(codigo, titulo, descripcion, imagen, precio, tipo)
 as
 select idservicio, titulo, descripcion, imagen, precio, tipo from servicio;
-=======
+
 -- vista servicio psicologo -- 
 -- create view 
 
 -- select * from servicio
 -- vista activid psicologo --
->>>>>>> 0521f2b6f272c72670646107d6c5783c8c3f8911
+
 
 
 -- Super usuario --

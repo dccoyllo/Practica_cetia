@@ -1,18 +1,13 @@
 package udaff.edu.pe.entities;
-// Generated 02-nov-2020 19:08:29 by Hibernate Tools 5.2.12.Final
+// Generated 02-nov-2020 20:08:02 by Hibernate Tools 5.2.12.Final
 
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -24,41 +19,60 @@ import javax.persistence.TemporalType;
 @Table(name = "publicacion", catalog = "bd_cetia_v2")
 public class Publicacion implements java.io.Serializable {
 
-	private Integer idpublicacion;
+	private int idpublicacion;
+	private Psicologo psicologo;
 	private TipoPublicacion tipoPublicacion;
 	private String titulo;
 	private Date fecha;
+	private Date hora;
 	private String descripcion;
-	private Set<PsicPubl> psicPubls = new HashSet<PsicPubl>(0);
+	private String imagen;
 
 	public Publicacion() {
 	}
 
-	public Publicacion(TipoPublicacion tipoPublicacion, String titulo, Date fecha) {
+	public Publicacion(int idpublicacion, Psicologo psicologo, TipoPublicacion tipoPublicacion, String titulo,
+			Date fecha, Date hora, String imagen) {
+		this.idpublicacion = idpublicacion;
+		this.psicologo = psicologo;
 		this.tipoPublicacion = tipoPublicacion;
 		this.titulo = titulo;
 		this.fecha = fecha;
+		this.hora = hora;
+		this.imagen = imagen;
 	}
 
-	public Publicacion(TipoPublicacion tipoPublicacion, String titulo, Date fecha, String descripcion,
-			Set<PsicPubl> psicPubls) {
+	public Publicacion(int idpublicacion, Psicologo psicologo, TipoPublicacion tipoPublicacion, String titulo,
+			Date fecha, Date hora, String descripcion, String imagen) {
+		this.idpublicacion = idpublicacion;
+		this.psicologo = psicologo;
 		this.tipoPublicacion = tipoPublicacion;
 		this.titulo = titulo;
 		this.fecha = fecha;
+		this.hora = hora;
 		this.descripcion = descripcion;
-		this.psicPubls = psicPubls;
+		this.imagen = imagen;
 	}
 
 	@Id
-	@GeneratedValue(strategy = IDENTITY)
 
 	@Column(name = "idpublicacion", unique = true, nullable = false)
-	public Integer getIdpublicacion() {
+	public int getIdpublicacion() {
 		return this.idpublicacion;
 	}
 
-	public void setIdpublicacion(Integer idpublicacion) {
+	public void setIdpublicacion(int idpublicacion) {
 		this.idpublicacion = idpublicacion;
+	}
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "idusuario", nullable = false)
+	public Psicologo getPsicologo() {
+		return this.psicologo;
+	}
+
+	public void setPsicologo(Psicologo psicologo) {
+		this.psicologo = psicologo;
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
@@ -90,6 +104,16 @@ public class Publicacion implements java.io.Serializable {
 		this.fecha = fecha;
 	}
 
+	@Temporal(TemporalType.TIME)
+	@Column(name = "hora", nullable = false, length = 8)
+	public Date getHora() {
+		return this.hora;
+	}
+
+	public void setHora(Date hora) {
+		this.hora = hora;
+	}
+
 	@Column(name = "descripcion", length = 1000)
 	public String getDescripcion() {
 		return this.descripcion;
@@ -99,13 +123,13 @@ public class Publicacion implements java.io.Serializable {
 		this.descripcion = descripcion;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "publicacion")
-	public Set<PsicPubl> getPsicPubls() {
-		return this.psicPubls;
+	@Column(name = "imagen", nullable = false, length = 200)
+	public String getImagen() {
+		return this.imagen;
 	}
 
-	public void setPsicPubls(Set<PsicPubl> psicPubls) {
-		this.psicPubls = psicPubls;
+	public void setImagen(String imagen) {
+		this.imagen = imagen;
 	}
 
 }
