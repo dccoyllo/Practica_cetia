@@ -1,10 +1,67 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<th:block data-th-replace="layout/head :: contenendor-head"></th:block>
+<meta charset="utf-8">
+<title>Perfil - Cetia</title>
 </head>
 <body>
-<h3>Usuario PERFIL</h3>
+	<a href="/" class="btn">Volver</a>
+	<h2>Perfil</h2>
+	<form action="/perfil" method="POST">
+
+		<input type="text" placeholder="Nombre" name="user_nombre"> <input
+			type="text" placeholder="Apellido" name="user_apellido"> <input
+			type="email" placeholder="Correo" name="user_correo"> <input
+			type="text" placeholder="Contraseña" name="contraseña"> <input
+			type="text" placeholder="Vuelve a escribir" name="user_vcontraseña">
+		<input type="number" placeholder="DNI" maxlength=8 name="user_dni">
+		<select name="select">
+			<option>Edad</option>
+			<option value="18">18</option>
+			<option value="19">19</option>
+			<option value="20">20</option>
+			<option value="21">21</option>
+			<option value="22">22</option>
+			<option value="23">23</option>
+			<option value="24">24</option>
+			<option value="25">25</option>
+			<option value="26">26</option>
+			<option value="27">27</option>
+			<option value="28">28</option>
+			<option value="29">29</option>
+			<option value="30">30</option>
+			<option value="31">31</option>
+			<option value="32">32</option>
+			<option value="33">33</option>
+			<option value="34">34</option>
+			<option value="34">35</option>
+			<option value="34">36</option>
+			<option value="34">37</option>
+			<option value="34">38</option>
+			<option value="34">39</option>
+			<option value="34">40</option>
+			<option value="34">41</option>
+			<option value="34">42</option>
+			<option value="34">43</option>
+			<option value="34">44</option>
+			<option value="34">45</option>
+		</select> <input type="text" placeholder="Nombre"> <input type="submit"
+			class="btn btn-success" value="Guardar Cambios">
+
+
+		<th:block th:if="${session.user.rol.idrol == 2}">
+			<h2>Psicologo</h2>
+			<form action="/perfil" method="POST">
+
+				<input type="text" placeholder="url Imagen" name="psi_imagen">
+				<input type="text" placeholder="Especialidad"
+					name="psi_especialidad"> <input type="submit"
+					class="btn btn-success" value="Guardar Cambios">
+		</th:block>
+
+
+	</form>
 </body>
 </html>

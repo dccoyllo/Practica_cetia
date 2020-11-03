@@ -5,12 +5,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/psicologo")
+@RequestMapping("/p")
 public class PsicologoController {
-
-	@GetMapping("/perfil")
-	public String pagePerfil() {
+	
+	@GetMapping("/tus-post")
+	public String createPost() {
 		
-		return "private/psicologo/perfil";
+		return "private/psicologo/tusPost";
 	}
 }

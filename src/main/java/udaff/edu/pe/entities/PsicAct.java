@@ -1,9 +1,11 @@
 package udaff.edu.pe.entities;
-// Generated 29-oct-2020 13:26:46 by Hibernate Tools 5.2.12.Final
+// Generated 02-nov-2020 19:08:29 by Hibernate Tools 5.2.12.Final
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -16,27 +18,27 @@ import javax.persistence.Table;
 @Table(name = "psic_act", catalog = "bd_cetia_v2")
 public class PsicAct implements java.io.Serializable {
 
-	private int idpsicAct;
+	private Integer idpsicAct;
 	private Actividad actividad;
 	private Psicologo psicologo;
 
 	public PsicAct() {
 	}
 
-	public PsicAct(int idpsicAct, Actividad actividad, Psicologo psicologo) {
-		this.idpsicAct = idpsicAct;
+	public PsicAct(Actividad actividad, Psicologo psicologo) {
 		this.actividad = actividad;
 		this.psicologo = psicologo;
 	}
 
 	@Id
+	@GeneratedValue(strategy = IDENTITY)
 
 	@Column(name = "idpsic_act", unique = true, nullable = false)
-	public int getIdpsicAct() {
+	public Integer getIdpsicAct() {
 		return this.idpsicAct;
 	}
 
-	public void setIdpsicAct(int idpsicAct) {
+	public void setIdpsicAct(Integer idpsicAct) {
 		this.idpsicAct = idpsicAct;
 	}
 
