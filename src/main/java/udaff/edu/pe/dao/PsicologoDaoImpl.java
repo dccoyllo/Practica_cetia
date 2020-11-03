@@ -25,12 +25,6 @@ public class PsicologoDaoImpl implements PsicologoDao {
 	}
 
 	@Override
-	public Psicologo readPsicologo(int psicologo_id) {
-		// TODO Auto-generated method stub
-		return em.find(Psicologo.class, psicologo_id);
-	}
-
-	@Override
 	public boolean updatePsicologo(Psicologo psicologo) {
 		// TODO Auto-generated method stub
 		try {
