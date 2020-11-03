@@ -61,8 +61,8 @@ on update cascade
 -- insersion de psicologo--
 insert into psicologo
 value
-(1, "administrador", "/img/psicologo");
-INSERT INTO `bd_cetia_v2`.`psicologo` (`idusuario`, `especialidad`, `imagen`) VALUES ('2', 'Psicologa infantil', '');
+(1, "administrador", "/usuario/x2.jpg");
+INSERT INTO `bd_cetia_v2`.`psicologo` (`idusuario`, `especialidad`, `imagen`) VALUES ('2', 'Psicologa infantil', '/usuario/x1.jp');
 
 create table publicacion(
 idpublicacion int auto_increment primary key not null,
