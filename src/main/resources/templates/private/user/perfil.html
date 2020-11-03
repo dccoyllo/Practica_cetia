@@ -84,7 +84,7 @@
 
 		<th:block th:if="${session.user.rol.idrol == 2}">
 			<h2>Psicologo</h2>
-			<form action="/perfil" method="POST">
+			<form action="/p/perfil" method="POST">
 
 				<input type="text" placeholder="url Imagen" name="psi_imagen"
 					th:value="${session.user.psicologo.imagen}"> <input
