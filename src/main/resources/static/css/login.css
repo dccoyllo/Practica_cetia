@@ -1,0 +1,10 @@
+#c{
+	border-color: black;
+	border-style: groove;
+	vertical-align: middle;
+	margin: 80px 0px;
+	padding: 7px 20px;
+	border-radius: 50px;
+	box-shadow: 5px 5px 50px #999;
+}
+
