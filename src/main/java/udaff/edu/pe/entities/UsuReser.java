@@ -1,9 +1,11 @@
 package udaff.edu.pe.entities;
-// Generated 29-oct-2020 13:26:46 by Hibernate Tools 5.2.12.Final
+// Generated 02-nov-2020 19:08:29 by Hibernate Tools 5.2.12.Final
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -16,27 +18,27 @@ import javax.persistence.Table;
 @Table(name = "usu_reser", catalog = "bd_cetia_v2")
 public class UsuReser implements java.io.Serializable {
 
-	private int idusuReser;
+	private Integer idusuReser;
 	private Reservacion reservacion;
 	private Usuario usuario;
 
 	public UsuReser() {
 	}
 
-	public UsuReser(int idusuReser, Reservacion reservacion, Usuario usuario) {
-		this.idusuReser = idusuReser;
+	public UsuReser(Reservacion reservacion, Usuario usuario) {
 		this.reservacion = reservacion;
 		this.usuario = usuario;
 	}
 
 	@Id
+	@GeneratedValue(strategy = IDENTITY)
 
 	@Column(name = "idusu_reser", unique = true, nullable = false)
-	public int getIdusuReser() {
+	public Integer getIdusuReser() {
 		return this.idusuReser;
 	}
 
-	public void setIdusuReser(int idusuReser) {
+	public void setIdusuReser(Integer idusuReser) {
 		this.idusuReser = idusuReser;
 	}
 

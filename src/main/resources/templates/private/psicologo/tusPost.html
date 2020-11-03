@@ -1,0 +1,33 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<th:block data-th-replace="layout/head :: contenendor-head"></th:block>
+<meta charset="utf-8">
+<title>Tus Post - Cetia</title>
+</head>
+<body>
+	<a onclick="window.history.back()" class="btn">Volver</a>
+	<h2>Nuevo Post</h2>
+	<form action="/login" method="POST">
+	<input type="text" name="imagen" placeholder="Url Imagen"
+			required="required" th:value="${cuenta}">
+		<input type="text" name="cuenta" placeholder="Titulo"
+			required="required" th:value="${cuenta}">
+		<textarea type="text" name="cuenta" placeholder="Descripción"
+			required="required" th:value="${cuenta}"></textarea>
+
+		<select name="select">
+			<option>Tipo Publicación</option>
+			<option value="1">Educativa</option>
+			<option value="1">Eventos</option>
+			<option value="1">Actividad</option>
+			<option value="2">Noticias</option>
+			<option value="3">Frases y Refranes</option>
+
+		</select> <input type="submit" value="Crear Publicación"
+			class="btn btn-primary">
+	</form>
+
+</body>
+</html>

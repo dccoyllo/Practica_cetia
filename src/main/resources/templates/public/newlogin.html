@@ -7,11 +7,11 @@
 <title>Crear Cuenta - Cetia</title>
 </head>
 <body>
-	<a href="/" class="btn">Volver</a>
+	<a onclick="window.history.back()" class="btn">Volver</a>
 	<h2>Crear Cuenta</h2>
 	<form action="/crear-cuenta" method="POST">
 		<input type="text" name="cuenta" placeholder="cuenta" required="required" th:value="${cuenta}">
-		<input type="text" name="email" placeholder="email" required="required" th:value="${email}">
+		<input type="email" name="email" placeholder="email" required="required" th:value="${email}">
 		<input type="password" name="password" placeholder="contraseña" required="required" th:value="${password}">
 		
 		<th:block th:if="${estado == true}">
