@@ -19,12 +19,6 @@ public class PsicologoServiceImpl implements PsicologoService {
 	}
 
 	@Override
-	public Psicologo readPsicologo(int psicologo_id) {
-		// TODO Auto-generated method stub
-		return pDao.readPsicologo(psicologo_id);
-	}
-
-	@Override
 	public boolean updatePsicologo(Psicologo psicologo) {
 		// TODO Auto-generated method stub
 		return pDao.updatePsicologo(psicologo);

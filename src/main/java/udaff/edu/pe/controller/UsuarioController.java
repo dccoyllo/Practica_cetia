@@ -19,11 +19,16 @@ import udaff.edu.pe.service.UsuarioService;
 public class UsuarioController {
 	@Autowired
 	private UsuarioService uService;
-
 	@GetMapping("/perfil")
 	public String pagePerfil() {
 
 		return "private/user/perfil";
+	}
+	
+	@GetMapping("/mis-citas")
+	public String pageMisCitas() {
+
+		return "private/user/misCitas";
 	}
 
 	@PostMapping("/perfil")
@@ -39,9 +44,9 @@ public class UsuarioController {
 		user.setEdad(user_edad);
 		user.setClave(user_clave);
 		if (uService.updateUsuario(user))
-			model.addAttribute("msg", "correcto");
+			model.addAttribute("msgu", "correcto");
 		else
-			model.addAttribute("msg", "incorrecto");
+			model.addAttribute("msgu", "incorrecto");
 
 		return "private/user/perfil";
 	}

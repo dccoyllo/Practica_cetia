@@ -1,5 +1,5 @@
 package udaff.edu.pe.entities;
-// Generated 02-nov-2020 20:08:02 by Hibernate Tools 5.2.12.Final
+// Generated 02-nov-2020 22:55:50 by Hibernate Tools 5.2.12.Final
 
 import java.util.HashSet;
 import java.util.Set;
