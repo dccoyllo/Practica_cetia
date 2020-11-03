@@ -5,8 +5,36 @@
 <th:block data-th-replace="layout/head :: contenendor-head"></th:block>
 <meta charset="utf-8">
 <title>Crear Cuenta - Cetia</title>
+
+	<!-- CSS DEL LOGIN GO-->
+	
+		<!-- CSS de bootstrap -->
+		<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+
+		<!-- Fontawesome -->
+
+		<link rel="stylesheet" th:href="@{/fonts/all.min.css}" />
+
+
+	    <!-- estilo personal -->
+	    <link rel="stylesheet" th:href="@{/css/login.css}" />
+
+
+	    <!-- Imagen de pestaña -->
+		<link rel="icon"  th:href="@{/img/dog.ico}">
+	
+	
+	
+	<!-- CSS DEL LOGIN END-->
+
+
+
 </head>
 <body>
+
+
+<!-- ANTIGUO LOGIN
+
 	<a href="/" class="btn">Volver</a>
 	<h2>Crear Cuenta</h2>
 	<form action="/crear-cuenta" method="POST">
@@ -33,6 +61,96 @@
 		<input type="submit" value="Crear cuenta"  class="btn btn-primary">
 		<a href="/login" class="btn btn-secondary">Iniciar Sesion</a>
 	</form>
+-->
+
+
+	<!-- NUEVA ESTRUCTURA DEL CREAR CUENTA GOO-->
+	<div class="container-fluid">
+
+		<div class="row alert justify-content-md-center">
+
+			<div id="c" class="col-12 col-md-3 bg-rounded">
+				<div class="row">
+					<div class="col-12 col-md-12" align="center">
+						<h6><i class="fas fa-brain fa-lg"></i> CETIA</h6>
+					</div>
+					<div class="col-12 col-md-12" align="center">
+						<img th:src="@{/img/login.PNG}" class="img-fluid rounded-circle"  alt="user" width="110" height="120">
+					</div>
+					<div class="col-12 col-md-12">
+						<form action="/crear-cuenta" method="POST" class="loguearse m-4" id="forminicio">
+
+							<div class="form-group">
+								<label for="nombre">Usuario</label>
+								<input type="text" name="cuenta" placeholder="Cuenta" required="required" class="form-control" th:value="${cuenta}"> 
+							</div>
+
+							<div class="form-group">
+								<label for="nombre">Email</label>
+								<input type="text" name="email" placeholder="email" required="required" class="form-control" th:value="${email}">
+							</div>
+
+							<div class="form-group">
+								<label for="apellido">Contraseña</label>
+								<input type="password" name="password" placeholder="Contraseña" required="required" class="form-control" th:value="${password}">
+							</div>
+
+
+							<div th:if="${estado == true}">
+								<div class="alert alert-success alert-dismissible" role="alert">
+									<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
+									</button>
+									Se ha creado su cuenta satisfactoriamente
+
+								</div>
+						   </div>
+
+						   
+							<div th:if="${estado == false}">
+								<div class="alert alert-danger alert-dismissible" role="alert">
+									<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
+									</button>
+									Ya existe la cuenta y/o email registrado
+								</div>
+						   </div>
+
+
+<!-- 						   
+						   <div th:if="${param.logout}">
+								<div class="alert alert-info alert-dismissible">
+									<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
+									</button>
+									Usted se ha desconectado
+								</div>
+						   </div>
+-->							
+						  
+							<button class="btn btn-info btn-block" id="btniniciar" name="button" type="submit" value="Crear cuenta" >Crear cuenta
+							</button>
+							
+<!--							<button  href="/login" class="btn  btn-primary btn-block" id="btniniciar" name="button" type="submit" >LOGIN
+							</button>
+-->
+							<a href="/login" class="btn btn-secondary btn-block">LOGIN</a>   
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+   	<!-- NUEVA ESTRUCTURA DEL LOGIN FINN-->
+
+
+
+
+
+
+
+
+
+
+
 	
 	<script src="js/vendor/jquery-2.2.4.min.js"></script>
 	<script src="js/popper.min.js"></script>
