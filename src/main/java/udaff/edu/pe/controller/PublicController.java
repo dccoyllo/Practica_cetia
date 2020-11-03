@@ -31,8 +31,8 @@ public class PublicController {
 			model.addAttribute("user_nombre", user.getCuenta());
 			System.out.println(user.getCuenta());
 		}
-		
-		model.addAttribute("publicaciones", pService.getAllPublicacion());
+		System.out.println(pService.getAllPublicacion());
+//		model.addAttribute("publicaciones", pService.getAllPublicacion());
 
 //		System.out.println(pService.getAllPublicacion());
 //		System.out.println(pService.getAllActividad());
@@ -47,7 +47,8 @@ public class PublicController {
 	}
 
 	@GetMapping("/psicologos")
-	public String psicologos() {
+	public String psicologos(Model model) {
+		model.addAttribute("psicologos", pService.getAllPsicologo());
 		System.out.println(pService.getAllPsicologo());
 		return "public/psicologos";
 	}
