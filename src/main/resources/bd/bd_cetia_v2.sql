@@ -136,9 +136,9 @@ inner join psicologo as ps
 on ps.idusuario=us.idusuario
 
 -- vista servicio psicologo -- 
-create view 
+-- create view 
 
-select * from servicio
+-- select * from servicio
 -- vista activid psicologo --
 
 
