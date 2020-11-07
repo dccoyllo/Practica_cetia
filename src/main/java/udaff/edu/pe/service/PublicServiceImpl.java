@@ -11,6 +11,7 @@ import udaff.edu.pe.entities.Login;
 import udaff.edu.pe.entities.Psicologo;
 import udaff.edu.pe.entities.Publicacion;
 import udaff.edu.pe.entities.Servicio;
+import udaff.edu.pe.entities.Usuario;
 
 @Service
 @Transactional
@@ -41,6 +42,24 @@ public class PublicServiceImpl implements PublicService {
 	public Login getLogin(String cuenta, String clave) {
 		// TODO Auto-generated method stub
 		return pDao.getLogin(cuenta, clave);
+	}
+
+	@Override
+	public boolean createUsuario(Usuario usuario) {
+		// TODO Auto-generated method stub
+		return pDao.createUsuario(usuario);
+	}
+
+	@Override
+	public Usuario getUsuarioId(int usuario_id) {
+		// TODO Auto-generated method stub
+		return pDao.getUsuarioId(usuario_id);
+	}
+
+	@Override
+	public List<Publicacion> getAllActividad() {
+		// TODO Auto-generated method stub
+		return pDao.getAllActividad();
 	}
 
 }

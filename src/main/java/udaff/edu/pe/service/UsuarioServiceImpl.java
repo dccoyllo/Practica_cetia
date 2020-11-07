@@ -14,18 +14,6 @@ public class UsuarioServiceImpl implements UsuarioService {
 	private UsuarioDao uDao;
 
 	@Override
-	public boolean createUsuario(Usuario usuario) {
-		// TODO Auto-generated method stub
-		return uDao.createUsuario(usuario);
-	}
-
-	@Override
-	public Usuario readUsuario(int usuario_id) {
-		// TODO Auto-generated method stub
-		return uDao.readUsuario(usuario_id);
-	}
-
-	@Override
 	public boolean updateUsuario(Usuario usuario) {
 		// TODO Auto-generated method stub
 		return uDao.updateUsuario(usuario);
