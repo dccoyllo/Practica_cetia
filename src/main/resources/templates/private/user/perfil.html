@@ -1,138 +1,193 @@
 <!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
 <head>
-<th:block data-th-replace="layout/head :: contenendor-head"></th:block>
-<meta charset="utf-8">
-<title>Perfil - Cetia</title>
+
+	<th:block data-th-replace="layout/head :: contenendor-head"></th:block>
+	<meta charset="utf-8">
+	<title>Perfil - Cetia</title>
+
 </head>
+
 <body>
-	<a href="/" class="btn">Volver</a>
-	<h2>Perfil</h2>
-	<form method="POST" action="/u/perfil">
 
-		<input type="text" placeholder="Nombre" name="user_nombre"
-			th:value="${session.user.nombre}" required> <input type="text"
-			placeholder="Apellido" name="user_apellido"
-			th:value="${session.user.apellido}" required> <input type="email"
-			placeholder="Correo" name="user_correo"
-			th:value="${session.user.correo}" required> <input type="number"
-			placeholder="DNI" maxlength=8 name="user_dni"
-			th:value="${session.user.dni}" required> <select name="user_edad">
-			<option th:value=${session.user.edad}>Edad:
-				<th:block th:text="${session.user.edad}"></th:block></option>
-			<option value=18>18</option>
-			<option value=19>19</option>
-			<option value=20>20</option>
-			<option value=21>21</option>
-			<option value=22>22</option>
-			<option value=23>23</option>
-			<option value=24>24</option>
-			<option value=25>25</option>
-			<option value=26>26</option>
-			<option value=27>27</option>
-			<option value=28>28</option>
-			<option value=29>29</option>
-			<option value=30>30</option>
-			<option value=31>31</option>
-			<option value=32>32</option>
-			<option value=33>33</option>
-			<option value=34>34</option>
-			<option value=35>35</option>
-			<option value=36>36</option>
-			<option value=37>37</option>
-			<option value=38>38</option>
-			<option value=39>39</option>
-			<option value=40>40</option>
-			<option value=41>41</option>
-			<option value=34>42</option>
-			<option value=43>43</option>
-			<option value=44>44</option>
-			<option value=45>45</option>
-			<input type="password" placeholder="Contraseña" name="user_clave"
-			th:value="${session.user.clave}" required>
-			<input type="password" placeholder="Vuelve a escribir"
-			name="user_vcontraseña" required>
-		</select>
+	<!-- start header -->
+	<div data-th-replace="layout/header :: contenendor-header"></div>
+	<!-- end header -->
 
-		<th:block th:switch="${msgu}">
-
-			<th:block th:case="correcto">
-				<div class="alert alert-success alert-dismissible" role="alert">
-					<button type="button" class="close" data-dismiss="alert"
-						aria-label="Close">
-						<span aria-hidden="true">×</span>
-					</button>
-					Se ha guardado los cambios.
+	<!-- start banner Area -->
+	<section class="banner-area relative about-banner" id="home">
+		<div class="overlay overlay-bg"></div>
+		<div class="container">
+			<div class="row d-flex align-items-center justify-content-center">
+				<div class="about-content col-lg-12">
+					<h1 class="text-white">
+						Mi perfil
+					</h1>
 				</div>
-			</th:block>
+			</div>
+		</div>
+	</section>
+	<!-- End banner Area -->
 
-			<th:block th:case="incorrecto">
-				<div class="alert alert-danger alert-dismissible" role="alert">
-					<button type="button" class="close" data-dismiss="alert"
-						aria-label="Close">
-						<span aria-hidden="true">×</span>
-					</button>
-					No se pudo guardar los cambios.
+	<!-- Start appointment Area -->
+	<section class="appointment-area">
+		<div class="container">
+			<div class="row justify-content-between align-items-center pb-120 appointment-wrap">
+				<div class="col-lg-5 col-md-6 appointment-left">
+					<h1>
+						Mis datos personales
+					</h1>
+					<p>
+						Realiza una modificación si encuentra un error en sus datos personales.
+					</p>
 				</div>
-			</th:block>
-		</th:block>
+				<div class="col-lg-6 col-md-6 appointment-right pt-60 pb-60">
+					<form class="form-wrap" method="POST" action="/u/perfil">
+
+						<h3 class="pb-20 text-center mb-30">Datos</h3>
+
+						<input type="text" class="form-control" placeholder="Nombre" name="user_nombre"
+							th:value="${session.user.nombre}" required>
+
+						<input type="text" class="form-control" placeholder="Apellido" name="user_apellido"
+							th:value="${session.user.apellido}" required>
+
+						<input type="email" class="form-control" placeholder="Correo" name="user_correo"
+							th:value="${session.user.correo}" required>
+
+						<input type="number" class="form-control" placeholder="DNI" maxlength=8 name="user_dni"
+							th:value="${session.user.dni}" required>
 
 
-		<input type="submit" class="btn btn-success" value="Guardar Cambios">
-
-</form>
-
-		<th:block th:if="${session.user.rol.idrol == 2}">
-			<h2>Psicologo</h2>
-
-			<form  method="POST" action="/p/perfil">
-				<input type="text" placeholder="url Imagen" name="psi_imagen"
-					th:value="${session.user.psicologo.imagen}"> <input
-					type="text" placeholder="Especialidad" name="psi_especialidad"
-					th:value="${session.user.psicologo.especialidad}">
-
-				<th:block th:switch="${msgp}">
-					<th:block th:case="correcto">
-						<div class="alert alert-success alert-dismissible" role="alert">
-							<button type="button" class="close" data-dismiss="alert"
-								aria-label="Close">
-								<span aria-hidden="true">×</span>
-							</button>
-							Se ha guardado los cambios.
+						<div class="form-select" id="service-select">
+							<select name="user_edad">
+								<option th:value=${session.user.edad}>Edad:
+									<th:block th:text="${session.user.edad}"></th:block>
+								</option>
+								<option value=18>18</option>
+								<option value=19>19</option>
+								<option value=20>20</option>
+								<option value=21>21</option>
+								<option value=22>22</option>
+								<option value=23>23</option>
+								<option value=24>24</option>
+								<option value=25>25</option>
+								<option value=26>26</option>
+								<option value=27>27</option>
+								<option value=28>28</option>
+								<option value=29>29</option>
+								<option value=30>30</option>
+								<option value=31>31</option>
+								<option value=32>32</option>
+								<option value=33>33</option>
+								<option value=34>34</option>
+								<option value=35>35</option>
+								<option value=36>36</option>
+								<option value=37>37</option>
+								<option value=38>38</option>
+								<option value=39>39</option>
+								<option value=40>40</option>
+								<option value=41>41</option>
+								<option value=34>42</option>
+								<option value=43>43</option>
+								<option value=44>44</option>
+								<option value=45>45</option>
+							</select>
 						</div>
+
+						<input type="password" class="form-control" placeholder="Contraseña" name="user_clave"
+							th:value="${session.user.clave}" required>
+
+						<input type="password" class="form-control" placeholder="Vuelve a escribir"
+							name="user_vcontraseña" required>
+
+						<th:block th:switch="${msgu}">
+							<th:block th:case="correcto">
+								<div class="alert alert-success alert-dismissible" role="alert">
+									<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+										<span aria-hidden="true">×</span>
+									</button>
+									Se ha guardado los cambios.
+								</div>
+							</th:block>
+
+							<th:block th:case="incorrecto">
+								<div class="alert alert-danger alert-dismissible" role="alert">
+									<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+										<span aria-hidden="true">×</span>
+									</button>
+									No se pudo guardar los cambios.
+								</div>
+							</th:block>
+						</th:block>
+
+						<button type="submit" class="primary-btn text-uppercase" value="Guardar Cambios">Guardar
+							Cambios</button>
+
+					</form>
+
+					<th:block th:if="${session.user.rol.idrol == 2}">
+
+						<h3 class="pb-20 text-center mb-30 pt-30">Opcional para perfil psicólogo</h3>
+
+						<form class="form-wrap" method="POST" action="/p/perfil">
+
+							<input type="text" class="form-control" placeholder="url Imagen" name="psi_imagen"
+								th:value="${session.user.psicologo.imagen}">
+							<input type="text" class="form-control" placeholder="Especialidad" name="psi_especialidad"
+								th:value="${session.user.psicologo.especialidad}">
+
+							<th:block th:switch="${msgp}">
+								<th:block th:case="correcto">
+									<div class="alert alert-success alert-dismissible" role="alert">
+										<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+											<span aria-hidden="true">×</span>
+										</button>
+										Se ha guardado los cambios.
+									</div>
+								</th:block>
+
+								<th:block th:case="incorrecto">
+									<div class="alert alert-danger alert-dismissible" role="alert">
+										<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+											<span aria-hidden="true">×</span>
+										</button>
+										No se pudo guardar los cambios.
+									</div>
+								</th:block>
+							</th:block>
+							<button type="submit" class="primary-btn text-uppercase" value="Guardar Cambios">Guardar
+								Cambios</button>
+
+						</form>
 					</th:block>
 
-					<th:block th:case="incorrecto">
-						<div class="alert alert-danger alert-dismissible" role="alert">
-							<button type="button" class="close" data-dismiss="alert"
-								aria-label="Close">
-								<span aria-hidden="true">×</span>
-							</button>
-							No se pudo guardar los cambios.
-						</div>
-					</th:block>
-				</th:block>
-				<input type="submit" class="btn btn-success" value="Guardar Cambios">
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End appointment Area -->
 
-			</form>
-		</th:block>
+	<!-- start footer -->
+	<div data-th-replace="layout/footer :: contenendor-footer"></div>
+	<!-- end footer -->
 
-		<script src="/js/vendor/jquery-2.2.4.min.js"></script>
-		<script src="/js/popper.min.js"></script>
-		<script src="/js/vendor/bootstrap.min.js"></script>
-		<script
-			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>
-		<script src="/js/jquery-ui.js"></script>
-		<script src="/js/easing.min.js"></script>
-		<script src="/js/hoverIntent.js"></script>
-		<script src="/js/superfish.min.js"></script>
-		<script src="/js/jquery.ajaxchimp.min.js"></script>
-		<script src="/js/jquery.magnific-popup.min.js"></script>
-		<script src="/js/jquery.tabs.min.js"></script>
-		<script src="/js/jquery.nice-select.min.js"></script>
-		<script src="/js/owl.carousel.min.js"></script>
-		<script src="/js/mail-script.js"></script>
-		<script src="/js/main.js"></script>
+	<script src="/js/vendor/jquery-2.2.4.min.js"></script>
+	<script src="/js/popper.min.js"></script>
+	<script src="/js/vendor/bootstrap.min.js"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>
+	<script src="/js/jquery-ui.js"></script>
+	<script src="/js/easing.min.js"></script>
+	<script src="/js/hoverIntent.js"></script>
+	<script src="/js/superfish.min.js"></script>
+	<script src="/js/jquery.ajaxchimp.min.js"></script>
+	<script src="/js/jquery.magnific-popup.min.js"></script>
+	<script src="/js/jquery.tabs.min.js"></script>
+	<script src="/js/jquery.nice-select.min.js"></script>
+	<script src="/js/owl.carousel.min.js"></script>
+	<script src="/js/mail-script.js"></script>
+	<script src="/js/main.js"></script>
 </body>
+
 </html>

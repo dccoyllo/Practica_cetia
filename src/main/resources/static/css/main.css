@@ -2370,7 +2370,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 .primary-btn {
-  background: #69be00;
+  background: #339af0;
   line-height: 42px;
   padding-left: 30px;
   padding-right: 30px;
@@ -2478,8 +2478,9 @@ body.mobile-nav-active #mobile-nav-toggle {
   background-size: cover;
 }
 
+
 .banner-area .overlay-bg {
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0, 0.10);
 }
 
 @media (max-width: 767px) {
@@ -2850,7 +2851,9 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 .feedback-left .overlay-bg {
-  background-color: rgba(105, 190, 0, 0.85);
+/*  background-color: rgba(105, 190, 0, 0.85); */
+  background-color: rgba(51, 154, 240, 0.85);
+  
 }
 
 @media (max-width: 991px) {
@@ -3038,7 +3041,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 .about-banner {
-  background: url(../img/top-banner.jpg) right no-repeat;
+  background: url(../img/water.jpg) right no-repeat;
   background-size: cover;
 }
 
@@ -4636,12 +4639,12 @@ dl.toggle.time-line:before {
 
 .single-footer-widget ::-moz-selection {
   /* Code for Firefox */
-  background-color: #69be00;
+  background-color: #339af0;
   color: #777777;
 }
 
 .single-footer-widget ::selection {
-  background-color: #69be00;
+  background-color: #339af0;
   color: #777777;
 }
 
@@ -4689,5 +4692,5 @@ dl.toggle.time-line:before {
 
 .footer-text a,
 .footer-text i {
-  color: #69be00;
+  color: #339af0;
 }
