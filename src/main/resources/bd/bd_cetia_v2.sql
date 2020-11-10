@@ -29,11 +29,11 @@ on update cascade
 -- insersion de usuarios --
 insert into usuario
 value
-(1, "admin", "admin", "cetiaadmin@hotmail.com", 'Julio Elías', 'Arce Huaman', 35, 75268945, 2);
+(1, "julio", "julio", "cetiaadmin@hotmail.com", 'Julio Elías', 'Arce Huaman', 35, 75268945, 2);
 INSERT INTO `bd_cetia_v2`.`usuario` (`idusuario`, `cuenta`, `clave`, `correo`, `nombre`, `apellido`, `edad`, `dni`, `idrol`) 
 VALUES ('2', 'janet', 'janet', 'janet@gmail.com', 'Janet', 'Aquino Galindo', '15', '97826178', '2');
 INSERT INTO `bd_cetia_v2`.`usuario` (`idusuario`, `cuenta`, `clave`, `correo`, `nombre`, `apellido`, `edad`, `dni`, `idrol`) 
-VALUES ('3', 'usuario', 'usuario', 'administrador@gmail.com', 'Jhon David', 'Ccoyllo Rojas', '22', '94566552', '3');
+VALUES ('3', 'admin', 'admin', 'administrador@gmail.com', 'Jhon David', 'Ccoyllo Rojas', '22', '94566552', '3');
 
 
 create table tipo_publicacion (

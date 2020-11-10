@@ -13,6 +13,7 @@ import udaff.edu.pe.entities.Login;
 import udaff.edu.pe.entities.Psicologo;
 import udaff.edu.pe.entities.Publicacion;
 import udaff.edu.pe.entities.Servicio;
+import udaff.edu.pe.entities.Usuario;
 
 @Repository
 public class PublicDaoImpl implements PublicDao {
@@ -47,6 +48,30 @@ public class PublicDaoImpl implements PublicDao {
 			// TODO: handle exception
 			return null;
 		}
+	}
+	
+	@Override
+	public boolean createUsuario(Usuario usuario) {
+		// TODO Auto-generated method stub
+		try {
+			em.persist(usuario);
+			return true;
+		} catch (Exception e) {
+			// TODO: handle exception
+			return false;
+		}
+	}
+
+	@Override
+	public Usuario getUsuarioId(int usuario_id) {
+		// TODO Auto-generated method stub
+		return em.find(Usuario.class, usuario_id);
+	}
+
+	@Override
+	public List<Publicacion> getAllActividad() {
+		// TODO Auto-generated method stub
+		return em.createQuery("From Publicacion where tipoPublicacion.nombre =: tipo", Publicacion.class).setParameter("tipo", "actividad").getResultList();
 	}
 
 }

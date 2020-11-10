@@ -13,15 +13,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import udaff.edu.pe.entities.Rol;
 import udaff.edu.pe.entities.Usuario;
 import udaff.edu.pe.service.PublicService;
-import udaff.edu.pe.service.UsuarioService;
 
 @Controller
 public class PublicController {
 	@Autowired
 	private PublicService pService;
-	@Autowired
-	private UsuarioService uService;
-
+	
 	@GetMapping("/")
 	public String index(HttpServletRequest request, Model model) {
 		
@@ -72,7 +69,7 @@ public class PublicController {
 		System.out.println(pService.getLogin(cuenta, password));
 		if (pService.getLogin(cuenta, password) != null) {
 			HttpSession session = request.getSession();
-			session.setAttribute("user", uService.readUsuario(pService.getLogin(cuenta, password).getId().getUserId()));
+			session.setAttribute("user", pService.getUsuarioId(pService.getLogin(cuenta, password).getId().getUserId()));
 			return "redirect:/";
 		} else {
 			model.addAttribute("cuenta", cuenta);
@@ -97,23 +94,23 @@ public class PublicController {
 	@PostMapping("/crear-cuenta")
 	public String dataNewLogin(@RequestParam String cuenta, @RequestParam String email, @RequestParam String password,
 			Model model) {
-		Usuario newU = new Usuario();
-		newU.setCuenta(cuenta);
-		newU.setCorreo(email);
-		newU.setClave(password);
+		Usuario usuario = new Usuario();
+		usuario.setCuenta(cuenta);
+		usuario.setCorreo(email);
+		usuario.setClave(password);
 //		newU.setNombre("");
 //		newU.setApellido("");
 //		newU.setEdad(0);
 //		newU.setDni(0);
 		Rol rol = new Rol();
 		rol.setIdrol(1);
-		newU.setRol(rol);
+		usuario.setRol(rol);
 
 		model.addAttribute("cuenta", cuenta);
 		model.addAttribute("email", email);
 		model.addAttribute("password", password);
 		try {
-			uService.createUsuario(newU);
+			pService.createUsuario(usuario);
 			model.addAttribute("estado", true);
 		} catch (Exception e) {
 			// TODO: handle exception

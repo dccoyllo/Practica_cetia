@@ -1,0 +1,24 @@
+package udaff.edu.pe.dao;
+
+import java.util.List;
+
+import udaff.edu.pe.entities.Psicologo;
+import udaff.edu.pe.entities.Servicio;
+import udaff.edu.pe.entities.Usuario;
+
+public interface AdminDao {
+
+	public List<Usuario> getAllUsuario();
+	public Usuario getUsuarioId(int usuario_id);
+	public boolean deleteUsuario(Usuario usuario);
+	
+	public List<Psicologo> getAllPsicologo();
+	public boolean createPsicologo(Psicologo psicologo);
+	public Psicologo getPsicologoId(int psicologo_id);
+	public boolean deletePsicologo(Psicologo psicologo);
+	
+	public List<Servicio> getAllServicio();
+	public boolean createServicio(Servicio servicio);
+	public Servicio getServicioId(int servicio_id);
+	public boolean deleteServicio(Servicio servicio);
+}
