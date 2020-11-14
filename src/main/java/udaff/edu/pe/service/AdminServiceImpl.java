@@ -83,4 +83,16 @@ public class AdminServiceImpl implements AdminService {
 		return aDao.deleteServicio(servicio);
 	}
 
+	@Override
+	public boolean updateUsuario(Usuario usuario) {
+		// TODO Auto-generated method stub
+		return aDao.updateUsuario(usuario);
+	}
+
+	@Override
+	public boolean updateServicio(Servicio servicio) {
+		// TODO Auto-generated method stub
+		return aDao.updateServicio(servicio);
+	}
+
 }

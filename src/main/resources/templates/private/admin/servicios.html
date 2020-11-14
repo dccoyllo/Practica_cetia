@@ -1,11 +1,63 @@
-<!DOCTYPE html>
-<html>
+
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<th:block data-th-replace="layout/head :: contenendor-head"></th:block>
+<meta charset="utf-8">
+<title>Todo los servicios - Cetia</title>
 </head>
 <body>
+<a onclick="window.history.back()" class="btn">Volver</a>
+<button type="button">Nuevo</button>
+	<h2>Modal Nuevo Servicio</h2>
+	<form action="/a/create-servicio" method="POST">
+	<input type="text" name="imagen" placeholder="Url Imagen"
+			required="required">
+		<input type="text" name="titulo" placeholder="Titulo"
+			required="required">
+			<input type="number" name="precio" placeholder="Precio"
+			required="required">
+		<textarea name="descripcion" placeholder="Descripción"
+			required="required"></textarea>
 
-<h1>Tus Servicios</h1>
+		<select name="tipo">
+			<option>Tipo</option>
+			<option value="servicio">Servicio</option>
+			<option value="programa">Programa</option>
+
+		</select> <input type="submit" value="Crear Servicio"
+			class="btn btn-primary">
+	</form>
+	<h2>lista de tus publicaciones</h2>
+	<table style="width: 100%">
+		<tr>
+			<th>Imagen</th>
+			<th>Titulo</th>
+			<th>Tipo</th>
+			<th>Precio</th>
+			<th></th>
+		</tr>
+		<th:block th:each="ser : ${servicios}">
+			<tr>
+				<td><img width="50%" alt="no encontrado" th:src="${'/img'+ser.imagen}"></td>
+				<td th:text=${ser.titulo}></td>
+				<td th:text=${ser.tipo}></td>
+				<td th:text="${'S/'+ser.precio}"></td>
+				<td>
+					<form action="/a/update-servicio" method="get">
+						<input type="hidden" th:value=${ser.idservicio} name="id">
+						<input type="submit" value="editar">
+					</form>
+					<form action="/a/delete-servicio" method="post">
+						<input type="hidden" th:value=${ser.idservicio}
+							name="servicio_id"> <input type="submit"
+							value="eliminar">
+					</form>
+				</td>
+			</tr>
+
+		</th:block>
+	</table>
 </body>
 </html>

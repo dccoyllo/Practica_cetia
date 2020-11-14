@@ -1,5 +1,5 @@
 package udaff.edu.pe.entities;
-// Generated 02-nov-2020 23:35:36 by Hibernate Tools 5.2.12.Final
+// Generated 14 nov. 2020 12:39:26 by Hibernate Tools 5.2.12.Final
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -19,7 +19,7 @@ import javax.persistence.Table;
 public class Servicio implements java.io.Serializable {
 
 	private Integer idservicio;
-	private Psicologo psicologo;
+	private Usuario usuario;
 	private String titulo;
 	private String descripcion;
 	private String imagen;
@@ -29,15 +29,15 @@ public class Servicio implements java.io.Serializable {
 	public Servicio() {
 	}
 
-	public Servicio(Psicologo psicologo, String titulo, double precio, String tipo) {
-		this.psicologo = psicologo;
+	public Servicio(Usuario usuario, String titulo, double precio, String tipo) {
+		this.usuario = usuario;
 		this.titulo = titulo;
 		this.precio = precio;
 		this.tipo = tipo;
 	}
 
-	public Servicio(Psicologo psicologo, String titulo, String descripcion, String imagen, double precio, String tipo) {
-		this.psicologo = psicologo;
+	public Servicio(Usuario usuario, String titulo, String descripcion, String imagen, double precio, String tipo) {
+		this.usuario = usuario;
 		this.titulo = titulo;
 		this.descripcion = descripcion;
 		this.imagen = imagen;
@@ -59,12 +59,12 @@ public class Servicio implements java.io.Serializable {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "idusuario", nullable = false)
-	public Psicologo getPsicologo() {
-		return this.psicologo;
+	public Usuario getUsuario() {
+		return this.usuario;
 	}
 
-	public void setPsicologo(Psicologo psicologo) {
-		this.psicologo = psicologo;
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 
 	@Column(name = "titulo", nullable = false, length = 100)

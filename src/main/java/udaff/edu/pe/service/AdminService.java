@@ -10,6 +10,7 @@ public interface AdminService {
 
 	public List<Usuario> getAllUsuario();
 	public Usuario getUsuarioId(int usuario_id);
+	public boolean updateUsuario(Usuario usuario);
 	public boolean deleteUsuario(Usuario usuario);
 	
 	public List<Psicologo> getAllPsicologo();
@@ -20,5 +21,6 @@ public interface AdminService {
 	public List<Servicio> getAllServicio();
 	public boolean createServicio(Servicio servicio);
 	public Servicio getServicioId(int servicio_id);
+	public boolean updateServicio(Servicio servicio);
 	public boolean deleteServicio(Servicio servicio);
 }

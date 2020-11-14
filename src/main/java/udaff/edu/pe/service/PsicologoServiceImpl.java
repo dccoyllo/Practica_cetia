@@ -12,6 +12,7 @@ import udaff.edu.pe.entities.Publicacion;
 import udaff.edu.pe.entities.Reservacion;
 import udaff.edu.pe.entities.Servicio;
 import udaff.edu.pe.entities.TipoPublicacion;
+import udaff.edu.pe.entities.Usuario;
 @Service
 @Transactional
 public class PsicologoServiceImpl implements PsicologoService {
@@ -100,6 +101,18 @@ public class PsicologoServiceImpl implements PsicologoService {
 	public boolean deleteReservacionAtendido(Reservacion reservacion) {
 		// TODO Auto-generated method stub
 		return pDao.deleteReservacionAtendido(reservacion);
+	}
+
+	@Override
+	public List<Publicacion> getAllPublicacionPsicologo(Psicologo psicologo) {
+		// TODO Auto-generated method stub
+		return pDao.getAllPublicacionPsicologo(psicologo);
+	}
+
+	@Override
+	public Psicologo getPsicolog(Usuario usuario) {
+		// TODO Auto-generated method stub
+		return pDao.getPsicolog(usuario);
 	}
 
 }

@@ -61,8 +61,8 @@ on update cascade
 -- insersion de psicologo--
 insert into psicologo
 value
-(1, "Psicologo", "/usuario/x2.jpg");
-INSERT INTO `bd_cetia_v2`.`psicologo` (`idusuario`, `especialidad`, `imagen`) VALUES ('2', 'Psicologa infantil', '/usuario/x1.jpg');
+(1, "Psicologo", "usuario/x2.jpg");
+INSERT INTO `bd_cetia_v2`.`psicologo` (`idusuario`, `especialidad`, `imagen`) VALUES ('2', 'Psicologa infantil', 'usuario/x1.jpg');
 
 
 create table publicacion(
@@ -90,7 +90,7 @@ imagen varchar(100) null,
 precio double not null,
 tipo varchar(50) not null, 
 idusuario int not null,
-constraint fk_servicio_psicologo foreign key (idusuario) references psicologo(idusuario)
+constraint fk_servicio_usuario foreign key (idusuario) references usuario(idusuario)
 on delete cascade
 on update cascade
 );

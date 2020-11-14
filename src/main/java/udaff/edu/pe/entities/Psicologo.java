@@ -1,5 +1,5 @@
 package udaff.edu.pe.entities;
-// Generated 02-nov-2020 23:35:36 by Hibernate Tools 5.2.12.Final
+// Generated 14 nov. 2020 12:39:26 by Hibernate Tools 5.2.12.Final
 
 import java.util.HashSet;
 import java.util.Set;
@@ -26,7 +26,6 @@ public class Psicologo implements java.io.Serializable {
 	private Usuario usuario;
 	private String especialidad;
 	private String imagen;
-	private Set<Servicio> servicios = new HashSet<Servicio>(0);
 	private Set<Publicacion> publicacions = new HashSet<Publicacion>(0);
 
 	public Psicologo() {
@@ -37,12 +36,10 @@ public class Psicologo implements java.io.Serializable {
 		this.especialidad = especialidad;
 	}
 
-	public Psicologo(Usuario usuario, String especialidad, String imagen, Set<Servicio> servicios,
-			Set<Publicacion> publicacions) {
+	public Psicologo(Usuario usuario, String especialidad, String imagen, Set<Publicacion> publicacions) {
 		this.usuario = usuario;
 		this.especialidad = especialidad;
 		this.imagen = imagen;
-		this.servicios = servicios;
 		this.publicacions = publicacions;
 	}
 
@@ -85,15 +82,6 @@ public class Psicologo implements java.io.Serializable {
 
 	public void setImagen(String imagen) {
 		this.imagen = imagen;
-	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "psicologo")
-	public Set<Servicio> getServicios() {
-		return this.servicios;
-	}
-
-	public void setServicios(Set<Servicio> servicios) {
-		this.servicios = servicios;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "psicologo")

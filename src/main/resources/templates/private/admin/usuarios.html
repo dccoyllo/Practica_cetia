@@ -1,10 +1,67 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="ISO-8859-1">
+<th:block data-th-replace="layout/head :: contenendor-head"></th:block>
+<meta charset="utf-8">
 <title>Usuario - Cetia</title>
 </head>
 <body>
-<h2>lista de los usuarios</h2>
+	<h2>lista de los usuarios</h2>
+	<table style="width: 100%">
+		<tr>
+			<th>Nombre</th>
+			<th>Apellido</th>
+			<th>Email</th>
+			<th></th>
+		</tr>
+		<th:block th:each="user : ${usuarios}">
+			<tr>
+				<td th:text=${user.nombre}></td>
+				<td th:text=${user.apellido}></td>
+				<td th:text=${user.correo}></td>
+				<td>
+					<form action="/a/delete-user" method="post">
+						<input type="hidden" th:value=${user.idusuario} name="usuario_id">
+						<input type="submit" value="eliminar usuario">
+					</form>
+					<form action="/a/create-psicologo" method="post">
+						<input type="hidden" th:value=${user.idusuario} name="usuario_id">
+						<input type="submit" value="agregar al equipo">
+					</form>
+				</td>
+			</tr>
+
+		</th:block>
+	</table>
+
+
+	<h2>lista de los Psicologos</h2>
+	<table style="width: 100%">
+		<tr>
+			<th>Nombre</th>
+			<th>Apellido</th>
+			<th>Email</th>
+			<th>Especialidad</th>
+			<th></th>
+		</tr>
+		<th:block th:each="user : ${psicologos}">
+			<tr>
+				<td th:text=${user.usuario.nombre}></td>
+				<td th:text=${user.usuario.apellido}></td>
+				<td th:text=${user.usuario.correo}></td>
+				<td th:text=${user.especialidad}></td>
+				<td>
+					<form action="/a/delete-psicologo" method="post">
+						<input type="hidden" th:value=${user.idusuario} name="psicologo_id">
+						<input type="submit" value="eliminar del equipo">
+					</form>
+					
+				</td>
+			</tr>
+
+		</th:block>
+	</table>
+
 </body>
 </html>

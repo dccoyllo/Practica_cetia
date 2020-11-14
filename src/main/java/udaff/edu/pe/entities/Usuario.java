@@ -1,5 +1,5 @@
 package udaff.edu.pe.entities;
-// Generated 02-nov-2020 23:35:36 by Hibernate Tools 5.2.12.Final
+// Generated 14 nov. 2020 12:39:26 by Hibernate Tools 5.2.12.Final
 
 import java.util.HashSet;
 import java.util.Set;
@@ -35,6 +35,7 @@ public class Usuario implements java.io.Serializable {
 	private Integer dni;
 	private Psicologo psicologo;
 	private Set<Reservacion> reservacions = new HashSet<Reservacion>(0);
+	private Set<Servicio> servicios = new HashSet<Servicio>(0);
 
 	public Usuario() {
 	}
@@ -46,7 +47,7 @@ public class Usuario implements java.io.Serializable {
 	}
 
 	public Usuario(Rol rol, String cuenta, String clave, String correo, String nombre, String apellido, Integer edad,
-			Integer dni, Psicologo psicologo, Set<Reservacion> reservacions) {
+			Integer dni, Psicologo psicologo, Set<Reservacion> reservacions, Set<Servicio> servicios) {
 		this.rol = rol;
 		this.cuenta = cuenta;
 		this.clave = clave;
@@ -57,6 +58,7 @@ public class Usuario implements java.io.Serializable {
 		this.dni = dni;
 		this.psicologo = psicologo;
 		this.reservacions = reservacions;
+		this.servicios = servicios;
 	}
 
 	@Id
@@ -160,6 +162,15 @@ public class Usuario implements java.io.Serializable {
 
 	public void setReservacions(Set<Reservacion> reservacions) {
 		this.reservacions = reservacions;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "usuario")
+	public Set<Servicio> getServicios() {
+		return this.servicios;
+	}
+
+	public void setServicios(Set<Servicio> servicios) {
+		this.servicios = servicios;
 	}
 
 }

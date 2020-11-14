@@ -86,5 +86,19 @@ public class AdminDaoImpl implements AdminDao {
 		em.remove(servicio);
 		return true;
 	}
+
+	@Override
+	public boolean updateUsuario(Usuario usuario) {
+		// TODO Auto-generated method stub
+		em.merge(usuario);
+		return true;
+	}
+
+	@Override
+	public boolean updateServicio(Servicio servicio) {
+		// TODO Auto-generated method stub
+		em.merge(servicio);
+		return true;
+	}
 	
 }

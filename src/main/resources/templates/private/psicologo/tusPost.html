@@ -8,16 +8,17 @@
 </head>
 <body>
 	<a onclick="window.history.back()" class="btn">Volver</a>
-	<h2>Nuevo Post</h2>
-	<form action="/login" method="POST">
+	<button type="button">Nuevo</button>
+	<h2>Modal Post</h2>
+	<form action="/p/create-post" method="POST">
 	<input type="text" name="imagen" placeholder="Url Imagen"
-			required="required" th:value="${cuenta}">
-		<input type="text" name="cuenta" placeholder="Titulo"
-			required="required" th:value="${cuenta}">
-		<textarea type="text" name="cuenta" placeholder="Descripción"
-			required="required" th:value="${cuenta}"></textarea>
+			required="required">
+		<input type="text" name="titulo" placeholder="Titulo"
+			required="required">
+		<textarea name="descripcion" placeholder="Descripción"
+			required="required"></textarea>
 
-		<select name="select">
+		<select name="tipoPublicacion_id">
 			<option>Tipo Publicación</option>
 			<option value="1">Educativa</option>
 			<option value="1">Eventos</option>
@@ -28,6 +29,40 @@
 		</select> <input type="submit" value="Crear Publicación"
 			class="btn btn-primary">
 	</form>
+	
+	<h2>lista de tus publicaciones</h2>
+	<table style="width: 100%">
+		<tr>
+			<th>Imagen</th>
+			<th>Titulo</th>
+			<th>Tipo Publicacion</th>
+			<th>Fecha Publicacion</th>
+			<th>Hora Publicacion</th>
+			<th></th>
+		</tr>
+		<th:block th:each="pu : ${publicaciones}">
+			<tr>
+				<td>
+				<img width="100%" alt="no encontrado" th:src=${pu.imagen}>
+				</td>
+				<td th:text=${pu.titulo}></td>
+				<td th:text=${pu.tipoPublicacion.nombre}></td>
+				<td th:text=${pu.fecha}></td>
+				<td th:text=${pu.hora}></td>
+				<td>
+				<form action="/p/update-post" method="get">
+						<input type="hidden" th:value=${pu.idpublicacion} name="id">
+						<input type="submit" value="editar">
+					</form>
+					<form action="/p/delete-post" method="post">
+						<input type="hidden" th:value=${pu.idpublicacion} name="publicacion_id">
+						<input type="submit" value="eliminar">
+					</form>
+				</td>
+			</tr>
+
+		</th:block>
+	</table>
 
 </body>
 </html>

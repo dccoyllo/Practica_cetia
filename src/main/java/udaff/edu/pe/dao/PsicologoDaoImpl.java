@@ -12,6 +12,7 @@ import udaff.edu.pe.entities.Publicacion;
 import udaff.edu.pe.entities.Reservacion;
 import udaff.edu.pe.entities.Servicio;
 import udaff.edu.pe.entities.TipoPublicacion;
+import udaff.edu.pe.entities.Usuario;
 
 @Repository
 public class PsicologoDaoImpl implements PsicologoDao {
@@ -109,6 +110,18 @@ public class PsicologoDaoImpl implements PsicologoDao {
 		// TODO Auto-generated method stub
 		em.remove(reservacion);
 		return true;
+	}
+
+	@Override
+	public List<Publicacion> getAllPublicacionPsicologo(Psicologo psicologo) {
+		// TODO Auto-generated method stub
+		return em.createQuery("From Publicacion where psicologo =: psi order by hora desc", Publicacion.class).setParameter("psi", psicologo).getResultList();
+	}
+
+	@Override
+	public Psicologo getPsicolog(Usuario usuario) {
+		// TODO Auto-generated method stub
+		return em.createQuery("From Psicologo where usuario =: user", Psicologo.class).setParameter("user", usuario).getSingleResult();
 	}
 
 
