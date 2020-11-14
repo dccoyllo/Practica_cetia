@@ -1,5 +1,5 @@
 package udaff.edu.pe.entities;
-// Generated 14 nov. 2020 12:39:26 by Hibernate Tools 5.2.12.Final
+// Generated 14 nov. 2020 18:02:31 by Hibernate Tools 5.2.12.Final
 
 import java.util.Date;
 import javax.persistence.Column;
@@ -26,7 +26,7 @@ public class Reservacion implements java.io.Serializable {
 	private Date fecha;
 	private Date hora;
 	private double precio;
-	private Boolean atencion;
+	private String atencion;
 	private int idservicio;
 
 	public Reservacion() {
@@ -40,7 +40,7 @@ public class Reservacion implements java.io.Serializable {
 		this.idservicio = idservicio;
 	}
 
-	public Reservacion(Usuario usuario, Date fecha, Date hora, double precio, Boolean atencion, int idservicio) {
+	public Reservacion(Usuario usuario, Date fecha, Date hora, double precio, String atencion, int idservicio) {
 		this.usuario = usuario;
 		this.fecha = fecha;
 		this.hora = hora;
@@ -100,12 +100,12 @@ public class Reservacion implements java.io.Serializable {
 		this.precio = precio;
 	}
 
-	@Column(name = "atencion")
-	public Boolean getAtencion() {
+	@Column(name = "atencion", length = 30)
+	public String getAtencion() {
 		return this.atencion;
 	}
 
-	public void setAtencion(Boolean atencion) {
+	public void setAtencion(String atencion) {
 		this.atencion = atencion;
 	}
 

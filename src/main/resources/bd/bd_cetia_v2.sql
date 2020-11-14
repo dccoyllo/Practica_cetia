@@ -133,7 +133,7 @@ idreservacion int auto_increment primary key not null,
 fecha date not null,
 hora time not null,
 precio double not null,
-atencion boolean null, 
+atencion varchar(30) null,
 idservicio int not null,
 idusuario int not null, 
 constraint fk_reservacion_usuario foreign key (idusuario) references usuario(idusuario)

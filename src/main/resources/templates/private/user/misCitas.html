@@ -2,10 +2,45 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Mis Reservaciones - Cetia</title>
 </head>
 <body>
 
 <h2>Page Mis citas</h2>
+
+<h2>lista de tus Reservaciones</h2>
+	<table style="width: 100%">
+		<tr>
+			<th>Servicio</th>
+			<th>Precio</th>
+			<th>Fecha</th>
+			<th>Hora</th>
+			<th>Atencion</th>
+			<th></th>
+		</tr>
+		<th:block th:each="res : ${reservaciones}">
+			<tr>
+				<td>
+				<img width="100%" alt="no encontrado" th:src=${res.imagen}>
+				</td>
+				<td th:text=${res.precio}></td>
+				<td th:text=${res.fecha}></td>
+				<td th:text=${res.hora}></td>
+				<td th:text=${res.atencion}></td>
+				<td>
+				<form action="/p/update-post" method="get">
+						<input type="hidden" th:value=${pu.idpublicacion} name="id">
+						<input type="submit" value="editar">
+					</form>
+					<form action="/p/delete-post" method="post">
+						<input type="hidden" th:value=${pu.idpublicacion} name="publicacion_id">
+						<input type="submit" value="eliminar">
+					</form>
+				</td>
+			</tr>
+
+		</th:block>
+	</table>
+	
 </body>
 </html>

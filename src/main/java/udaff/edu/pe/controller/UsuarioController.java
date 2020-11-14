@@ -26,8 +26,11 @@ public class UsuarioController {
 	}
 	
 	@GetMapping("/mis-citas")
-	public String pageMisCitas() {
-
+	public String pageMisCitas(Model model, HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		Usuario user = (Usuario) session.getAttribute("user");
+		
+		model.addAttribute("reservaciones", uService.getAllReservacionUsuario(user));
 		return "private/user/misCitas";
 	}
 
