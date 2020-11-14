@@ -136,7 +136,8 @@ precio double not null,
 atencion varchar(30) null,
 idservicio int not null,
 idusuario int not null, 
-constraint fk_reservacion_usuario foreign key (idusuario) references usuario(idusuario)
+constraint fk_reservacion_usuario foreign key (idusuario) references usuario(idusuario),
+constraint fk_reservacion_servicio foreign key (idservicio) references servicio(idservicio)
 on delete cascade
 on update cascade
 );
@@ -147,16 +148,6 @@ on update cascade
 create view login(user_id, user_cuenta, user_clave, user_rol)
 as
 select idusuario, cuenta, clave, idrol from usuario;
-
--- vistas de reservacion --
-create view detallereservacion(idservicio,fecha, hora, precio,servicio,nombreusuario, apellidousuario, dniusuario)
-as 
-select res.idreservacion, res.fecha, res.hora, res.precio, ser.titulo, us.nombre, us.apellido, us.dni
-from reservacion as res
-inner join servicio ser 
-on ser.idservicio = res.idservicio
-inner join usuario as us
-on us.idusuario = res.idusuario;
 
 -- vistas publicacion  --
 
@@ -174,7 +165,6 @@ on ps.idusuario=us.idusuario;
 create view nuestroservicio(codigo, titulo, descripcion, imagen, precio, tipo)
 as
 select idservicio, titulo, descripcion, imagen, precio, tipo from servicio;
-
 
 -- Super usuario --
 
