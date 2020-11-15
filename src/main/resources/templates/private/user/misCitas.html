@@ -1,14 +1,14 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="ISO-8859-1">
+<th:block data-th-replace="layout/head :: contenendor-head"></th:block>
+<meta charset="utf-8">
 <title>Mis Reservaciones - Cetia</title>
 </head>
 <body>
 
-<h2>Page Mis citas</h2>
-
-<h2>lista de tus Reservaciones</h2>
+	<h2>lista de tus Reservaciones</h2>
 	<table style="width: 100%">
 		<tr>
 			<th>Servicio</th>
@@ -20,27 +20,23 @@
 		</tr>
 		<th:block th:each="res : ${reservaciones}">
 			<tr>
-				<td>
-				<img width="100%" alt="no encontrado" th:src=${res.imagen}>
-				</td>
+				<td><img width="100%" alt="no encontrado"
+					th:src=${res.servicio.titulo}></td>
 				<td th:text=${res.precio}></td>
 				<td th:text=${res.fecha}></td>
 				<td th:text=${res.hora}></td>
 				<td th:text=${res.atencion}></td>
 				<td>
-				<form action="/p/update-post" method="get">
-						<input type="hidden" th:value=${pu.idpublicacion} name="id">
-						<input type="submit" value="editar">
-					</form>
-					<form action="/p/delete-post" method="post">
-						<input type="hidden" th:value=${pu.idpublicacion} name="publicacion_id">
-						<input type="submit" value="eliminar">
+					<form action="/u/mis-citas" method="post">
+						<input type="hidden" th:value=${res.idreservacion}
+							name="reservacion_id"> <input type="submit"
+							value="Cancelar Reservacion">
 					</form>
 				</td>
 			</tr>
 
 		</th:block>
 	</table>
-	
+
 </body>
 </html>

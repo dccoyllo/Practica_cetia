@@ -1,6 +1,8 @@
 package udaff.edu.pe.entities;
-// Generated 14 nov. 2020 18:02:31 by Hibernate Tools 5.2.12.Final
+// Generated 14 nov. 2020 18:37:38 by Hibernate Tools 5.2.12.Final
 
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -9,6 +11,7 @@ import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -25,6 +28,7 @@ public class Servicio implements java.io.Serializable {
 	private String imagen;
 	private double precio;
 	private String tipo;
+	private Set<Reservacion> reservacions = new HashSet<Reservacion>(0);
 
 	public Servicio() {
 	}
@@ -36,13 +40,15 @@ public class Servicio implements java.io.Serializable {
 		this.tipo = tipo;
 	}
 
-	public Servicio(Usuario usuario, String titulo, String descripcion, String imagen, double precio, String tipo) {
+	public Servicio(Usuario usuario, String titulo, String descripcion, String imagen, double precio, String tipo,
+			Set<Reservacion> reservacions) {
 		this.usuario = usuario;
 		this.titulo = titulo;
 		this.descripcion = descripcion;
 		this.imagen = imagen;
 		this.precio = precio;
 		this.tipo = tipo;
+		this.reservacions = reservacions;
 	}
 
 	@Id
@@ -110,6 +116,15 @@ public class Servicio implements java.io.Serializable {
 
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "servicio")
+	public Set<Reservacion> getReservacions() {
+		return this.reservacions;
+	}
+
+	public void setReservacions(Set<Reservacion> reservacions) {
+		this.reservacions = reservacions;
 	}
 
 }

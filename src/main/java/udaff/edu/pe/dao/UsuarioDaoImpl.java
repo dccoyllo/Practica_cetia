@@ -40,6 +40,12 @@ public class UsuarioDaoImpl implements UsuarioDao {
 		em.merge(reservacion);
 		return true;
 	}
+
+	@Override
+	public Reservacion getReservacionId(int reservacion_id) {
+		// TODO Auto-generated method stub
+		return em.find(Reservacion.class, reservacion_id);
+	}
 	
 
 }

@@ -74,4 +74,10 @@ public class PublicDaoImpl implements PublicDao {
 		return em.createQuery("From Publicacion where tipoPublicacion.nombre =: tipo", Publicacion.class).setParameter("tipo", "actividad").getResultList();
 	}
 
+	@Override
+	public Servicio getServicioId(int servicio_id) {
+		// TODO Auto-generated method stub
+		return em.find(Servicio.class, servicio_id);
+	}
+
 }

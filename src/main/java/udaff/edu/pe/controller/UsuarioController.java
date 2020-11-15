@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import udaff.edu.pe.entities.Reservacion;
 import udaff.edu.pe.entities.Usuario;
 import udaff.edu.pe.service.UsuarioService;
 
@@ -21,7 +22,6 @@ public class UsuarioController {
 	private UsuarioService uService;
 	@GetMapping("/perfil")
 	public String pagePerfil() {
-
 		return "private/user/perfil";
 	}
 	
@@ -32,6 +32,14 @@ public class UsuarioController {
 		
 		model.addAttribute("reservaciones", uService.getAllReservacionUsuario(user));
 		return "private/user/misCitas";
+	}
+	
+	@PostMapping("/mis-citas")
+	public String cancelacionReservacion(@RequestParam int reservacion_id) {
+		Reservacion reservacion = uService.getReservacionId(reservacion_id);
+		reservacion.setAtencion("cancelado");
+		uService.updateReservacion(reservacion);
+		return "redirect:/u/mis-citas";
 	}
 
 	@PostMapping("/perfil")

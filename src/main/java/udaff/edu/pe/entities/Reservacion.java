@@ -1,12 +1,10 @@
 package udaff.edu.pe.entities;
-// Generated 14 nov. 2020 18:02:31 by Hibernate Tools 5.2.12.Final
+// Generated 14 nov. 2020 18:37:38 by Hibernate Tools 5.2.12.Final
 
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -21,44 +19,56 @@ import javax.persistence.TemporalType;
 @Table(name = "reservacion", catalog = "bd_cetia_v2")
 public class Reservacion implements java.io.Serializable {
 
-	private Integer idreservacion;
+	private int idreservacion;
+	private Servicio servicio;
 	private Usuario usuario;
 	private Date fecha;
 	private Date hora;
 	private double precio;
 	private String atencion;
-	private int idservicio;
 
 	public Reservacion() {
 	}
 
-	public Reservacion(Usuario usuario, Date fecha, Date hora, double precio, int idservicio) {
+	public Reservacion(int idreservacion, Servicio servicio, Usuario usuario, Date fecha, Date hora, double precio) {
+		this.idreservacion = idreservacion;
+		this.servicio = servicio;
 		this.usuario = usuario;
 		this.fecha = fecha;
 		this.hora = hora;
 		this.precio = precio;
-		this.idservicio = idservicio;
 	}
 
-	public Reservacion(Usuario usuario, Date fecha, Date hora, double precio, String atencion, int idservicio) {
+	public Reservacion(int idreservacion, Servicio servicio, Usuario usuario, Date fecha, Date hora, double precio,
+			String atencion) {
+		this.idreservacion = idreservacion;
+		this.servicio = servicio;
 		this.usuario = usuario;
 		this.fecha = fecha;
 		this.hora = hora;
 		this.precio = precio;
 		this.atencion = atencion;
-		this.idservicio = idservicio;
 	}
 
 	@Id
-	@GeneratedValue(strategy = IDENTITY)
 
 	@Column(name = "idreservacion", unique = true, nullable = false)
-	public Integer getIdreservacion() {
+	public int getIdreservacion() {
 		return this.idreservacion;
 	}
 
-	public void setIdreservacion(Integer idreservacion) {
+	public void setIdreservacion(int idreservacion) {
 		this.idreservacion = idreservacion;
+	}
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "idservicio", nullable = false)
+	public Servicio getServicio() {
+		return this.servicio;
+	}
+
+	public void setServicio(Servicio servicio) {
+		this.servicio = servicio;
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
@@ -107,15 +117,6 @@ public class Reservacion implements java.io.Serializable {
 
 	public void setAtencion(String atencion) {
 		this.atencion = atencion;
-	}
-
-	@Column(name = "idservicio", nullable = false)
-	public int getIdservicio() {
-		return this.idservicio;
-	}
-
-	public void setIdservicio(int idservicio) {
-		this.idservicio = idservicio;
 	}
 
 }

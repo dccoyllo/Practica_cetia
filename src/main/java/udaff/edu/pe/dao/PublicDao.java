@@ -15,7 +15,7 @@ public interface PublicDao {
 	public List<Publicacion> getAllActividad();
 	
 	public List<Servicio> getAllServicio();
-	
+	public Servicio getServicioId(int servicio_id);
 	public Login getLogin(String cuenta, String clave);
 	public Usuario getUsuarioId(int usuario_id);
 	public boolean createUsuario(Usuario usuario);
