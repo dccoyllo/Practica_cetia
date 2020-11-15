@@ -29,12 +29,19 @@ on update cascade
 -- insersion de usuarios --
 insert into usuario
 value
+-- insersion de Psicologos--
 (1, "julio", "julio", "cetiaadmin@hotmail.com", 'Julio Elías', 'Arce Huaman', 35, 75268945, 2);
 INSERT INTO `bd_cetia_v2`.`usuario` (`idusuario`, `cuenta`, `clave`, `correo`, `nombre`, `apellido`, `edad`, `dni`, `idrol`) 
 VALUES ('2', 'janet', 'janet', 'janet@gmail.com', 'Janet', 'Aquino Galindo', '15', '97826178', '2');
 INSERT INTO `bd_cetia_v2`.`usuario` (`idusuario`, `cuenta`, `clave`, `correo`, `nombre`, `apellido`, `edad`, `dni`, `idrol`) 
 VALUES ('3', 'admin', 'admin', 'administrador@gmail.com', 'Jhon David', 'Ccoyllo Rojas', '22', '94566552', '3');
 
+-- insersion de Usuarios --
+INSERT INTO `bd_cetia_v2`.`usuario` (`idusuario`, `cuenta`, `clave`, `correo`, `nombre`, `apellido`, `edad`, `dni`, `idrol`) VALUES ('4', 'carla', 'carla', 'carla@gmail.com', 'Carla', 'De la Torre Torres', '29', '58485115', '1');
+INSERT INTO `bd_cetia_v2`.`usuario` (`idusuario`, `cuenta`, `clave`, `correo`, `nombre`, `apellido`, `edad`, `dni`, `idrol`) VALUES ('5', 'yerka', 'yerka', 'yerkaacha@gmail.com', 'Yerka', 'Acha Pino', '28', '97885154', '1');
+INSERT INTO `bd_cetia_v2`.`usuario` (`idusuario`, `cuenta`, `clave`, `correo`, `nombre`, `apellido`, `edad`, `dni`, `idrol`) VALUES ('6', 'gabriela', 'gabriela', 'gabrielaventura12@gmail', 'Gabriela', 'Ventura Mendez', '30', '99595856', '1');
+INSERT INTO `bd_cetia_v2`.`usuario` (`idusuario`, `cuenta`, `clave`, `correo`, `nombre`, `apellido`, `edad`, `dni`, `idrol`) VALUES ('7', 'piero', 'piero', 'pierdodelgado@gmail.com', 'Piero ', 'Delgado Gotardo', '32', '59461584', '1');
+INSERT INTO `bd_cetia_v2`.`usuario` (`idusuario`, `cuenta`, `clave`, `correo`, `nombre`, `apellido`, `edad`, `dni`, `idrol`) VALUES ('8', 'estuar', 'estuar', 'estuarlitter@gmail.com', 'Estuar', 'Litter Pierola', '35', '84851515', '1');
 
 create table tipo_publicacion (
 idtipopublicacion int auto_increment primary key not null,
@@ -110,7 +117,7 @@ INSERT INTO `bd_cetia_v2`.`servicio` (`idservicio`, `titulo`, `descripcion`, `im
 INSERT INTO `bd_cetia_v2`.`servicio` (`idservicio`, `titulo`, `descripcion`, `imagen`, `precio`, `tipo`, `idusuario`) VALUES ('13', 'Terapia Ocupacional ', 'Donde ayudamos a personas a lo largo de sus vidas a participar en las actividades y tareas que quieren y necesitan realizar por medio de la utilización terapéutica de actividades diarias (ocupaciones). Algunas intervenciones comunes en terapia ocupacional incluyen ayudar a niños en situación de discapacidad a participar en la escuela y situaciones sociales, ayudar a las personas que se están recuperando de lesiones y proporcionar servicios para adultos mayores que están experimentando cambios cognitivos y físicos.', '/servicio/terapiaocupacional.jpg', '120', 'servicio', '1');
 INSERT INTO `bd_cetia_v2`.`servicio` (`idservicio`, `titulo`, `descripcion`, `imagen`, `precio`, `tipo`, `idusuario`) VALUES ('14', 'Terapia de Aprendizaje', 'A través de este tipo de terapia brindamos al escolar que reciba las herramientas necesarias para construir su conocimiento a partir de su propio aprendizaje y experiencia previa. Este tipo de terapia abarca conceptos, procedimientos y actitudes.', '/servicio/terapiadeaprendizaje.jpg', '69', 'servicio', '1');
 INSERT INTO `bd_cetia_v2`.`servicio` (`idservicio`, `titulo`, `descripcion`, `imagen`, `precio`, `tipo`, `idusuario`) VALUES ('15', 'Terapia de Atención Concentración y Memoria', 'Va dirigido a nuestros niños y adultos en los que se quiera promover el desarrollo de habilidades atencionales. Siendo estas habilidades indispensables para la labor académica, y para muchas actividades que desarrollamos los seres humanos en la vida diaria. De igual forma, para niños y adultos con problemas de atención (TDA-H).', '/servicio/terapiaenatencion.jpg', '80', 'servicio', '1');
-INSERT INTO `bd_cetia_v2`.`servicio` (`idservicio`, `titulo`, `descripcion`, `imagen`, `precio`, `tipo`, `idusuario`) VALUES ('16', 'Terapia Racional Emotiva', 'Nos enfocamos en resolver problemas emocionales y conductuales mediante un modelo de intervención activo-directivo, filosófico y empírico, representado por la secuencia A-B-C, encaminado a la reestructuración cognitiva.', 'terapiaracional.jpg', '69', 'servicio', '1');
+INSERT INTO `bd_cetia_v2`.`servicio` (`idservicio`, `titulo`, `descripcion`, `imagen`, `precio`, `tipo`, `idusuario`) VALUES ('16', 'Terapia Racional Emotiva', 'Nos enfocamos en resolver problemas emocionales y conductuales mediante un modelo de intervención activo-directivo, filosófico y empírico, representado por la secuencia A-B-C, encaminado a la reestructuración cognitiva.', '/servicio/terapiaracional.jpg', '69', 'servicio', '1');
 INSERT INTO `bd_cetia_v2`.`servicio` (`idservicio`, `titulo`, `descripcion`, `imagen`, `precio`, `tipo`, `idusuario`) VALUES ('17', 'Terapia de Relajación', 'Brindamos esta terapia que ayuda a reducir tanto la tensión muscular como la general, disminuye la presión sanguínea y controla el dolor. Puede incluir la tensión y relajación de los músculos en todo el cuerpo. Se puede usar utilizando imagino logia guiada (enfocando la mente en imágenes positivas) y meditación (enfocando el pensamiento).', '/servicio/terapiaderelajacion.jpg', '150', 'servicio', '1');
 INSERT INTO `bd_cetia_v2`.`servicio` (`idservicio`, `titulo`, `descripcion`, `imagen`, `precio`, `tipo`, `idusuario`) VALUES ('18', 'Terapia de Duelo', 'En la terapia de duelo ayudamos al proceso individual de cada doliente: trata de ir descubriendo junto a él de qué están hechos los bloqueos que experimenta, cómo afronta el dolor y cómo lo gestiona, etc. En la terapia de duelo se busca ante todo la aceptación del dolor, que inevitablemente tiene que estar presente. Lo habitual es que tanto el doliente que acude a terapia como su entorno tiendan a evitar, distraer o bloquear el dolor, lo que acaba complicando el proceso.', '/servicio/terapiadeduelo.jpg', '120', 'servicio', '1');
 INSERT INTO `bd_cetia_v2`.`servicio` (`idservicio`, `titulo`, `descripcion`, `imagen`, `precio`, `tipo`, `idusuario`) VALUES ('19', 'Terapia Breve ', 'Nuestro nuevo modelo de terapia busca solucionar los problemas de la manera más rápida, eficiente y menos dolorosa. Busca atacar el problema que determine el paciente como el causante de su conflicto \"aquí y ahora\".', '/servicio/terapiabreve.jpg', '45', 'servicio', '1');
@@ -143,6 +150,11 @@ on update cascade
 );
 
 -- insertar reservacion--
+INSERT INTO `bd_cetia_v2`.`reservacion` (`idreservacion`, `fecha`, `hora`, `precio`, `atencion`, `idservicio`, `idusuario`) VALUES ('1', '2020-12-01', '9:00', '70', 'pendiente', '8', '4');
+INSERT INTO `bd_cetia_v2`.`reservacion` (`idreservacion`, `fecha`, `hora`, `precio`, `atencion`, `idservicio`, `idusuario`) VALUES ('2', '2020-11-14', '17:00', '90', 'cancelado', '10', '5');
+INSERT INTO `bd_cetia_v2`.`reservacion` (`idreservacion`, `fecha`, `hora`, `precio`, `atencion`, `idservicio`, `idusuario`) VALUES ('3', '2020-11-01', '10:00', '150', 'atendido', '17', '6');
+INSERT INTO `bd_cetia_v2`.`reservacion` (`idreservacion`, `fecha`, `hora`, `precio`, `atencion`, `idservicio`, `idusuario`) VALUES ('4', '2020-11-20', '15:30', '120', 'pendiente', '13', '7');
+INSERT INTO `bd_cetia_v2`.`reservacion` (`idreservacion`, `fecha`, `hora`, `precio`, `atencion`, `idservicio`, `idusuario`) VALUES ('5', '2020-12-01', '10:00', '70', 'pendiente', '8', '8');
 
 -- vistas de login --
 create view login(user_id, user_cuenta, user_clave, user_rol)
@@ -150,7 +162,12 @@ as
 select idusuario, cuenta, clave, idrol from usuario;
 
 -- vistas publicacion  --
-
+create view vista_publicacion(nombre, apellido, especialidad, imagen)
+as 
+select pu.nombre, pu.apellido, ps.especialidad, ps.imagen
+from usuario as pu
+inner join psicologo as ps
+on ps.idusuario = pu.idusuario;
 
 -- vista de psicologos--
 create view nuestro_equipo(nombre, apellido, especialidad, foto)
