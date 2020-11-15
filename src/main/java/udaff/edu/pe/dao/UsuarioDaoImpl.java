@@ -46,6 +46,13 @@ public class UsuarioDaoImpl implements UsuarioDao {
 		// TODO Auto-generated method stub
 		return em.find(Reservacion.class, reservacion_id);
 	}
+
+	@Override
+	public boolean createReservacion(Reservacion reservacion) {
+		// TODO Auto-generated method stub
+		em.persist(reservacion);
+		return true;
+	}
 	
 
 }

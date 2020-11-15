@@ -40,4 +40,10 @@ public class UsuarioServiceImpl implements UsuarioService {
 		return uDao.getReservacionId(reservacion_id);
 	}
 
+	@Override
+	public boolean createReservacion(Reservacion reservacion) {
+		// TODO Auto-generated method stub
+		return uDao.createReservacion(reservacion);
+	}
+
 }

@@ -1,5 +1,10 @@
 package udaff.edu.pe.controller;
 
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -13,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import udaff.edu.pe.entities.Reservacion;
 import udaff.edu.pe.entities.Usuario;
+import udaff.edu.pe.service.PublicService;
 import udaff.edu.pe.service.UsuarioService;
 
 @Controller
@@ -20,6 +26,10 @@ import udaff.edu.pe.service.UsuarioService;
 public class UsuarioController {
 	@Autowired
 	private UsuarioService uService;
+	
+	@Autowired
+	private PublicService pService;
+	
 	@GetMapping("/perfil")
 	public String pagePerfil() {
 		return "private/user/perfil";
@@ -60,5 +70,34 @@ public class UsuarioController {
 			model.addAttribute("msgu", "incorrecto");
 
 		return "private/user/perfil";
+	}
+	
+	
+	@PostMapping("/create-reservacion")
+	public String createReservacion(Model model, HttpServletRequest request, @RequestParam int servicio_id, @RequestParam String fecha) {
+		System.out.println(fecha);
+		
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
+//        String dateInString = "Friday, Jun 7, 2013 12:10:56 PM";
+		 Reservacion reservacion = new Reservacion();
+		 HttpSession session = request.getSession();
+			Usuario user = (Usuario) session.getAttribute("user");
+        try {
+
+            Date date = formatter.parse(fecha);
+            System.out.println(date);
+            System.out.println(formatter.format(date));
+            reservacion.setFecha(date);
+            reservacion.setHora(date);
+            reservacion.setAtencion("pendiente");
+            reservacion.setServicio(pService.getServicioId(servicio_id));
+            reservacion.setPrecio(pService.getServicioId(servicio_id).getPrecio());
+            reservacion.setUsuario(user);
+            System.out.println("Reservacion creada: " + uService.createReservacion(reservacion));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+       
+		return "redirect:/";
 	}
 }

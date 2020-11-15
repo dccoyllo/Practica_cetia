@@ -18,9 +18,8 @@
 			<h2>Modal Haz una Reservacion</h2>
 			<form action="/u/create-reservacion" method="Post">
 			<input type="hidden" name="servicio_id" th:value=${servicio.idservicio}>
-				<input type="datetime-local" name="hora"
-					placeholder="Hora" required="required">
-				
+				<input type="datetime-local" name="fecha"
+					required="required">
 
 				<input type="submit" value="Reservar"
 					class="btn btn-primary">
