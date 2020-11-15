@@ -40,7 +40,8 @@ public class AdminController {
 	public String deleteUser(Model model, @RequestParam int usuario_id) {
 		System.out.println(usuario_id);
 //		model.addAttribute("delete", aService.deleteUsuario(aService.getUsuarioId(usuario_id)));
-		aService.deleteUsuario(aService.getUsuarioId(usuario_id));
+		System.out.println(aService.getUsuarioId(usuario_id));
+		System.out.println(aService.deleteUsuario(aService.getUsuarioId(usuario_id)));
 		return "redirect:/a/usuarios";
 	}
 
