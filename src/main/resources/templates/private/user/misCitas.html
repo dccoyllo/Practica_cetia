@@ -20,9 +20,11 @@
 		</tr>
 		<th:block th:each="res : ${reservaciones}">
 			<tr>
-				<td><img width="100%" alt="no encontrado"
-					th:src=${res.servicio.titulo}></td>
-				<td th:text=${res.precio}></td>
+				<td><img width="20%" alt="no encontrado"
+					th:src="${'/img/'+ res.servicio.imagen}">
+					<th:block th:text=${res.servicio.titulo}></th:block>
+					</td>
+				<td th:text="${'S/'+res.precio}"></td>
 				<td th:text=${res.fecha}></td>
 				<td th:text=${res.hora}></td>
 				<td th:text=${res.atencion}></td>

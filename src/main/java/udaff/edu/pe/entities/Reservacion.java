@@ -1,10 +1,12 @@
 package udaff.edu.pe.entities;
-// Generated 14 nov. 2020 18:37:38 by Hibernate Tools 5.2.12.Final
+// Generated 14 nov. 2020 20:21:29 by Hibernate Tools 5.2.12.Final
 
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -19,7 +21,7 @@ import javax.persistence.TemporalType;
 @Table(name = "reservacion", catalog = "bd_cetia_v2")
 public class Reservacion implements java.io.Serializable {
 
-	private int idreservacion;
+	private Integer idreservacion;
 	private Servicio servicio;
 	private Usuario usuario;
 	private Date fecha;
@@ -30,8 +32,7 @@ public class Reservacion implements java.io.Serializable {
 	public Reservacion() {
 	}
 
-	public Reservacion(int idreservacion, Servicio servicio, Usuario usuario, Date fecha, Date hora, double precio) {
-		this.idreservacion = idreservacion;
+	public Reservacion(Servicio servicio, Usuario usuario, Date fecha, Date hora, double precio) {
 		this.servicio = servicio;
 		this.usuario = usuario;
 		this.fecha = fecha;
@@ -39,9 +40,7 @@ public class Reservacion implements java.io.Serializable {
 		this.precio = precio;
 	}
 
-	public Reservacion(int idreservacion, Servicio servicio, Usuario usuario, Date fecha, Date hora, double precio,
-			String atencion) {
-		this.idreservacion = idreservacion;
+	public Reservacion(Servicio servicio, Usuario usuario, Date fecha, Date hora, double precio, String atencion) {
 		this.servicio = servicio;
 		this.usuario = usuario;
 		this.fecha = fecha;
@@ -51,13 +50,14 @@ public class Reservacion implements java.io.Serializable {
 	}
 
 	@Id
+	@GeneratedValue(strategy = IDENTITY)
 
 	@Column(name = "idreservacion", unique = true, nullable = false)
-	public int getIdreservacion() {
+	public Integer getIdreservacion() {
 		return this.idreservacion;
 	}
 
-	public void setIdreservacion(int idreservacion) {
+	public void setIdreservacion(Integer idreservacion) {
 		this.idreservacion = idreservacion;
 	}
 
