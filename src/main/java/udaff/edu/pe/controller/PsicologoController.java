@@ -81,7 +81,7 @@ public class PsicologoController {
 	
 	@GetMapping("/update-post")
 	public String Publicacion(Model model, @RequestParam int id) {
-		
+		model.addAttribute("tipo", pService.getAllTipoPublicacion());
 		
 		model.addAttribute("publicacion", pService.getPublicacionId(id));
 		return "private/psicologo/updatePost";

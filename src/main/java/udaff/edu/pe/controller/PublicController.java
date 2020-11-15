@@ -66,6 +66,7 @@ public class PublicController {
 	
 	@GetMapping("/blog")
 	public String blog(Model model) {
+		model.addAttribute("publicaciones", pService.getAllPublicacion());
 		model.addAttribute("tipo", psiService.getAllTipoPublicacion());
 		return "public/blog";
 	}

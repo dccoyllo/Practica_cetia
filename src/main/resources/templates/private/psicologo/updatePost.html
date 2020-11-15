@@ -23,11 +23,9 @@
 		<select name="tipoPublicacion_id">
 			<option th:value="${publicacion.tipoPublicacion.idtipopublicacion}">Tipo
 				<th:block th:text="${': ' + publicacion.tipoPublicacion.nombre}"></th:block></option>
-			<option value="1">Educativa</option>
-			<option value="1">Eventos</option>
-			<option value="1">Actividad</option>
-			<option value="2">Noticias</option>
-			<option value="3">Frases y Refranes</option>
+			<th:block th:each="tip : ${tipo}">
+				<option th:value=${tip.idtipopublicacion} th:text=${tip.nombre}></option>
+			</th:block>
 
 		</select> <input type="submit" value="Guardar Cambios" class="btn btn-primary">
 	</form>
