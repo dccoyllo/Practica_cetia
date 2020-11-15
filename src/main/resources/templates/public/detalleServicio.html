@@ -12,8 +12,9 @@
 	<h2 th:text=${servicio.titulo}></h2>
 	<th:block th:if="${servicio.precio != 0}">
 		<p th:text="${'S/'+servicio.precio}"></p>
-		<button>Hacer una reservacion</button>
+		
 		<th:block th:if="${session.user}">
+		<button>Hacer una reservacion</button>
 			<h2>Modal Haz una Reservacion</h2>
 			<form action="/u/create-reservacion" method="Post">
 			<input type="hidden" name="servicio_id" th:value=${servicio.idservicio}>
@@ -24,6 +25,9 @@
 				<input type="submit" value="Reservar"
 					class="btn btn-primary">
 			</form>
+		</th:block>
+		<th:block th:if="${session.user == null}">
+		<a href="/login">Hacer una reservacion</a>
 		</th:block>
 	</th:block>
 	<p th:text=${servicio.descripcion}></p>
