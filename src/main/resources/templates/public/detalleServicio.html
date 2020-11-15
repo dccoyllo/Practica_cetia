@@ -1,0 +1,35 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<th:block data-th-replace="layout/head :: contenendor-head"></th:block>
+<meta charset="utf-8">
+<title>Servicio - Cetia</title>
+</head>
+<body>
+
+	<img width="40%" alt="no encontrado" th:src="'/img'+${servicio.imagen}">
+	<h2 th:text=${servicio.titulo}></h2>
+	<th:block th:if="${servicio.precio != 0}">
+		<p th:text="${'S/'+servicio.precio}"></p>
+		
+		<th:block th:if="${session.user}">
+		<button>Hacer una reservacion</button>
+			<h2>Modal Haz una Reservacion</h2>
+			<form action="/u/create-reservacion" method="Post">
+			<input type="hidden" name="servicio_id" th:value=${servicio.idservicio}>
+				<input type="datetime-local" name="hora"
+					placeholder="Hora" required="required">
+				
+
+				<input type="submit" value="Reservar"
+					class="btn btn-primary">
+			</form>
+		</th:block>
+		<th:block th:if="${session.user == null}">
+		<a href="/login">Hacer una reservacion</a>
+		</th:block>
+	</th:block>
+	<p th:text=${servicio.descripcion}></p>
+</body>
+</html>

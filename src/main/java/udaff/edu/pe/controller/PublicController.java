@@ -42,6 +42,12 @@ public class PublicController {
 		System.out.println(pService.getAllServicio());
 		return "public/servicios";
 	}
+	
+	@GetMapping("/servicio")
+	public String servicio(Model model, @RequestParam int id) {
+		model.addAttribute("servicio", pService.getServicioId(id));
+		return "public/detalleServicio";
+	}
 
 	@GetMapping("/psicologos")
 	public String psicologos(Model model) {

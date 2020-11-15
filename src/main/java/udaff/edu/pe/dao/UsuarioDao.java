@@ -9,6 +9,7 @@ public interface UsuarioDao {
 	
 	public boolean updateUsuario(Usuario usuario);
 	public List<Reservacion> getAllReservacionUsuario(Usuario usuario);
+	public Reservacion getReservacionId(int reservacion_id);
 	public boolean updateReservacion(Reservacion reservacion);
 	
 }

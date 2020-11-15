@@ -62,4 +62,10 @@ public class PublicServiceImpl implements PublicService {
 		return pDao.getAllActividad();
 	}
 
+	@Override
+	public Servicio getServicioId(int servicio_id) {
+		// TODO Auto-generated method stub
+		return pDao.getServicioId(servicio_id);
+	}
+
 }
