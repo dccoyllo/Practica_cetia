@@ -26,7 +26,7 @@ public interface PsicologoService {
 	public boolean updatePublicacion(Publicacion publicacion);
 	public boolean deletePublicacion(Publicacion publicacion);
 	
-	public List<Reservacion> getAllReservacion();
+	public List<Reservacion> getAllReservacion(String atencion);
 	public Reservacion getReservacionId(int reservacion_id);
 	public boolean updateReservacionAtendido(Reservacion reservacion);
 	public boolean deleteReservacionAtendido(Reservacion reservacion);

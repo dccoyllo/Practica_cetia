@@ -80,9 +80,9 @@ public class PsicologoServiceImpl implements PsicologoService {
 	}
 
 	@Override
-	public List<Reservacion> getAllReservacion() {
+	public List<Reservacion> getAllReservacion(String atencion) {
 		// TODO Auto-generated method stub
-		return pDao.getAllReservacion();
+		return pDao.getAllReservacion(atencion);
 	}
 
 	@Override

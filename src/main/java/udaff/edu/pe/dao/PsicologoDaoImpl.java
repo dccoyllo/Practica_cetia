@@ -87,9 +87,9 @@ public class PsicologoDaoImpl implements PsicologoDao {
 	}
 
 	@Override
-	public List<Reservacion> getAllReservacion() {
+	public List<Reservacion> getAllReservacion(String atencion) {
 		// TODO Auto-generated method stub
-		return em.createQuery("From Reservacion", Reservacion.class).getResultList();
+		return em.createQuery("From Reservacion where atencion =: ate order by hora", Reservacion.class).setParameter("ate", atencion).getResultList();
 	}
 
 	@Override

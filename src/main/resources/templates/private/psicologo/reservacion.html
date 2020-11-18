@@ -1,10 +1,106 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<th:block data-th-replace="layout/head :: contenendor-head"></th:block>
+<meta charset="utf-8">
+<title>Reservaciones - Cetia</title>
 </head>
 <body>
-<h3>page reservacion</h3>
+
+
+<h2>lista de pendientes</h2>
+	<table style="width: 100%">
+		<tr>
+			<th>DNI</th>
+			<th>Usuario</th>
+			<th>Fecha</th>
+			<th>Hora</th>
+			<th>Servicio</th>
+			<th>Precio</th>
+			<th></th>
+		</tr>
+		<th:block th:each="pen : ${pendiente}">
+			<tr>
+				
+				<td th:text=${pen.usuario.dni}></td>
+				<td th:text="${pen.usuario.apellido + ', '+pen.usuario.nombre}"></td>
+				<td th:text=${pen.fecha}></td>
+				<td th:text=${pen.hora}></td>
+				<td th:text=${pen.servicio.titulo}></td>
+				<td th:text="${'S/'+pen.precio}"></td>
+				<td>
+					<form action="/p/reservacion" method="Post">
+						<input type="hidden" th:value=${pen.idreservacion} name="reservacion_id">
+						<input type="hidden" value="atendiendo" name="atencion">
+						<input type="submit" value="Atender">
+					</form>
+					
+				</td>
+			</tr>
+
+		</th:block>
+	</table>
+
+<h2>Usuarios que están siendo atendidos</h2>
+	<table style="width: 100%">
+		<tr>
+			<th>DNI</th>
+			<th>Usuario</th>
+			<th>Fecha</th>
+			<th>Hora</th>
+			<th>Servicio</th>
+			<th>Precio</th>
+			<th></th>
+		</tr>
+		<th:block th:each="pen : ${atendiendo}">
+			<tr>
+				
+				<td th:text=${pen.usuario.dni}></td>
+				<td th:text="${pen.usuario.apellido + ', '+pen.usuario.nombre}"></td>
+				<td th:text=${pen.fecha}></td>
+				<td th:text=${pen.hora}></td>
+				<td th:text=${pen.servicio.titulo}></td>
+				<td th:text="${'S/'+pen.precio}"></td>
+				
+					<td>
+					<form action="/p/reservacion" method="Post">
+						<input type="hidden" th:value=${pen.idreservacion} name="reservacion_id">
+						<input type="hidden" value="atendido" name="atencion">
+						<input type="submit" value="Atendido">
+					</form>
+					
+				</td>
+			</tr>
+
+		</th:block>
+	</table>
+
+	
+	<h2>lista de atendidos</h2>
+	<table style="width: 100%">
+		<tr>
+			<th>DNI</th>
+			<th>Usuario</th>
+			<th>Fecha</th>
+			<th>Hora</th>
+			<th>Servicio</th>
+			<th>Precio</th>
+		</tr>
+		<th:block th:each="pen : ${atendido}">
+			<tr>
+				
+				<td th:text=${pen.usuario.dni}></td>
+				<td th:text="${pen.usuario.apellido + ', '+pen.usuario.nombre}"></td>
+				<td th:text=${pen.fecha}></td>
+				<td th:text=${pen.hora}></td>
+				<td th:text=${pen.servicio.titulo}></td>
+				<td th:text="${'S/'+pen.precio}"></td>
+			</tr>
+
+		</th:block>
+	</table>
+	
+
 </body>
 </html>
