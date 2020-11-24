@@ -55,7 +55,7 @@ $black			: #222;
 }
 
 ::selection {
-  background-color: #69be00;
+  background-color: #339af0;
   color: #fff;
 }
 
@@ -2682,14 +2682,15 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 .offered-service-area .offered-right {
   padding: 80px 0px;
-  background: url(../img/s3.jpg) center;
+  background: url(../img/coffee-839233_640.jpg) center;
   background-size: cover;
   color: #fff;
   text-align: center;
 }
 
 .offered-service-area .offered-right .overlay-bg {
-  background: rgba(105, 190, 0, 0.85);
+/*  background: rgba(105, 190, 0, 0.85); */
+  background-color: rgba(51, 154, 240, 0.70);
 }
 
 .offered-service-area .offered-right .dep-list {
@@ -2826,7 +2827,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 /*--------- end team area  -------------*/
 /*--------- start feedback  area -------------*/
 .feedback-area {
-  background: url(../img/feedback-bg.jpg) center;
+  background: url(../img/testimonio3.jpg) center;
   background-size: cover;
 }
 
@@ -2852,7 +2853,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 .feedback-left .overlay-bg {
 /*  background-color: rgba(105, 190, 0, 0.85); */
-  background-color: rgba(51, 154, 240, 0.85);
+  background-color: rgba(51, 154, 240, 0.70);
   
 }
 
@@ -4494,7 +4495,9 @@ dl.toggle.time-line:before {
 .contact-page-area .address-wrap .single-contact-address .lnr {
   font-size: 30px;
   font-weight: 500;
-  color: #69be00;
+/*  color: #69be00;  */
+  color: #339af0;
+  
   margin-right: 30px;
 }
 
@@ -4640,17 +4643,17 @@ dl.toggle.time-line:before {
 .single-footer-widget ::-moz-selection {
   /* Code for Firefox */
   background-color: #339af0;
-  color: #777777;
+  color: #fff;
 }
 
 .single-footer-widget ::selection {
   background-color: #339af0;
-  color: #777777;
+  color: #fff;
 }
 
 .single-footer-widget ::-webkit-input-placeholder {
   /* WebKit, Blink, Edge */
-  color: #777777;
+  color: #fff;
   font-weight: 300;
 }
 

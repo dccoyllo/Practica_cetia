@@ -1,34 +1,174 @@
 <!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
 <head>
-<th:block data-th-replace="layout/head :: contenendor-head"></th:block>
-<meta charset="utf-8">
-<title>Servicio - Cetia</title>
+	<th:block data-th-replace="layout/head :: contenendor-head"></th:block>
+	<meta charset="utf-8">
+	<title>Servicio - Cetia</title>
 </head>
+
 <body>
 
+	<!-- start header -->
+	<div data-th-replace="layout/header :: contenendor-header"></div>
+	<!-- end header -->
+
+	<!-- start banner Area -->
+	<section class="banner-area relative about-banner" id="home">
+		<div class="overlay overlay-bg"></div>
+		<div class="container">
+			<div class="row d-flex align-items-center justify-content-center">
+				<div class="about-content col-lg-12">
+					<h1 class="text-white">Servicios</h1>
+					<p class="text-white link-nav">
+						<a href="/">Inicio </a> <span class="lnr lnr-arrow-right"></span>
+						<a href="servicios">Servicios</a>
+					</p>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End banner Area -->
+
+	<!-- Start post-content Area -->
+	<section class="post-content-area single-post-area">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 posts-list">
+					<div class="single-post row">
+						<div class="col-lg-12">
+							<div class="feature-img">
+								<img   width="389px" height="519px" alt="no encontrado" th:src="'/img'+${servicio.imagen}">
+							</div>
+						</div>
+
+						<div class="col-lg-9 col-md-9">
+							<h3 class="mt-20 mb-20" th:text=${servicio.titulo}></h3>
+							<p class="excert">
+								MCSE boot camps have its supporters and its detractors. Some people do not understand
+								why you should have to spend money on boot camp when you can get the MCSE study
+								materials yourself at a fraction.
+							</p>
+							<p>
+								Boot camps have its supporters and its detractors. Some people do not understand why you
+								should have to spend money on boot camp when you can get the MCSE study materials
+								yourself at a fraction of the camp price. However, who has the willpower to actually sit
+								through a self-imposed MCSE training. who has the willpower to actually sit through a
+								self-imposed
+							</p>
+							<p>
+								Boot camps have its supporters and its detractors. Some people do not understand why you
+								should have to spend money on boot camp when you can get the MCSE study materials
+								yourself at a fraction of the camp price. However, who has the willpower to actually sit
+								through a self-imposed MCSE training. who has the willpower to actually sit through a
+								self-imposed
+							</p>
+						</div>
+						<div class="col-lg-12">
+							<div class="quotes">
+								MCSE boot camps have its supporters and its detractors. Some people do not understand
+								why you should have to spend money on boot camp when you can get the MCSE study
+								materials yourself at a fraction of the camp price. However, who has the willpower to
+								actually sit through a self-imposed MCSE training.
+							</div>
+							<div class="row mt-30 mb-30">
+								<div class="col-6">
+									<img class="img-fluid" src="img/blog/post-img1.jpg" alt="">
+								</div>
+								<div class="col-6">
+									<img class="img-fluid" src="img/blog/post-img2.jpg" alt="">
+								</div>
+								<div class="col-lg-12 mt-30">
+									<p>
+										MCSE boot camps have its supporters and its detractors. Some people do not
+										understand why you should have to spend money on boot camp when you can get the
+										MCSE study materials yourself at a fraction of the camp price. However, who has
+										the willpower.
+									</p>
+									<p>
+										MCSE boot camps have its supporters and its detractors. Some people do not
+										understand why you should have to spend money on boot camp when you can get the
+										MCSE study materials yourself at a fraction of the camp price. However, who has
+										the willpower.
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+				<div class="col-lg-4 sidebar-widgets">
+					<div class="widget-wrap">
+
+						<div class="single-sidebar-widget user-info-widget">
+							<img src="img/blog/f2.png" style="border-radius: 50%" alt="">
+							<a href="#">
+								<h4>Sigmund Freud​</h4>
+							</a>
+							<p>
+								Padre del psicoanálisis
+							</p>
+							<ul class="social-links">
+								<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+								<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+								<li><a href="#"><i class="fa fa-github"></i></a></li>
+								<li><a href="#"><i class="fa fa-behance"></i></a></li>
+							</ul>
+							<p>
+								"Las emociones inexpresadas nunca mueren. Son enterradas vivas y salen más tarde de peores formas"
+							</p>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End post-content Area -->
+
+	<!-- ADECUAR ESTO -->
 	<img width="40%" alt="no encontrado" th:src="'/img'+${servicio.imagen}">
 	<h2 th:text=${servicio.titulo}></h2>
 	<th:block th:if="${servicio.precio != 0}">
 		<p th:text="${'S/'+servicio.precio}"></p>
-		
+
 		<th:block th:if="${session.user}">
-		<button>Hacer una reservacion</button>
+			<button>Hacer una reservacion</button>
 			<h2>Modal Haz una Reservacion</h2>
 			<form action="/u/create-reservacion" method="Post">
-			<input type="hidden" name="servicio_id" th:value=${servicio.idservicio}>
-				<input type="datetime-local" name="fecha"
-					required="required">
+				<input type="hidden" name="servicio_id" th:value=${servicio.idservicio}>
+				<input type="datetime-local" name="fecha" required="required">
 
-				<input type="submit" value="Reservar"
-					class="btn btn-primary">
+				<input type="submit" value="Reservar" class="btn btn-primary">
 			</form>
 		</th:block>
 		<th:block th:if="${session.user == null}">
-		<a href="/login">Hacer una reservacion</a>
+			<a href="/login">Hacer una reservacion</a>
 		</th:block>
 	</th:block>
 	<p th:text=${servicio.descripcion}></p>
+	<!-- ADECUAR ESTO -->
+
+	<!-- start footer -->
+	<div data-th-replace="layout/footer :: contenendor-footer"></div>
+	<!-- end footer -->
+
+	<script src="js/vendor/jquery-2.2.4.min.js"></script>
+	<script src="js/popper.min.js"></script>
+	<script src="js/vendor/bootstrap.min.js"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>
+	<script src="js/jquery-ui.js"></script>
+	<script src="js/easing.min.js"></script>
+	<script src="js/hoverIntent.js"></script>
+	<script src="js/superfish.min.js"></script>
+	<script src="js/jquery.ajaxchimp.min.js"></script>
+	<script src="js/jquery.magnific-popup.min.js"></script>
+	<script src="js/jquery.tabs.min.js"></script>
+	<script src="js/jquery.nice-select.min.js"></script>
+	<script src="js/owl.carousel.min.js"></script>
+	<script src="js/mail-script.js"></script>
+	<script src="js/main.js"></script>
+
 </body>
+
 </html>
