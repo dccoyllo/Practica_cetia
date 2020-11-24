@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import udaff.edu.pe.entities.Psicologo;
 import udaff.edu.pe.entities.Publicacion;
+import udaff.edu.pe.entities.Reservacion;
 import udaff.edu.pe.entities.TipoPublicacion;
 import udaff.edu.pe.entities.Usuario;
 import udaff.edu.pe.service.PsicologoService;
@@ -45,9 +46,18 @@ public class PsicologoController {
 		return "private/user/perfil";
 	}
 	@GetMapping("/reservacion")
-	public String reservacion() {
-		
+	public String reservacion(Model model) {
+		model.addAttribute("pendiente", pService.getAllReservacion("pendiente"));
+		model.addAttribute("atendiendo", pService.getAllReservacion("atendiendo"));
+		model.addAttribute("atendido", pService.getAllReservacion("atendido"));
 		return "private/psicologo/reservacion";
+	}
+	@PostMapping("/reservacion")
+	public String atencionReservacion(@RequestParam String atencion, @RequestParam int reservacion_id) {
+		Reservacion reser = pService.getReservacionId(reservacion_id);
+		reser.setAtencion(atencion);
+		pService.updateReservacionAtendido(reser);
+		return "redirect:/p/reservacion";
 	}
 	
 	@GetMapping("/tus-post")
@@ -81,7 +91,7 @@ public class PsicologoController {
 	
 	@GetMapping("/update-post")
 	public String Publicacion(Model model, @RequestParam int id) {
-		
+		model.addAttribute("tipo", pService.getAllTipoPublicacion());
 		
 		model.addAttribute("publicacion", pService.getPublicacionId(id));
 		return "private/psicologo/updatePost";

@@ -12,13 +12,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import udaff.edu.pe.entities.Rol;
 import udaff.edu.pe.entities.Usuario;
+import udaff.edu.pe.service.PsicologoService;
 import udaff.edu.pe.service.PublicService;
 
 @Controller
 public class PublicController {
 	@Autowired
 	private PublicService pService;
-	
+	@Autowired
+	private PsicologoService psiService;
 	@GetMapping("/")
 	public String index(HttpServletRequest request, Model model) {
 		
@@ -60,6 +62,20 @@ public class PublicController {
 	public String contactenos() {
 
 		return "public/contact";
+	}
+	
+	@GetMapping("/blog")
+	public String blog(Model model) {
+		model.addAttribute("publicaciones", pService.getAllPublicacion());
+		model.addAttribute("tipo", psiService.getAllTipoPublicacion());
+		return "public/blog";
+	}
+	@GetMapping("/blog-single")
+	public String blogSingle(Model model, @RequestParam int id) {
+		model.addAttribute("tipo", psiService.getAllTipoPublicacion());
+		model.addAttribute("publicacion", psiService.getPublicacionId(id));
+		
+		return "public/blogSingle";
 	}
 
 	@GetMapping("/login")

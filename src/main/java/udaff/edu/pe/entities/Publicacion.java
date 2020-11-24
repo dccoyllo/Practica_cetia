@@ -1,10 +1,12 @@
 package udaff.edu.pe.entities;
-// Generated 14 nov. 2020 20:21:29 by Hibernate Tools 5.2.12.Final
+// Generated 15 nov. 2020 0:24:20 by Hibernate Tools 5.2.12.Final
 
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -19,7 +21,7 @@ import javax.persistence.TemporalType;
 @Table(name = "publicacion", catalog = "bd_cetia_v2")
 public class Publicacion implements java.io.Serializable {
 
-	private int idpublicacion;
+	private Integer idpublicacion;
 	private Psicologo psicologo;
 	private TipoPublicacion tipoPublicacion;
 	private String titulo;
@@ -31,9 +33,8 @@ public class Publicacion implements java.io.Serializable {
 	public Publicacion() {
 	}
 
-	public Publicacion(int idpublicacion, Psicologo psicologo, TipoPublicacion tipoPublicacion, String titulo,
-			Date fecha, Date hora, String imagen) {
-		this.idpublicacion = idpublicacion;
+	public Publicacion(Psicologo psicologo, TipoPublicacion tipoPublicacion, String titulo, Date fecha, Date hora,
+			String imagen) {
 		this.psicologo = psicologo;
 		this.tipoPublicacion = tipoPublicacion;
 		this.titulo = titulo;
@@ -42,9 +43,8 @@ public class Publicacion implements java.io.Serializable {
 		this.imagen = imagen;
 	}
 
-	public Publicacion(int idpublicacion, Psicologo psicologo, TipoPublicacion tipoPublicacion, String titulo,
-			Date fecha, Date hora, String descripcion, String imagen) {
-		this.idpublicacion = idpublicacion;
+	public Publicacion(Psicologo psicologo, TipoPublicacion tipoPublicacion, String titulo, Date fecha, Date hora,
+			String descripcion, String imagen) {
 		this.psicologo = psicologo;
 		this.tipoPublicacion = tipoPublicacion;
 		this.titulo = titulo;
@@ -55,13 +55,14 @@ public class Publicacion implements java.io.Serializable {
 	}
 
 	@Id
+	@GeneratedValue(strategy = IDENTITY)
 
 	@Column(name = "idpublicacion", unique = true, nullable = false)
-	public int getIdpublicacion() {
+	public Integer getIdpublicacion() {
 		return this.idpublicacion;
 	}
 
-	public void setIdpublicacion(int idpublicacion) {
+	public void setIdpublicacion(Integer idpublicacion) {
 		this.idpublicacion = idpublicacion;
 	}
 

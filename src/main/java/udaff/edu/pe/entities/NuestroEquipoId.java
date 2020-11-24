@@ -1,5 +1,5 @@
 package udaff.edu.pe.entities;
-// Generated 14 nov. 2020 20:21:29 by Hibernate Tools 5.2.12.Final
+// Generated 15 nov. 2020 0:24:20 by Hibernate Tools 5.2.12.Final
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;

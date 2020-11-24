@@ -1,2 +1,2 @@
 # Practica_cetia
-desarrollo de las pruebas psicométricas con spring boot
+desarrollo del sistema web para el Centro de Terapia Integral de Ayacucho- CETIA.
