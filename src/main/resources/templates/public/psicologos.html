@@ -1,12 +1,12 @@
-
 <!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
 <head>
-<th:block data-th-replace="layout/head :: contenendor-head"></th:block>
-<meta charset="utf-8">
-<title>Psicologos - Cetia</title>
+	<th:block data-th-replace="layout/head :: contenendor-head"></th:block>
+	<meta charset="utf-8">
+	<title>Psicologos - Cetia</title>
 </head>
+
 <body>
 	<!-- start header -->
 	<div data-th-replace="layout/header :: contenendor-header"></div>
@@ -18,12 +18,93 @@
 		<div class="container">
 			<div class="row d-flex align-items-center justify-content-center">
 				<div class="about-content col-lg-12">
-					<h1 class="text-white">Nuestro equipo</h1>
+					<h1 class="text-white">Sobre nosotros</h1>
 				</div>
 			</div>
 		</div>
 	</section>
 	<!-- End banner Area -->
+
+	<!-- Start our-mission Area -->
+	<section class="our-mission-area section-gap">
+		<div class="container">
+			<div class="row d-flex justify-content-center">
+				<div class="menu-content pb-70 col-lg-8">
+					<div class="title text-center">
+						<h1 class="mb-10">CENTRO DE TERAPIA INTEGRAL DE AYACUCHO</h1>
+						<p>Brinda atención psicológica, psicopedagógica y psicoterapia a niños, adolescentes, jóvenes, adultos y adultos mayores, mediante el uso de técnicas y herramientas que favorezcan la salud mental de los usuarios, optimizando el rendimiento emocional, familiar, social y laboral.</p>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6 accordion-left">
+
+					<!-- accordion 2 start-->
+					<dl class="accordion">
+						<dt>
+							<a href="">CETIA</a>
+						</dt>
+						<dd>
+							El Centro de Terapia Integral de Ayacucho nace con el objetivo de contribuir a mejorar la
+							salud mental de la comunidad ayacuchana, para lo cual ofrece una gama de servicios
+							psicológicos para la población.
+						</dd>
+						<dt>
+							<a href="">MISIÓN</a>
+						</dt>
+						<dd>
+							Brindar en la ciudad de Ayacucho soluciones emocionales adecuadas a personas con deseos de mejorar su bienestar emocional y con voluntad de cambio, comprometiéndonos con cada caso de bajo la mayor confidencialidad de la mano de profesionales experimentados y una adecuada infraestructura.
+						</dd>
+						<dt>
+							<a href="">VISIÓN</a>
+						</dt>
+						<dd>
+							Ser para el año 2020 una empresa modelo de gestión brindando soluciones emocionales a nuestros clientes que contribuyan con su desarrollo integral como personas y asegurando un crecimiento sosteniendo en el mercado por medio del buen servicio integrado.
+						</dd>
+						<dt>
+							<a href="">OBJETIVO</a>
+						</dt>
+						<dd>
+							Brindar atención psicológica, psicopedagógica y psicoterapia a niños, adolescentes, jóvenes, adultos y adultos mayores, mediante el uso de técnicas y herramientas que favorezcan la salud mental de los usuarios, optimizando el rendimiento emocional, familiar, social y laboral.
+						</dd>
+					</dl>
+					<!-- accordion 2 end-->
+				</div>
+				<div class="col-md-6 video-right justify-content-center align-items-center d-flex relative">
+					<div class="overlay overlay-bg"></div>
+					<a class="play-btn" href="https://www.youtube.com/watch?v=ARA0AxrnHdM"><img
+							class="img-fluid mx-auto" src="img/about/play.png" alt=""></a>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End our-mission Area -->
+
+
+	<!-- Start info Area -->
+	<section class="info-area">
+		<div class="container-fluid">
+			<div class="row align-items-center">
+				<div class="col-lg-6 no-padding info-area-left">
+					<img class="img-fluid" src="img/about/terapia-grupo.jpg" alt="">
+				</div>
+				<div class="col-lg-6 info-area-right">
+					<h1>Áreas o secciones de trabajo</h1>
+					<p>El centro de Terapia Integral de Ayacucho, plantea las siguientes áreas o secciones de trabajo:</p>
+					<br>
+					<p>
+						Área Académica, donde podrá contar con practicantes que se les reforzara con el asesoramiento teórico-practico en las áreas de psicología clínica, educativa, comunitaria y organizacional.
+					</p>
+					<br>
+					<p>
+						El área de proyección social que tiene como objetivo: contribuir al bienestar de las poblaciones mas vulnerables y en situación de riesgo social.
+
+					</p>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End info Area -->
 
 	<!-- Start team Area -->
 	<section class="team-area section-gap">
@@ -40,33 +121,27 @@
 					</div>
 				</div>
 			</div>
-			
 
 			<div class="row justify-content-center d-flex align-items-center">
-			<th:block th:each="user : ${psicologos}">
-				
-				<div class="col-lg-3 col-md-6 single-team">
-					<div class="thumb">
-						<img class="img-fluid" th:src="${'/img/'+ user.imagen}" alt="">
-						<div class="align-items-end justify-content-center d-flex">
-							<div class="social-links">
-								<a href="#"><i class="fab fa-facebook-f"></i></a>
-								<a href="#"><i class="fab fa-twitter"></i></a>
-								<a href="#"><i class="fab fa-instagram"></i></a>
-								<a href="#"><i class="fab fa-linkedin"></i></a>
+				<th:block th:each="user : ${psicologos}">
+					<div class="col-lg-3 col-md-6 single-team">
+						<div class="thumb">
+							<img class="img-fluid" th:src="${'/img/'+ user.imagen}" alt="">
+							<div class="align-items-end justify-content-center d-flex">
+								<div class="social-links">
+									<a href="#"><i class="fab fa-facebook-f"></i></a>
+									<a href="#"><i class="fab fa-twitter"></i></a>
+									<a href="#"><i class="fab fa-instagram"></i></a>
+									<a href="#"><i class="fab fa-linkedin"></i></a>
+								</div>
+								<p th:text="${user.especialidad}"></p>
+								<h4 th:text="${user.usuario.nombre}+' '+ ${user.usuario.apellido}"></h4>
 							</div>
-							<p th:text="${user.especialidad}"></p>
-							<h4 th:text="${user.usuario.nombre}+' '+ ${user.usuario.apellido}"></h4>
 						</div>
 					</div>
-				</div>
-				
-			</th:block>
-			
-			
-				
-
+				</th:block>
 			</div>
+
 		</div>
 	</section>
 	<!-- End team Area -->
@@ -76,69 +151,70 @@
 		<div class="container">
 			<div class="row justify-content-center">
 				<div class="col-md-12 pb-60 header-text text-center">
-					<h1 class="mb-10 ">Enjoy our Client’s Feedback</h1>
-					<p>Who are in extremely love with eco friendly system..</p>
+					<h1 class="mb-10 ">Testimonios</h1>
+					<p>
+						¿Qué opinan los usuarios sobre nuestro servicio?
+					</p>
 				</div>
 			</div>
-			<div
-				class="row feedback-contents justify-content-center align-items-center">
-				<div
-					class="col-lg-6 feedback-left relative d-flex justify-content-center align-items-center">
+			<div class="row feedback-contents justify-content-center align-items-center">
+				<div class="col-lg-6 feedback-left relative d-flex justify-content-center align-items-center">
 					<div class="overlay overlay-bg"></div>
-					<a class="play-btn"
-						href="https://www.youtube.com/watch?v=ARA0AxrnHdM"><img
-						class="img-fluid" src="img/play-btn.png" alt=""></a>
+					<a class="play-btn" href="https://www.youtube.com/watch?v=ARA0AxrnHdM"><img class="img-fluid"
+							src="img/play-btn.png" alt=""></a>
 				</div>
+
 				<div class="col-lg-6 feedback-right">
 					<div class="active-review-carusel">
 						<div class="single-feedback-carusel">
-							<img src="img/r2.png" alt="">
 							<div class="title d-flex flex-row">
-								<h4 class="pb-10">Fannie Rowe</h4>
+								<h4 class="pb-10">Gabriela Vílchez</h4>
 								<div class="star">
-									<span class="fa fa-star checked"></span> <span
-										class="fa fa-star checked"></span> <span
-										class="fa fa-star checked"></span> <span class="fa fa-star"></span>
+									<span class="fa fa-star checked"></span>
+									<span class="fa fa-star checked"></span>
+									<span class="fa fa-star checked"></span>
+									<span class="fa fa-star"></span>
 									<span class="fa fa-star"></span>
 								</div>
 							</div>
-							<p>Accessories Here you can find the best computer accessory
-								for your laptop, monitor, printer, scanner, speaker. Here you
-								can find the best computer accessory for your laptop, monitor,
-								printer, scanner, speaker.</p>
+							<p>
+								Trato excelente, profesional y cercano. Cuenta con un espacio de gran calidad donde
+								sentirse muy cómodo trabajando, además de un equipo excepcional que se ajusta a la
+								perfección a las necesidades tanto de psicólogos como de clientes. Muy recomendable!
+							</p>
 						</div>
 						<div class="single-feedback-carusel">
-							<img src="img/r2.png" alt="">
 							<div class="title d-flex flex-row">
-								<h4 class="pb-10">Fannie Rowe</h4>
+								<h4 class="pb-10">Maria Pilar Gutiérrez</h4>
 								<div class="star">
-									<span class="fa fa-star checked"></span> <span
-										class="fa fa-star checked"></span> <span
-										class="fa fa-star checked"></span> <span
-										class="fa fa-star checked"></span> <span class="fa fa-star"></span>
+									<span class="fa fa-star checked"></span>
+									<span class="fa fa-star checked"></span>
+									<span class="fa fa-star checked"></span>
+									<span class="fa fa-star checked"></span>
+									<span class="fa fa-star"></span>
 								</div>
 							</div>
-							<p>Accessories Here you can find the best computer accessory
-								for your laptop, monitor, printer, scanner, speaker. Here you
-								can find the best computer accessory for your laptop, monitor,
-								printer, scanner, speaker.</p>
+							<p>
+								Recomiendo el servicio que brinda CETIA gracias a los especialistas, se pudo solucionar
+								los probremas familiares que tuve y se los agradesco mucho por su apoyo que me brindaron
+							</p>
 						</div>
 						<div class="single-feedback-carusel">
-							<img src="img/r2.png" alt="">
 							<div class="title d-flex flex-row">
-								<h4 class="pb-10">Fannie Rowe</h4>
+								<h4 class="pb-10">Beto Quispe</h4>
 								<div class="star">
-									<span class="fa fa-star checked"></span> <span
-										class="fa fa-star checked"></span> <span
-										class="fa fa-star checked"></span> <span
-										class="fa fa-star checked"></span> <span
-										class="fa fa-star checked	"></span>
+									<span class="fa fa-star checked"></span>
+									<span class="fa fa-star checked"></span>
+									<span class="fa fa-star checked"></span>
+									<span class="fa fa-star checked"></span>
+									<span class="fa fa-star checked	"></span>
 								</div>
 							</div>
-							<p>Accessories Here you can find the best computer accessory
-								for your laptop, monitor, printer, scanner, speaker. Here you
-								can find the best computer accessory for your laptop, monitor,
-								printer, scanner, speaker.</p>
+							<p>
+								Me quede sorprendido por el servicio que brinda CETIA la atencion, los costos y el
+								personal son muy amigables y los recomiendo a los nuevos usuarios a que realicen sus
+								consultasy tratamiento
+							</p>
 						</div>
 					</div>
 				</div>
@@ -146,7 +222,6 @@
 		</div>
 	</section>
 	<!-- End feedback Area -->
-
 
 	<!-- start footer Area -->
 	<div data-th-replace="layout/footer :: contenendor-footer"></div>
@@ -156,8 +231,7 @@
 	<script src="js/vendor/jquery-2.2.4.min.js"></script>
 	<script src="js/popper.min.js"></script>
 	<script src="js/vendor/bootstrap.min.js"></script>
-	<script
-		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>
 	<script src="js/jquery-ui.js"></script>
 	<script src="js/easing.min.js"></script>
 	<script src="js/hoverIntent.js"></script>
@@ -170,4 +244,5 @@
 	<script src="js/mail-script.js"></script>
 	<script src="js/main.js"></script>
 </body>
+
 </html>
