@@ -66,8 +66,7 @@
 											<div class="modal-dialog">
 												<div class="modal-content">
 													<div class="modal-header">
-														<h5 class="modal-title" id="exampleModalLabel">Elige una fecha y
-															hora</h5>
+														<h5 class="modal-title" id="exampleModalLabel">RESERVACIÓN</h5>
 														<button type="button" class="close" data-dismiss="modal"
 															aria-label="Close">
 															<span aria-hidden="true">&times;</span>
@@ -75,10 +74,14 @@
 													</div>
 													<form action="/u/create-reservacion" method="Post">
 														<div class="modal-body">
-															<input type="hidden" name="servicio_id"
-																th:value=${servicio.idservicio}>
-															<input type="datetime-local" name="fecha"
-																required="required">
+															<div class="form-group">
+																<label for="recipient-name" class="col-form-label">Elige una fecha y
+																	hora</label>
+																<input type="hidden" name="servicio_id"
+																	th:value=${servicio.idservicio}>
+																<input type="datetime-local" name="fecha"
+																	required="required" class="form-control">
+															</div>
 														</div>
 														<div class="modal-footer">
 															<input type="submit" value="Reservar"
