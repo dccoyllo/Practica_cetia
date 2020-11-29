@@ -1,106 +1,198 @@
 <!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
 <head>
-<th:block data-th-replace="layout/head :: contenendor-head"></th:block>
-<meta charset="utf-8">
-<title>Reservaciones - Cetia</title>
+	<th:block data-th-replace="layout/head :: contenendor-head"></th:block>
+	<meta charset="utf-8">
+	<title>Reservaciones - Cetia</title>
 </head>
+
 <body>
 
 
-<h2>lista de pendientes</h2>
-	<table style="width: 100%">
-		<tr>
-			<th>DNI</th>
-			<th>Usuario</th>
-			<th>Fecha</th>
-			<th>Hora</th>
-			<th>Servicio</th>
-			<th>Precio</th>
-			<th></th>
-		</tr>
-		<th:block th:each="pen : ${pendiente}">
-			<tr>
-				
-				<td th:text=${pen.usuario.dni}></td>
-				<td th:text="${pen.usuario.apellido + ', '+pen.usuario.nombre}"></td>
-				<td th:text=${pen.fecha}></td>
-				<td th:text=${pen.hora}></td>
-				<td th:text=${pen.servicio.titulo}></td>
-				<td th:text="${'S/'+pen.precio}"></td>
-				<td>
-					<form action="/p/reservacion" method="Post">
-						<input type="hidden" th:value=${pen.idreservacion} name="reservacion_id">
-						<input type="hidden" value="atendiendo" name="atencion">
-						<input type="submit" value="Atender">
-					</form>
-					
-				</td>
-			</tr>
+	<!-- start header -->
+	<div data-th-replace="layout/header :: contenendor-header"></div>
+	<!-- end header -->
 
-		</th:block>
-	</table>
+	<!-- start banner Area -->
+	<section class="banner-area relative about-banner" id="home">
+		<div class="overlay overlay-bg"></div>
+		<div class="container">
+			<div class="row d-flex align-items-center justify-content-center">
+				<div class="about-content col-lg-12">
+					<h1 class="text-white">Reservaciones</h1>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End banner Area -->
 
-<h2>Usuarios que están siendo atendidos</h2>
-	<table style="width: 100%">
-		<tr>
-			<th>DNI</th>
-			<th>Usuario</th>
-			<th>Fecha</th>
-			<th>Hora</th>
-			<th>Servicio</th>
-			<th>Precio</th>
-			<th></th>
-		</tr>
-		<th:block th:each="pen : ${atendiendo}">
-			<tr>
-				
-				<td th:text=${pen.usuario.dni}></td>
-				<td th:text="${pen.usuario.apellido + ', '+pen.usuario.nombre}"></td>
-				<td th:text=${pen.fecha}></td>
-				<td th:text=${pen.hora}></td>
-				<td th:text=${pen.servicio.titulo}></td>
-				<td th:text="${'S/'+pen.precio}"></td>
-				
-					<td>
-					<form action="/p/reservacion" method="Post">
-						<input type="hidden" th:value=${pen.idreservacion} name="reservacion_id">
-						<input type="hidden" value="atendido" name="atencion">
-						<input type="submit" value="Atendido">
-					</form>
-					
-				</td>
-			</tr>
+	<!-- TABLA 01 -->
+	<div class="whole-wrap">
+		<div class="container">
+			<div class="section-top-border">
+				<h3 class="mb-30">Reservaciones pendientes</h3>
+				<div class="progress-table-wrap">
+					<div class="progress-table">
 
-		</th:block>
-	</table>
+						<!-- TABLE BOOTSTRAP -->
+						<table class="table">
+							<thead>
+								<tr>
+									<th scope="col">DNI</th>
+									<th scope="col">Usuario</th>
+									<th scope="col">Fecha</th>
+									<th scope="col">Hora</th>
+									<th scope="col">Servicio</th>
+									<th scope="col">Precio</th>
+									<th scope="col">Acciones</th>
+								</tr>
+							</thead>
 
-	
-	<h2>lista de atendidos</h2>
-	<table style="width: 100%">
-		<tr>
-			<th>DNI</th>
-			<th>Usuario</th>
-			<th>Fecha</th>
-			<th>Hora</th>
-			<th>Servicio</th>
-			<th>Precio</th>
-		</tr>
-		<th:block th:each="pen : ${atendido}">
-			<tr>
-				
-				<td th:text=${pen.usuario.dni}></td>
-				<td th:text="${pen.usuario.apellido + ', '+pen.usuario.nombre}"></td>
-				<td th:text=${pen.fecha}></td>
-				<td th:text=${pen.hora}></td>
-				<td th:text=${pen.servicio.titulo}></td>
-				<td th:text="${'S/'+pen.precio}"></td>
-			</tr>
+							<th:block th:each="pen : ${pendiente}">
+								<tbody>
+									<tr>
+										<th scope="row" th:text=${pen.usuario.dni}></th>
+										<td th:text="${pen.usuario.apellido + ', '+pen.usuario.nombre}"></td>
+										<td th:text=${pen.fecha}></td>
+										<td th:text=${pen.hora}></td>
+										<td th:text=${pen.servicio.titulo}></td>
+										<td th:text="${'S/'+pen.precio}"></td>
+										<td>
+											<form action="/p/reservacion" method="Post">
+												<input type="hidden" th:value=${pen.idreservacion}
+													name="reservacion_id">
+												<input type="hidden" value="atendiendo" name="atencion">
+												<input type="submit" class="btn btn-primary btn-sm" value="Atender">
+											</form>
+										</td>
+									</tr>
+								</tbody>
+							</th:block>
+						</table>
+						<!-- TABLE BOOTSTRAP -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- TABLA 01 -->
 
-		</th:block>
-	</table>
-	
+	<!-- TABLA 02 -->
+	<div class="whole-wrap">
+		<div class="container">
+			<div class="section-top-border">
+				<h3 class="mb-30">Reservaciones en proceso de atención</h3>
+				<div class="progress-table-wrap">
+					<div class="progress-table">
+
+						<!-- TABLE BOOTSTRAP -->
+						<table class="table">
+							<thead>
+								<tr>
+									<th scope="col">DNI</th>
+									<th scope="col">Usuario</th>
+									<th scope="col">Fecha</th>
+									<th scope="col">Hora</th>
+									<th scope="col">Servicio</th>
+									<th scope="col">Precio</th>
+									<th scope="col">Acciones</th>
+								</tr>
+							</thead>
+
+							<th:block th:each="pen : ${atendiendo}">
+								<tbody>
+									<tr>
+										<th scope="row" th:text=${pen.usuario.dni}></th>
+										<td th:text="${pen.usuario.apellido + ', '+pen.usuario.nombre}"></td>
+										<td th:text=${pen.fecha}></td>
+										<td th:text=${pen.hora}></td>
+										<td th:text=${pen.servicio.titulo}></td>
+										<td th:text="${'S/'+pen.precio}"></td>
+										<td>
+											<form action="/p/reservacion" method="Post">
+												<input type="hidden" th:value=${pen.idreservacion}
+													name="reservacion_id">
+												<input type="hidden" value="atendido" name="atencion">
+												<input type="submit" class="btn btn-primary btn-sm" value="Terminar atención">
+											</form>
+										</td>
+									</tr>
+								</tbody>
+							</th:block>
+						</table>
+						<!-- TABLE BOOTSTRAP -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- TABLA 02 -->
+
+	<!-- TABLA 03 -->
+	<div class="whole-wrap">
+		<div class="container">
+			<div class="section-top-border">
+				<h3 class="mb-30">Reservaciones atendidas</h3>
+				<div class="progress-table-wrap">
+					<div class="progress-table">
+
+						<!-- TABLE BOOTSTRAP -->
+						<table class="table">
+							<thead>
+								<tr>
+									<th scope="col">DNI</th>
+									<th scope="col">Usuario</th>
+									<th scope="col">Fecha</th>
+									<th scope="col">Hora</th>
+									<th scope="col">Servicio</th>
+									<th scope="col">Precio</th>
+								</tr>
+							</thead>
+
+							<th:block th:each="pen : ${atendido}">
+								<tbody>
+									<tr>
+										<th scope="row" th:text=${pen.usuario.dni}></th>
+										<td th:text="${pen.usuario.apellido + ', '+pen.usuario.nombre}"></td>
+										<td th:text=${pen.fecha}></td>
+										<td th:text=${pen.hora}></td>
+										<td th:text=${pen.servicio.titulo}></td>
+										<td th:text="${'S/'+pen.precio}"></td>
+									</tr>
+								</tbody>
+							</th:block>
+						</table>
+						<!-- TABLE BOOTSTRAP -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- TABLA 03 -->
+
+
+	<!-- start footer -->
+	<div data-th-replace="layout/footer :: contenendor-footer"></div>
+	<!-- end footer -->
+
+	<script src="/js/vendor/jquery-2.2.4.min.js"></script>
+	<script src="/js/popper.min.js"></script>
+	<script src="/js/vendor/bootstrap.min.js"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>
+	<script src="/js/jquery-ui.js"></script>
+	<script src="/js/easing.min.js"></script>
+	<script src="/js/hoverIntent.js"></script>
+	<script src="/js/superfish.min.js"></script>
+	<script src="/js/jquery.ajaxchimp.min.js"></script>
+	<script src="/js/jquery.magnific-popup.min.js"></script>
+	<script src="/js/jquery.tabs.min.js"></script>
+	<script src="/js/jquery.nice-select.min.js"></script>
+	<script src="/js/owl.carousel.min.js"></script>
+	<script src="/js/mail-script.js"></script>
+	<script src="/js/main.js"></script>
+
 
 </body>
+
 </html>

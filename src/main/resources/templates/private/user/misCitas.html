@@ -45,7 +45,7 @@
 									<th scope="col">Fecha</th>
 									<th scope="col">Hora</th>
 									<th scope="col">Atención</th>
-									<th scope="col">Cancelar reservación</th>
+									<th scope="col">Acciones</th>
 								</tr>
 							</thead>
 
@@ -63,7 +63,7 @@
 											<form action="/u/mis-citas" method="post">
 												<input type="hidden" th:value=${res.idreservacion}
 													name="reservacion_id">
-												<input type="submit" class="btn btn-secondary" value="Cancelar">
+												<input type="submit" class="btn btn-secondary btn-sm" value="Cancelar">
 											</form>
 										</td>
 									</tr>
