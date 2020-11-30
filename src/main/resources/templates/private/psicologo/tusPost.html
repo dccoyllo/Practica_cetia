@@ -1,65 +1,174 @@
 <!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
 <head>
-<th:block data-th-replace="layout/head :: contenendor-head"></th:block>
-<meta charset="utf-8">
-<title>Tus Post - Cetia</title>
+	<th:block data-th-replace="layout/head :: contenendor-head"></th:block>
+	<meta charset="utf-8">
+	<title>Tus Post - Cetia</title>
 </head>
+
 <body>
-	<a onclick="window.history.back()" class="btn">Volver</a>
-	<button type="button">Nuevo</button>
-	<h2>Modal Post</h2>
-	<form action="/p/create-post" method="POST">
-		<input type="text" name="imagen" placeholder="Url Imagen"
-			required="required"> <input type="text" name="titulo"
-			placeholder="Titulo" required="required">
-		<textarea name="descripcion" placeholder="Descripción"
-			required="required"></textarea>
 
-		<select name="tipoPublicacion_id">
-			<option>Tipo Publicación</option>
-			<th:block th:each="tip : ${tipo}">
-				<option th:value=${tip.idtipopublicacion} th:text=${tip.nombre}></option>
-			</th:block>
-		</select>
-		<input type="submit" value="Crear Publicación"
-			class="btn btn-primary">
-	</form>
 
-	<h2>lista de tus publicaciones</h2>
-	<table style="width: 100%">
-		<tr>
-			<th>Imagen</th>
-			<th>Titulo</th>
-			<th>Tipo Publicacion</th>
-			<th>Fecha Publicacion</th>
-			<th>Hora Publicacion</th>
-			<th></th>
-		</tr>
-		<th:block th:each="pu : ${publicaciones}">
-			<tr>
-				<td><img width="100%" alt="no encontrado" th:src=${pu.imagen}>
-				</td>
-				<td th:text=${pu.titulo}></td>
-				<td th:text=${pu.tipoPublicacion.nombre}></td>
-				<td th:text=${pu.fecha}></td>
-				<td th:text=${pu.hora}></td>
-				<td>
-					<form action="/p/update-post" method="get">
-						<input type="hidden" th:value=${pu.idpublicacion} name="id">
-						<input type="submit" value="editar">
-					</form>
-					<form action="/p/delete-post" method="post">
-						<input type="hidden" th:value=${pu.idpublicacion}
-							name="publicacion_id"> <input type="submit"
-							value="eliminar">
-					</form>
-				</td>
-			</tr>
+	<!-- start header -->
+	<div data-th-replace="layout/header :: contenendor-header"></div>
+	<!-- end header -->
 
-		</th:block>
-	</table>
+	<!-- start banner Area -->
+	<section class="banner-area relative about-banner" id="home">
+		<div class="overlay overlay-bg"></div>
+		<div class="container">
+			<div class="row d-flex align-items-center justify-content-center">
+				<div class="about-content col-lg-12">
+					<h1 class="text-white">Mis publicaciones</h1>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End banner Area -->
+
+	<!-- SECCIÓN OPCIONES -->
+	<div class="whole-wrap">
+		<div class="container">
+			<div class="section-top-border">
+				<h3 class="mb-30">Opciones</h3>
+				<div class="row">
+					<div class="col-lg-12">
+						<blockquote class="generic-blockquote">
+
+							<!-- Button trigger modal -->
+							<button type="button" class="btn btn-primary" data-toggle="modal"
+								data-target="#exampleModal">
+								Crear nueva publicación
+							</button>
+
+							<!-- START Modal -->
+							<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+								aria-hidden="true">
+								<div class="modal-dialog">
+									<div class="modal-content">
+										<div class="modal-header">
+											<h5 class="modal-title" id="exampleModalLabel">NUEVA PUBLICACIÓN
+											</h5>
+											<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+												<span aria-hidden="true">&times;</span>
+											</button>
+										</div>
+										<form action="/p/create-post" method="POST">
+											<div class="modal-body">
+												<div class="form-group">
+													<input type="text" name="titulo" placeholder="Titulo"
+														required="required" class="form-control">
+												</div>
+												<div class="form-group">
+													<textarea name="descripcion" placeholder="Descripción"
+														required="required" class="form-control"></textarea>
+												</div>
+												<div class="form-group">
+													<select name="tipoPublicacion_id" class="form-control">
+														<option>Tipo de publicación</option>
+														<th:block th:each="tip : ${tipo}">
+															<option th:value=${tip.idtipopublicacion}
+																th:text=${tip.nombre}></option>
+														</th:block>
+													</select>
+												</div>
+												<div class="form-group">
+													<input type="text" name="imagen" placeholder="Url Imagen"
+														required="required" class="form-control">
+												</div>
+											</div>
+											<div class="modal-footer">
+												<input type="submit" value="Crear" class="btn btn-primary">
+											</div>
+										</form>
+									</div>
+								</div>
+							</div>
+							<!-- END Modal -->
+						</blockquote>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<!-- SECCIÓN OPCIONES -->
+
+
+
+	<!-- TABLA DE MIS PUBLICACIONES -->
+	<div class="whole-wrap">
+		<div class="container">
+			<div class="section-top-border">
+				<h3 class="mb-30">Mis publicaciones</h3>
+				<div class="progress-table-wrap">
+					<div class="progress-table">
+						<!-- TABLE BOOTSTRAP -->
+						<table class="table">
+							<thead>
+								<tr>
+									<th scope="col">Titulo</th>
+									<th scope="col">Imagen</th>
+									<th scope="col">Tipo</th>
+									<th scope="col">Fecha</th>
+									<th scope="col">Hora</th>
+									<th scope="col">Acciones</th>
+								</tr>
+							</thead>
+
+							<th:block th:each="pu : ${publicaciones}">
+								<tbody>
+									<tr>
+										<th scope="row" th:text=${pu.titulo}></th>
+										<td><img width="40%"  alt="no encontrado" th:src="${'/img'+pu.imagen}"></td>
+										<td th:text=${pu.tipoPublicacion.nombre}></td>
+										<td th:text=${pu.fecha}></td>
+										<td th:text=${pu.hora}></td>
+										<td>
+											<form action="/p/update-post" method="get">
+												<input type="hidden" th:value=${pu.idpublicacion} name="id">
+												<input type="submit" value="Editar" class="btn btn-primary btn-sm">
+											</form>
+											&nbsp;
+											<form action="/p/delete-post" method="post">
+												<input type="hidden" th:value=${pu.idpublicacion} name="publicacion_id">
+												<input type="submit" value="Eliminar" class="btn btn-danger btn-sm">
+											</form>
+										</td>
+									</tr>
+								</tbody>
+							</th:block>
+						</table>
+						<!-- TABLE BOOTSTRAP -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- TABLA DE MIS PUBLICACIONES -->
+
+
+	<!-- start footer -->
+	<div data-th-replace="layout/footer :: contenendor-footer"></div>
+	<!-- end footer -->
+
+	<script src="/js/vendor/jquery-2.2.4.min.js"></script>
+	<script src="/js/popper.min.js"></script>
+	<script src="/js/vendor/bootstrap.min.js"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>
+	<script src="/js/jquery-ui.js"></script>
+	<script src="/js/easing.min.js"></script>
+	<script src="/js/hoverIntent.js"></script>
+	<script src="/js/superfish.min.js"></script>
+	<script src="/js/jquery.ajaxchimp.min.js"></script>
+	<script src="/js/jquery.magnific-popup.min.js"></script>
+	<script src="/js/jquery.tabs.min.js"></script>
+	<script src="/js/jquery.nice-select.min.js"></script>
+	<script src="/js/owl.carousel.min.js"></script>
+	<script src="/js/mail-script.js"></script>
+	<script src="/js/main.js"></script>
 
 </body>
+
 </html>

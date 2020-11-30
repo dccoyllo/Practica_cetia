@@ -1,48 +1,101 @@
 <!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
 <head>
-<th:block data-th-replace="layout/head :: contenendor-head"></th:block>
-<meta charset="utf-8">
-<title>Actualizar Post - Cetia</title>
+	<th:block data-th-replace="layout/head :: contenendor-head"></th:block>
+	<meta charset="utf-8">
+	<title>Actualizar Post - Cetia</title>
 </head>
+
 <body>
-	<a href="/p/tus-post" class="btn">Volver</a>
-	<h2>Editar Publicacion</h2>
-	<form action="/p/update-post" method="POST">
-		<input type="hidden" th:value="${publicacion.idpublicacion}"
-			name="publicacion_id"> <img alt="no encontrado"
-			th:src=${publicacion.imagen}> <input type="text" name="imagen"
-			placeholder="Url Imagen" required="required"
-			th:value="${publicacion.imagen}"> <input type="text"
-			name="titulo" placeholder="Titulo" required="required"
-			th:value="${publicacion.titulo}">
-		<textarea name="descripcion" placeholder="Descripción"
-			required="required" th:text="${publicacion.descripcion}"></textarea>
 
-		<select name="tipoPublicacion_id">
-			<option th:value="${publicacion.tipoPublicacion.idtipopublicacion}">Tipo
-				<th:block th:text="${': ' + publicacion.tipoPublicacion.nombre}"></th:block></option>
-			<th:block th:each="tip : ${tipo}">
-				<option th:value=${tip.idtipopublicacion} th:text=${tip.nombre}></option>
-			</th:block>
+	<!-- start header -->
+	<div data-th-replace="layout/header :: contenendor-header"></div>
+	<!-- end header -->
 
-		</select> <input type="submit" value="Guardar Cambios" class="btn btn-primary">
-	</form>
-	<div th:if="${param.cambio}">
-		<div class="alert alert-success alert-dismissible" role="alert">
-			<button type="button" class="close" data-dismiss="alert"
-				aria-label="Close">
-				<span aria-hidden="true">×</span>
-			</button>
-			Se ha actualizado correctamente!!
+	<!-- start banner Area -->
+	<section class="banner-area relative about-banner" id="home">
+		<div class="overlay overlay-bg"></div>
+		<div class="container">
+			<div class="row d-flex align-items-center justify-content-center">
+				<div class="about-content col-lg-12">
+					<h1 class="text-white">Editar publicación</h1>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End banner Area -->
 
+
+	<!-- Start Align Area -->
+	<div class="whole-wrap">
+		<div class="container">
+			<div class="section-top-border">
+				<div class="row">
+					<div class="col-lg-8 col-md-8">
+						<h3 class="mb-30">Editar publicación</h3>
+						<form action="/p/update-post" method="POST">
+							<div class="mt-10">
+								<div class="form-group">
+									<label for="exampleFormControlInput1">Titulo</label>
+									<input type="hidden" th:value="${publicacion.idpublicacion}" name="publicacion_id">
+									<input type="text" name="titulo" placeholder="Titulo" required="required"
+										th:value="${publicacion.titulo}" class="single-input">
+								</div>
+								<div class="form-group">
+									<label for="exampleFormControlInput1">Descripción</label>
+									<textarea class="single-textarea" name="descripcion" placeholder="Descripción"
+										required="required" th:text="${publicacion.descripcion}"></textarea>
+								</div>
+								<div class="form-group">
+									<div class="form-select" id="default-select2">
+										<select name="tipoPublicacion_id">
+											<option th:value="${publicacion.tipoPublicacion.idtipopublicacion}">
+												Tipo <th:block th:text="${': ' + publicacion.tipoPublicacion.nombre}">
+												</th:block>
+											</option>
+											<th:block th:each="tip : ${tipo}">
+												<option th:value=${tip.idtipopublicacion} th:text=${tip.nombre}>
+												</option>
+											</th:block>
+										</select>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="exampleFormControlInput1">Url Imagen</label>
+									<input class="single-input" type="text" name="imagen" placeholder="Url Imagen"
+										required="required" th:value="${publicacion.imagen}">
+									<img width="20%" alt="no encontrado" th:src="${'/img'+publicacion.imagen}">
+								</div>
+
+								<div th:if="${param.cambio}">
+									<div class="alert alert-success alert-dismissible" role="alert">
+										<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+											<span aria-hidden="true">×</span>
+										</button>
+										Se ha actualizado correctamente!!
+
+									</div>
+								</div>
+								<button type="submit" class="primary-btn text-uppercase" value="Guardar Cambios">Guardar
+									Cambios</button>
+
+								<a href="/p/tus-post" class="btn">Volver</a>
+
+						</form>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
-	
-	
-	
-	
+	<!-- End Align Area -->
+
+
+	<!-- start footer -->
+	<div data-th-replace="layout/footer :: contenendor-footer"></div>
+	<!-- end footer -->
+
+
 	<script src="/js/vendor/jquery-2.2.4.min.js"></script>
 	<script src="/js/popper.min.js"></script>
 	<script src="/js/vendor/bootstrap.min.js"></script>
@@ -59,4 +112,5 @@
 	<script src="/js/mail-script.js"></script>
 	<script src="/js/main.js"></script>
 </body>
+
 </html>
