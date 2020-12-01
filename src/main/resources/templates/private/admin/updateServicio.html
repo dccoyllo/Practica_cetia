@@ -63,7 +63,7 @@
 								<div class="form-group">
 									<label for="exampleFormControlInput1">Url Imagen</label>																		
 									<input class="single-input" type="text" name="imagen" placeholder="Url Imagen" required="required" th:value="${servicio.imagen}">
-									<img width="20%" alt="no encontrado" th:src="${'/img'+servicio.imagen}">
+									<img width="20%" alt="no encontrado" th:src="${servicio.imagen}">
 								</div>
 
 								<div th:if="${param.cambio}">
