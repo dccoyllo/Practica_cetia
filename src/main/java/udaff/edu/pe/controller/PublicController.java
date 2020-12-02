@@ -64,6 +64,34 @@ public class PublicController {
 		return "public/contact";
 	}
 	
+	@GetMapping("/test")
+	public String test() {
+
+		return "public/test";
+	}
+
+// MAPEANDO TIPOS DE TESTS ----
+	
+	@GetMapping("/test-depresion")
+	public String testDepresion() {
+
+		return "public/testDepresion";
+	}
+	
+	@GetMapping("/test-ansiedad")
+	public String testAnsiedad() {
+
+		return "public/testAnsiedad";
+	}
+	
+	@GetMapping("/test-familiar")
+	public String testFamiliar() {
+
+		return "public/testFamiliar";
+	}
+	
+// fin-------
+	
 	@GetMapping("/blog")
 	public String blog(Model model) {
 		model.addAttribute("publicaciones", pService.getAllPublicacion());
@@ -176,11 +204,12 @@ public class PublicController {
 		return "public/allformularios";
 	}
 
-	@GetMapping("/test")
-	public String getFormulario(int id) {
-
-		return "public/formulario";
-	}
+//	@GetMapping("/test")
+//	public String getFormulario(int id) {
+//
+//		return "public/formulario";
+//	}
+	
 
 	@GetMapping("/psicologo")
 	public String getPsicologo(int id) {

@@ -3625,7 +3625,7 @@ dl.toggle.time-line:before {
 }
 
 .top-category-widget-area .single-cat-widget:hover .overlay-bg {
-  background: rgba(105, 190, 0, 0.85);
+  background: rgba(51, 154, 240, 0.70);
   margin: 7%;
   -webkit-transition: all 0.3s ease 0s;
   -moz-transition: all 0.3s ease 0s;
