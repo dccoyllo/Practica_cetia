@@ -1,11 +1,12 @@
 <!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
 
 <head>
 
-	<th:block data-th-replace="layout/head :: contenendor-head"></th:block>
-	<meta charset="utf-8">
-	<title>Mis Reservaciones - Cetia</title>
+<th:block data-th-replace="layout/head :: contenendor-head"></th:block>
+<meta charset="utf-8">
+<title>Mis Reservaciones - Cetia</title>
 
 </head>
 
@@ -50,25 +51,26 @@
 							</thead>
 
 							<th:block th:each="res : ${reservaciones}">
-								<tbody>
-									<tr>
-										<th scope="row">
-											<th:block th:text=${res.servicio.titulo}></th:block>
-										</th>
-										<td th:text="${'S/'+res.precio}"></td>
-										<td th:text=${res.fecha}></td>
-										<td th:text=${res.hora}></td>
-										<td th:text=${res.atencion}></td>
-										<td>
-											<form action="/u/mis-citas" method="post">
-												<input type="hidden" th:value=${res.idreservacion}
-													name="reservacion_id">
-												<input type="submit" class="btn btn-secondary btn-sm" value="Cancelar">
-											</form>
-										</td>
-									</tr>
-								</tbody>
-							</th:block>
+								<th:block th:if="${res.atencion == 'pendiente'}">
+									<tbody>
+										<tr>
+											<th scope="row"><th:block th:text=${res.servicio.titulo}></th:block>
+											</th>
+											<td th:text="${'S/'+res.precio}"></td>
+											<td th:text=${res.fecha}></td>
+											<td th:text=${res.hora}></td>
+											<td th:text=${res.atencion}></td>
+											<td>
+												<form action="/u/mis-citas" method="post">
+													<input type="hidden" th:value=${res.idreservacion}
+														name="reservacion_id"> <input type="submit"
+														class="btn btn-secondary btn-sm" value="Cancelar">
+												</form>
+											</td>
+										</tr>
+									</tbody>
+									<th:block>
+									</th:block>
 						</table>
 						<!-- TABLE BOOTSTRAP -->
 					</div>
@@ -122,7 +124,8 @@
 	<script src="/js/vendor/jquery-2.2.4.min.js"></script>
 	<script src="/js/popper.min.js"></script>
 	<script src="/js/vendor/bootstrap.min.js"></script>
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>
+	<script
+		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>
 	<script src="/js/jquery-ui.js"></script>
 	<script src="/js/easing.min.js"></script>
 	<script src="/js/hoverIntent.js"></script>
