@@ -15,7 +15,7 @@
 	<!-- meta character set -->
 	<meta charset="UTF-8">
 	<!-- Site Title -->
-	<title>Medical</title>
+	<title>Blog - CETIA</title>
 
 	<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet">
 	<!--
@@ -83,7 +83,7 @@
 							</div>
 							<div class="col-lg-9 col-md-9 ">
 								<div class="feature-img">
-									<img class="img-fluid" alt="">
+									<img class="img-fluid"  th:src="${pub.imagen}" alt="">
 								</div>
 								<a class="posts-title" th:href="${'blog-single?id='+ pub.idpublicacion}">
 									<h3 th:text=${pub.titulo}></h3>

@@ -2955,6 +2955,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 .single-recent-blog .thumb img {
   width: 100%;
+  height: 400px;
 }
 
 .single-recent-blog h4 {

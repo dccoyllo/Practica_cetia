@@ -50,10 +50,11 @@ html {
     -webkit-tap-highlight-color: transparent
 }
 
-article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
+article, aside, figcaption, figure, footer, hgroup, main, nav, section {
     display: block
 }
 
+/*
 body {
     margin: 0;
     font-family: Poppins, sans-serif;
@@ -64,6 +65,7 @@ body {
     text-align: left;
     background-color: #fff
 }
+*/
 
 [tabindex="-1"]:focus {
     outline: 0!important
