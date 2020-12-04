@@ -2,35 +2,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-	<!-- Mobile Specific Meta -->
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<!-- Favicon-->
-	<link rel="shortcut icon" href="img/fav.png">
-	<!-- Author Meta -->
-	<meta name="author" content="colorlib">
-	<!-- Meta Description -->
-	<meta name="description" content="">
-	<!-- Meta Keyword -->
-	<meta name="keywords" content="">
-	<!-- meta character set -->
-	<meta charset="UTF-8">
-	<!-- Site Title -->
+	<th:block data-th-replace="layout/head :: contenendor-head"></th:block>
+	<meta charset="utf-8">
 	<title>Blog - CETIA</title>
-
-	<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet">
-	<!--
-			CSS
-			============================================= -->
-	<link rel="stylesheet" href="css/linearicons.css">
-	<link rel="stylesheet" href="css/font-awesome.min.css">
-	<link rel="stylesheet" href="css/bootstrap.css">
-	<link rel="stylesheet" href="css/magnific-popup.css">
-	<link rel="stylesheet" href="css/jquery-ui.css">
-	<link rel="stylesheet" href="css/nice-select.css">
-	<link rel="stylesheet" href="css/animate.min.css">
-	<link rel="stylesheet" href="css/owl.carousel.css">
-	<link rel="stylesheet" href="css/jquery-ui.css">
-	<link rel="stylesheet" href="css/main.css">
 </head>
 
 <body>
@@ -116,136 +90,12 @@
 							</div>
 						</div>
 					</div> -->
-					<div class="comments-area">
-						<h4>05 Comments</h4>
-						<div class="comment-list">
-							<div class="single-comment justify-content-between d-flex">
-								<div class="user justify-content-between d-flex">
-									<div class="thumb">
-										<img src="img/blog/c1.jpg" alt="">
-									</div>
-									<div class="desc">
-										<h5>
-											<a href="#">Emilly Blunt</a>
-										</h5>
-										<p class="date">December 4, 2017 at 3:12 pm</p>
-										<p class="comment">Never say goodbye till the end comes!</p>
-									</div>
-								</div>
-								<div class="reply-btn">
-									<a href="" class="btn-reply text-uppercase">reply</a>
-								</div>
-							</div>
-						</div>
-						<div class="comment-list left-padding">
-							<div class="single-comment justify-content-between d-flex">
-								<div class="user justify-content-between d-flex">
-									<div class="thumb">
-										<img src="img/blog/c2.jpg" alt="">
-									</div>
-									<div class="desc">
-										<h5>
-											<a href="#">Elsie Cunningham</a>
-										</h5>
-										<p class="date">December 4, 2017 at 3:12 pm</p>
-										<p class="comment">Never say goodbye till the end comes!</p>
-									</div>
-								</div>
-								<div class="reply-btn">
-									<a href="" class="btn-reply text-uppercase">reply</a>
-								</div>
-							</div>
-						</div>
-						<div class="comment-list left-padding">
-							<div class="single-comment justify-content-between d-flex">
-								<div class="user justify-content-between d-flex">
-									<div class="thumb">
-										<img src="img/blog/c3.jpg" alt="">
-									</div>
-									<div class="desc">
-										<h5>
-											<a href="#">Annie Stephens</a>
-										</h5>
-										<p class="date">December 4, 2017 at 3:12 pm</p>
-										<p class="comment">Never say goodbye till the end comes!</p>
-									</div>
-								</div>
-								<div class="reply-btn">
-									<a href="" class="btn-reply text-uppercase">reply</a>
-								</div>
-							</div>
-						</div>
-						<div class="comment-list">
-							<div class="single-comment justify-content-between d-flex">
-								<div class="user justify-content-between d-flex">
-									<div class="thumb">
-										<img src="img/blog/c4.jpg" alt="">
-									</div>
-									<div class="desc">
-										<h5>
-											<a href="#">Maria Luna</a>
-										</h5>
-										<p class="date">December 4, 2017 at 3:12 pm</p>
-										<p class="comment">Never say goodbye till the end comes!</p>
-									</div>
-								</div>
-								<div class="reply-btn">
-									<a href="" class="btn-reply text-uppercase">reply</a>
-								</div>
-							</div>
-						</div>
-						<div class="comment-list">
-							<div class="single-comment justify-content-between d-flex">
-								<div class="user justify-content-between d-flex">
-									<div class="thumb">
-										<img src="img/blog/c5.jpg" alt="">
-									</div>
-									<div class="desc">
-										<h5>
-											<a href="#">Ina Hayes</a>
-										</h5>
-										<p class="date">December 4, 2017 at 3:12 pm</p>
-										<p class="comment">Never say goodbye till the end comes!</p>
-									</div>
-								</div>
-								<div class="reply-btn">
-									<a href="" class="btn-reply text-uppercase">reply</a>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="comment-form">
-						<h4>Leave a Comment</h4>
-						<form>
-							<div class="form-group form-inline">
-								<div class="form-group col-lg-6 col-md-12 name">
-									<input type="text" class="form-control" id="name" placeholder="Enter Name"
-										onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Name'">
-								</div>
-								<div class="form-group col-lg-6 col-md-12 email">
-									<input type="email" class="form-control" id="email"
-										placeholder="Enter email address" onfocus="this.placeholder = ''"
-										onblur="this.placeholder = 'Enter email address'">
-								</div>
-							</div>
-							<div class="form-group">
-								<input type="text" class="form-control" id="subject" placeholder="Subject"
-									onfocus="this.placeholder = ''" onblur="this.placeholder = 'Subject'">
-							</div>
-							<div class="form-group">
-								<textarea class="form-control mb-10" rows="5" name="message" placeholder="Messege"
-									onfocus="this.placeholder = ''" onblur="this.placeholder = 'Messege'"
-									required=""></textarea>
-							</div>
-							<a href="#" class="primary-btn text-uppercase">Post Comment</a>
-						</form>
-					</div>
 				</div>
 				<div class="col-lg-4 sidebar-widgets">
 					<div class="widget-wrap">
 						<div class="single-sidebar-widget search-widget">
 							<form class="search-form" action="#">
-								<input placeholder="Search Posts" name="search" type="text"
+								<input placeholder="Buscar" name="search" type="text"
 									onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search Posts'">
 								<button type="submit">
 									<i class="fa fa-search"></i>
@@ -258,8 +108,7 @@
 
 							<ul class="cat-list">
 								<th:block th:each="tip : ${tipo}">
-									<li><a th:href="${'/blog-single?id='+tip.idtipopublicacion}"
-											class="d-flex justify-content-between">
+									<li><a class="d-flex justify-content-between">
 											<p th:text=${tip.nombre}></p>
 											<p th:text=${tip.publicacions.size()}></p>
 										</a></li>
@@ -270,12 +119,9 @@
 						<div class="single-sidebar-widget tag-cloud-widget">
 							<h4 class="tagcloud-title">Tag Categorias</h4>
 							<ul>
-
 								<th:block th:each="tip : ${tipo}">
-									<li><a th:href="${'/blog-single?id='+tip.idtipopublicacion}"
-											th:text=${tip.nombre}></a></li>
+									<li><a th:text=${tip.nombre}></a></li>
 								</th:block>
-
 							</ul>
 						</div>
 					</div>
@@ -289,21 +135,21 @@
 	<div data-th-replace="layout/footer :: contenendor-footer"></div>
 	<!-- end footer -->
 
-	<script src="/js/vendor/jquery-2.2.4.min.js"></script>
-	<script src="/js/popper.min.js"></script>
-	<script src="/js/vendor/bootstrap.min.js"></script>
+	<script src="js/vendor/jquery-2.2.4.min.js"></script>
+	<script src="js/popper.min.js"></script>
+	<script src="js/vendor/bootstrap.min.js"></script>
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>
-	<script src="/js/jquery-ui.js"></script>
-	<script src="/js/easing.min.js"></script>
-	<script src="/js/hoverIntent.js"></script>
-	<script src="/js/superfish.min.js"></script>
-	<script src="/js/jquery.ajaxchimp.min.js"></script>
-	<script src="/js/jquery.magnific-popup.min.js"></script>
-	<script src="/js/jquery.tabs.min.js"></script>
-	<script src="/js/jquery.nice-select.min.js"></script>
-	<script src="/js/owl.carousel.min.js"></script>
-	<script src="/js/mail-script.js"></script>
-	<script src="/js/main.js"></script>
+	<script src="js/jquery-ui.js"></script>
+	<script src="js/easing.min.js"></script>
+	<script src="js/hoverIntent.js"></script>
+	<script src="js/superfish.min.js"></script>
+	<script src="js/jquery.ajaxchimp.min.js"></script>
+	<script src="js/jquery.magnific-popup.min.js"></script>
+	<script src="js/jquery.tabs.min.js"></script>
+	<script src="js/jquery.nice-select.min.js"></script>
+	<script src="js/owl.carousel.min.js"></script>
+	<script src="js/mail-script.js"></script>
+	<script src="js/main.js"></script>
 	
 </body>
 

@@ -121,7 +121,7 @@
 								<tbody>
 									<tr>
 										<th scope="row" th:text=${pu.titulo}></th>
-										<td><img width="40%"  alt="no encontrado" th:src="${'/img'+pu.imagen}"></td>
+										<td><img width="40%"  alt="no encontrado" th:src="${pu.imagen}"></td>
 										<td th:text=${pu.tipoPublicacion.nombre}></td>
 										<td th:text=${pu.fecha}></td>
 										<td th:text=${pu.hora}></td>
